@@ -1,20 +1,14 @@
 <!-- =========================================
-   LEGACY BUILDERS — Signature Hero
-   (Centered animated logo + overlay + slow reveal)
+   LEGACY BUILDERS — Refined Hero + Message Section
 ========================================= -->
 <section class="lb-hero" aria-label="Legacy Builders Hero">
-  <!-- Background video -->
   <video class="lb-hero__video" autoplay muted playsinline loop poster="media/hero-fallback.jpg">
     <source src="https://internationalprogram.netlify.app/program-vid.mp4" type="video/mp4" />
   </video>
-
-  <!-- Top gradient fade for readability -->
   <div class="lb-hero__topfade"></div>
-  <!-- Overall soft dark overlay -->
   <div class="lb-hero__overlay"></div>
 
-  <!-- Hero content -->
-  <div class="lb-hero__content" data-aos="fade-up" data-aos-duration="1600">
+  <div class="lb-hero__content" data-aos="fade-up" data-aos-duration="1200">
     <div id="logo">
       <svg viewBox="0 0 200 500" width="100%" height="100%">
         <text class="l" x="100" y="220">L</text>
@@ -23,151 +17,151 @@
       </svg>
     </div>
 
-    <h1 class="lb-headline">Build What Lasts</h1>
+    <h1 class="lb-headline">Clarity for Every School</h1>
     <p class="lb-sub">
-      Legacy Builders equips schools with proven systems to recruit, retain, and operate international programs with confidence. 
-      Move from uncertainty to sustainability — with clarity, strategy, and vision that endures.
+      Legacy Builders helps schools design international programs that create stability and long-term growth —
+      turning vision into measurable, sustainable results.
     </p>
-
-    <div class="lb-cta">
-      <a href="#learn" class="btn btn--light">Learn More</a>
-      <a href="#contact" class="btn btn--outline">Talk to an Advisor</a>
-    </div>
   </div>
 </section>
 
-<!-- AOS animations -->
+<!-- =========================================
+   UNDERSTANDING SECTION
+========================================= -->
+<section class="lb-understanding" id="mission">
+  <div class="container" data-aos="fade-up" data-aos-duration="1400">
+    <h2>We Understand Your Mission</h2>
+    <p>
+      You were called to build something that matters — a school that changes lives.  
+      But keeping programs full, balancing budgets, and finding new revenue streams can feel impossible.
+    </p>
+    <p>
+      That’s why we created <strong>Legacy Builders</strong>: a proven blueprint for schools to launch
+      new international programs, increase enrollment, and generate sustainable revenue —
+      without losing sight of their mission or values.  
+      We don’t just advise schools — we walk beside them, helping leaders move from uncertainty to impact.
+    </p>
+    <a href="#learn" class="btn btn--primary">See How It Works</a>
+  </div>
+</section>
+
+<!-- AOS fade library -->
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({ duration: 1400, easing: 'ease', once: true });</script>
+<script>AOS.init({ duration: 1200, easing: 'ease', once: true });</script>
 
 <style>
-/* Root and typography */
 :root {
-  --ink:#fff;
   --navy:#0A2342;
+  --ink:#fff;
+  --cream:#f7f9fc;
+  --accent:#c6aa6a;
 }
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-}
+body { margin:0; font-family:'Inter',sans-serif; background:#fff; }
+.container { width:min(1100px,92vw); margin-inline:auto; text-align:center; }
 
-/* Hero base */
+/* ---------------- HERO ---------------- */
 .lb-hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink);
-  text-align: center;
-  overflow: hidden;
-  background: var(--navy);
+  position:relative;
+  min-height:480px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:var(--ink);
+  background:var(--navy);
+  overflow:hidden;
 }
 .lb-hero__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.75) contrast(1.1);
-  z-index: 0;
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  filter:brightness(.75) contrast(1.1);
+  z-index:0;
 }
-/* top fade gradient */
 .lb-hero__topfade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 45%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 100%);
-  z-index: 1;
+  position:absolute; top:0; left:0; right:0; height:40%;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.6),transparent);
+  z-index:1;
 }
-/* main overlay tint */
 .lb-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(10,35,66,0.55);
-  z-index: 1;
+  position:absolute; inset:0;
+  background:rgba(10,35,66,0.5);
+  z-index:1;
 }
 .lb-hero__content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  padding: 0 1rem;
+  position:relative; z-index:2;
+  max-width:720px; padding:60px 20px;
 }
 
-/* Smaller, slower logo animation */
-#logo {
-  width: 130px;
-  height: 300px;
-  margin: 0 auto 1rem;
-}
+/* logo smaller + faster */
+#logo { width:100px; height:240px; margin:0 auto 1rem; }
 #logo svg text, #logo svg path.bar {
-  fill: none;
-  stroke: #FFFFFF;
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation-fill-mode: forwards;
+  fill:none; stroke:#FFFFFF; stroke-width:4;
+  stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:1000; stroke-dashoffset:1000;
+  animation-fill-mode:forwards;
 }
 #logo svg text.l {
-  font-size: 150px;
-  font-weight: 600;
-  text-anchor: middle;
-  animation: draw 12s cubic-bezier(0.33,0,0.67,1) 0s forwards;
+  font-size:120px; font-weight:600; text-anchor:middle;
+  animation:draw 6s cubic-bezier(0.33,0,0.67,1) 0s forwards;
 }
 #logo svg path.bar {
-  animation: draw 12s cubic-bezier(0.33,0,0.67,1) 2s forwards;
+  animation:draw 6s cubic-bezier(0.33,0,0.67,1) 1s forwards;
 }
 #logo svg text.b {
-  font-size: 150px;
-  font-weight: 600;
-  text-anchor: middle;
-  animation: draw 12s cubic-bezier(0.33,0,0.67,1) 4s forwards;
+  font-size:120px; font-weight:600; text-anchor:middle;
+  animation:draw 6s cubic-bezier(0.33,0,0.67,1) 2s forwards;
 }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes draw { to { stroke-dashoffset:0; } }
 
-/* Headline and subtext */
 .lb-headline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 4vw, 3.3rem);
-  font-weight: 700;
-  margin: 1.2rem 0 0.6rem;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;
+  font-size:clamp(1.9rem,3vw,2.6rem);
+  margin:0.5rem 0;
 }
 .lb-sub {
-  font-size: 1.1rem;
-  color: #f2f5fa;
-  max-width: 50ch;
-  margin: 0 auto 2.2rem;
-  line-height: 1.65;
+  font-size:1.05rem;
+  line-height:1.65;
+  color:#f2f6fc;
+  max-width:60ch;
+  margin:0 auto;
 }
 
-/* Buttons */
-.lb-cta {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+/* ---------------- UNDERSTANDING SECTION ---------------- */
+.lb-understanding {
+  background:var(--cream);
+  padding:80px 20px;
+  text-align:center;
+}
+.lb-understanding h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;
+  font-size:clamp(2rem,3.2vw,2.6rem);
+  color:var(--navy);
+  margin-bottom:1rem;
+}
+.lb-understanding p {
+  max-width:70ch;
+  margin:0.7rem auto;
+  font-size:1.05rem;
+  line-height:1.7;
+  color:#2b374a;
+}
+.lb-understanding .btn {
+  margin-top:2rem;
 }
 .btn {
-  text-decoration: none;
-  font-weight: 700;
-  padding: 0.9rem 1.4rem;
-  border-radius: 10px;
-  transition: 0.3s ease;
+  text-decoration:none;
+  font-weight:700;
+  padding:0.9rem 1.4rem;
+  border-radius:10px;
+  transition:0.3s ease;
 }
-.btn--light {
-  background: #fff;
-  color: var(--navy);
+.btn--primary {
+  background:var(--navy);
+  color:#fff;
 }
-.btn--light:hover { filter: brightness(1.1); }
-.btn--outline {
-  border: 2px solid #fff;
-  color: #fff;
-}
-.btn--outline:hover {
-  background: rgba(255,255,255,0.1);
-}
+.btn--primary:hover { filter:brightness(1.1); }
 </style>
