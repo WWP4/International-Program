@@ -77,53 +77,100 @@
     /* Accessibility */
     @media (prefers-reduced-motion:reduce){
       #logo svg text,#logo svg path{animation:none;stroke-dashoffset:0}
+    
     }
+
+    /* ===== HERO BASE ===== */
+.hero--centered{
+  position:relative; overflow:hidden; min-height:78vh; /* feel like the screenshot */
+  display:grid; place-items:center; background:#0e2a47; /* backup color */
+}
+.hero__media{ position:absolute; inset:0; z-index:0; }
+.hero__video{ width:100%; height:100%; object-fit:cover; filter:contrast(1.06) brightness(.92); }
+
+/* slight blue overlay (subtle, like screenshot) */
+.hero__scrim{
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(7,26,48,.25) 0%, rgba(7,26,48,.35) 60%, rgba(7,26,48,.45) 100%),
+    radial-gradient(60% 70% at 50% 40%, rgba(11,41,72,.35) 0%, rgba(11,41,72,.15) 60%, rgba(11,41,72,.08) 100%);
+  mix-blend-mode:multiply;
+}
+
+/* centered content stack */
+.hero__content{
+  position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center; gap:18px;
+  padding:40px 16px; text-align:center;
+}
+.hero__title{
+  margin:0; color:#fff; font-family:"Cormorant Garamond", serif;
+  font-weight:700; letter-spacing:.2px;
+  font-size:clamp(2rem, 4.2vw, 3.2rem); line-height:1.1;
+  text-shadow:0 6px 28px rgba(0,0,0,.35);
+}
+
+/* ===== Crest (Poppins stroke-draw). Make static by removing animation rules. */
+#logo{ width:min(220px, 32vw); height:auto; }
+#logo svg text, #logo svg path{
+  fill:none; stroke:#fff; stroke-width:8; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:1000; stroke-dashoffset:1000; animation-fill-mode:forwards;
+  text-anchor:middle;
+}
+#logo svg text.l{
+  font-family:'Poppins', sans-serif; font-weight:600; font-size:190px;
+  animation:draw 1700ms cubic-bezier(.33,0,.67,1) 0ms forwards;
+}
+#logo svg path.bar{
+  animation:draw 1700ms cubic-bezier(.33,0,.67,1) 250ms forwards;
+}
+#logo svg text.b{
+  font-family:'Poppins', sans-serif; font-weight:600; font-size:190px;
+  animation:draw 1700ms cubic-bezier(.33,0,.67,1) 500ms forwards;
+}
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+
+/* mobile tune */
+@media (max-width: 820px){
+  .hero--centered{ min-height:72vh; }
+  #logo{ width: min(180px, 42vw); }
+}
+
+/* motion respect */
+@media (prefers-reduced-motion:reduce){
+  #logo svg text, #logo svg path{ animation:none; stroke-dashoffset:0; }
+}
+
   </style>
 </head>
 <body>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" aria-label="Legacy Builders Hero">
-    <div class="hero__media" aria-hidden="true">
-      <!-- TODO: replace both paths below -->
-      <video class="hero__video" autoplay muted playsinline loop poster="/media/legacy-poster.jpg">
-        <source src="/media/legacy-hero.mp4" type="video/mp4" />
-      </video>
-      <div class="hero__scrim"></div>
+  <!-- ===== HERO (centered crest on video) ===== -->
+<section class="hero hero--centered" aria-label="Legacy Builders Hero">
+  <div class="hero__media" aria-hidden="true">
+    <video class="hero__video" autoplay muted playsinline loop
+           poster="/media/legacy-poster.jpg">
+      <source src="https://internationalprogram.netlify.app/program-vid.mp4" type="video/mp4">
+    </video>
+    <!-- slight blue overlay -->
+    <div class="hero__scrim"></div>
+  </div>
+
+  <div class="hero__content">
+    <!-- Crest / Monogram (animated) -->
+    <div id="logo" aria-hidden="true">
+      <svg viewBox="0 0 200 500" width="100%" height="100%">
+        <text class="l" x="100" y="220">L</text>
+        <path class="bar" d="M 50 280 L 150 280"/>
+        <text class="b" x="100" y="470">B</text>
+      </svg>
     </div>
 
-    <div class="container hero__grid">
-      <!-- LEFT: animated LB logo -->
-      <div class="lb-logo" data-aos="fade-right" data-aos-duration="1500">
-        <div id="logo" aria-hidden="true">
-          <svg viewBox="0 0 200 500" width="100%" height="100%">
-            <text class="l" x="100" y="220">L</text>
-            <path class="bar" d="M 50 280 L 150 280"/>
-            <text class="b" x="100" y="470">B</text>
-          </svg>
-        </div>
-      </div>
+    <!-- Headline -->
+    <h1 class="hero__title">Discover Community</h1>
+  </div>
+</section>
 
-      <!-- RIGHT: promise + CTAs -->
-      <div data-aos="fade-left" data-aos-duration="1600">
-        <span class="eyebrow"><span class="crest-dot"></span> International Program Mastercourse</span>
-        <h1 class="title">A Board-Approved Path to an <em style="text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:10px;">International Student Program</em>.</h1>
-        <p class="lead">We give your school a complete, compliant blueprint to plan, recruit, and operate an international program—without guesswork or risking your mission.</p>
-        <div class="bullets">
-          <span>SEVIS / F-1 / J-1 clarity</span>
-          <span>Recruitment playbook</span>
-          <span>Financial models</span>
-        </div>
-        <div class="cta">
-          <a href="#inside" class="btn btn--primary">See What’s Inside</a>
-          <a href="#advisors" class="btn btn--ghost">Talk to an Advisor</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Visible divider so hero is clearly not full-screen -->
-    <div class="hero__divider" aria-hidden="true"></div>
-  </section>
 
   <!-- AOS init -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
