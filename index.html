@@ -410,6 +410,22 @@ section{padding:80px 0}
 }
 .sf__contact a:hover{color:#ffffff; border-bottom-color:#ffffff}
 .sf__copy{color:#b9c7df; white-space:nowrap}
+/* Highlight number */
+.hero__text .hl{color:#c6aa6a;text-decoration:underline;text-underline-offset:6px}
+
+/* Lead paragraph tighter and clearer */
+.hero__lead{max-width:640px;margin:10px 0 18px;color:#f2f6ff;opacity:.96}
+
+/* Icon row */
+.hero__icons{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:12px}
+.hero__icons li{
+  display:grid; grid-template-columns:42px 1fr; gap:12px;
+  align-items:start; background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:10px 12px;
+}
+.ic{width:28px;height:28px;color:#ffffff;opacity:.95}
+.hero__icons p{margin:0;color:#e9f1ff}
+.hero__icons strong{color:#ffffff}
 
 </style>
 </head>
@@ -425,16 +441,34 @@ section{padding:80px 0}
   <div class="hero__overlay"></div>
 
   <div class="container hero__grid">
-    <!-- LEFT CONTENT -->
-    <div class="hero__text" data-aos="fade-right" data-aos-duration="1400">
-      <h1>No More Guessing. Just Growth.</h1>
-      <p>Every great program starts with one conversation. Let’s explore how your school can grow enrollment, funding, and impact with a board-approved plan.</p>
-      <ul class="hero__points">
-        <li> Personalized 30-min discovery call</li>
-        <li> Live demo of the Legacy Builders System</li>
-        <li> Step-by-step implementation roadmap</li>
-      </ul>
-    </div>
+  <!-- LEFT CONTENT (pain-point version) -->
+<div class="hero__text" data-aos="fade-right" data-aos-duration="1400">
+  <h1>What would you do with an extra <span class="hl">$150,000</span> this year?</h1>
+  <p class="hero__lead">
+    Schools like yours unlock six-figure, year-one revenue by launching a board-approved international program the right way—without guesswork, without risking mission, and with support at every step.
+  </p>
+
+  <ul class="hero__icons">
+    <li data-aos="fade-up" data-aos-delay="0">
+      <!-- Dollar icon -->
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v2M12 20v2M7 7c0-1.66 2.24-3 5-3s5 1.34 5 3-1.5 2.5-5 3-5 1.5-5 3 2.24 3 5 3 5-1.34 5-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p><strong>Revenue that funds what matters.</strong> Add ~$150K in year one to invest in teacher raises, facilities, and student experience.</p>
+    </li>
+
+    <li data-aos="fade-up" data-aos-delay="120">
+      <!-- Handshake icon -->
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l4 4 5-5 3 3 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 16l3 3M16 9l3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p><strong>Board-ready from day one.</strong> We prepare the policy kit, timelines, and training so approval is clear and confident.</p>
+    </li>
+
+    <li data-aos="fade-up" data-aos-delay="240">
+      <!-- Community / people icon -->
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 19a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="5.5" cy="9" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18.5" cy="9" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <p><strong>Real impact on campus & community.</strong> Enroll new students, reach more families, and strengthen your mission footprint.</p>
+    </li>
+  </ul>
+</div>
+
 
     <!-- RIGHT CALENDAR CARD -->
     <div class="hero__calendar" data-aos="fade-left" data-aos-duration="1500">
