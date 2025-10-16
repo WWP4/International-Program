@@ -159,63 +159,125 @@
     /* Accessibility: reduced motion */
     @media (prefers-reduced-motion: reduce) {
       [data-aos]{opacity:1 !important; transform:none !important; transition:none !important}
+    
     }
+
+   /* ===== Signature Hero (premium editorial look) ===== */
+.hero--signature { position: relative; min-height: 100vh; display: grid; align-items: center; overflow: hidden; isolation:isolate; }
+.hero__media { position:absolute; inset:0; z-index:-2; }
+.hero__media video { width:100%; height:100%; object-fit:cover; filter:saturate(1.02) contrast(1.06) brightness(0.95); }
+.hero__scrim { position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(60% 70% at 25% 40%, rgba(0,0,0,.65) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.25) 70%, rgba(0,0,0,.2) 100%),
+    linear-gradient(120deg, rgba(198,22,26,.28) 0%, rgba(198,22,26,.08) 45%, rgba(0,0,0,0) 70%);
+  mix-blend-mode:multiply;
+}
+
+/* layout */
+.hero__wrap { display:grid; grid-template-columns: 1.1fr .9fr; gap:clamp(1.8rem,5vw,4rem); align-items:center; }
+@media (max-width: 980px){ .hero__wrap { grid-template-columns: 1fr; } }
+
+/* left column */
+.display { font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.2px;
+  font-size:clamp(2.4rem, 5.4vw, 4.4rem); line-height:1.04; margin:.5rem 0 1rem; color:#fff; }
+.accent-underline{ position:relative; white-space:nowrap; }
+.accent-underline::after{ content:""; position:absolute; left:0; right:0; bottom:-10px; height:10px;
+  background:linear-gradient(90deg, var(--red), var(--red-dark)); border-radius:999px; transform:scaleX(0);
+  transform-origin:left; animation:underline .9s cubic-bezier(.2,.8,.2,1) .2s forwards; }
+@keyframes underline { to{ transform:scaleX(1); } }
+
+.lead--lg{ font-size:clamp(1rem,1.35vw,1.2rem); color:rgba(255,255,255,.92); max-width:62ch; }
+.eyebrow--light{ color:#fff; border-color:rgba(255,255,255,.35); background:rgba(17,17,17,.22); }
+
+.hero__trust{ display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; margin-top:1rem; color:rgba(255,255,255,.86); font-weight:600; }
+.hero__divider{ width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.35); }
+
+/* right column */
+.hero__right{ display:flex; flex-direction:column; gap:1rem; }
+.outcomes{ background:rgba(255,255,255,.96); color:#0b0b0b; border-radius:20px; padding:1.4rem 1.4rem 1.2rem;
+  box-shadow:0 28px 64px rgba(0,0,0,.28); }
+.outcomes__head{ display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px; }
+.outcomes__head svg{ width:22px; height:22px; stroke:var(--red); fill:none; stroke-width:2; }
+.outcomes__list{ margin:.8rem 0 1rem; padding-left:1.1rem; display:grid; gap:.45rem; }
+.outcomes__list li{ line-height:1.5; }
+.outcomes__link{ font-weight:700; color:var(--red); text-decoration:none; }
+.outcomes__link:hover{ text-decoration:underline; }
+
+.hero__badges{ display:grid; gap:.6rem; grid-template-columns:1fr; }
+.badge{ display:flex; align-items:center; gap:.5rem; color:#fff; font-weight:600; padding:.7rem .9rem; border-radius:12px;
+  border:1px solid rgba(255,255,255,.28); background:rgba(0,0,0,.38); backdrop-filter:blur(8px); }
+.badge .dot{ width:8px; height:8px; background:var(--red); border-radius:50%; }
+
+/* buttons (reuse) */
+.btn--primary{ background:var(--red); color:#fff; }
+.btn--ghost{ border:2px solid rgba(255,255,255,.85); color:#fff; background:transparent; }
+ 
   </style>
 </head>
 <body>
 
   <!-- ============================= HERO ============================= -->
-  <header class="hero" id="hero">
-    <div class="hero__bg" aria-hidden="true">
-      <video autoplay muted playsinline loop preload="metadata"
-             src="https://internationalprogram.netlify.app/program-vid.mp4"></video>
-    </div>
+  <header class="hero hero--signature">
+  <div class="hero__media" aria-hidden="true">
+    <video autoplay muted playsinline loop preload="metadata"
+      src="https://internationalprogram.netlify.app/program-vid.mp4"></video>
+    <!-- soft vignette + brand gradient -->
+    <div class="hero__scrim"></div>
+  </div>
 
-    <div class="container grid-hero">
-      <div>
-        <span class="eyebrow" data-aos="fade-up" data-aos-duration="700">
-          <span class="dot"></span> The Proven System for Private Schools
-        </span>
+  <div class="container hero__wrap">
+    <div class="hero__left" data-aos="fade-up" data-aos-duration="900">
+      <span class="eyebrow eyebrow--light">
+        <span class="dot"></span> International Program Mastercourse
+      </span>
 
-        <h1 data-aos="fade-up" data-aos-delay="60" data-aos-duration="800">
-          No More Guessing. No More Strain. <span class="accent">Your School Deserves Stability</span> — We’ll Show You How to Build It.
-        </h1>
+      <h1 class="display">
+        End the Revenue Whiplash.<br>
+        Build a <span class="accent-underline">Board-Approved</span> International Program.
+      </h1>
 
-        <p class="lead" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
-          Our mastercourse gives your team the exact playbook to plan, approve, and operate a mission-driven international exchange program—so your school stabilizes its budget, raises teacher pay, and expands its impact this year.
-        </p>
+      <p class="lead lead--lg">
+        A complete, compliant blueprint to plan, approve, and run an international
+        student program—without guesswork, expensive consultants, or risking your mission.
+      </p>
 
-        <div class="cta-row" data-aos="fade-up" data-aos-delay="180" data-aos-duration="800">
-          <a class="btn btn--primary" href="#answer">Get the Course</a>
-          <a class="btn btn--ghost" href="#problem">Watch How It Works</a>
-        </div>
-
-        <div class="pill-row" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800" aria-label="Key pillars">
-          <span class="pill">
-            <!-- target icon -->
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
-            Board-Ready Framework
-          </span>
-          <span class="pill">
-            <!-- globe pin icon -->
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="6"/><path d="M12 16v6"/></svg>
-            Recruitment & Visa Simplified
-          </span>
-          <span class="pill">
-            <!-- coins icon -->
-            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
-            Financial Models that Work
-          </span>
-        </div>
+      <div class="hero__trust">
+        <span>Designed for private & Christian schools</span>
+        <div class="hero__divider"></div>
+        <span>SEVIS • J-1 • F-1 clarity</span>
+        <div class="hero__divider"></div>
+        <span>Financial models included</span>
       </div>
 
-      <aside class="trust" data-aos="fade-left" data-aos-delay="260" data-aos-duration="900" aria-label="Testimonial">
-        <div class="kicker">Case Study</div>
-        <p class="quote">“We were weeks from cutting programs. This course gave us the playbook. Within 24 months we raised salaries, paid down debt, and grew enrollment with international students.”</p>
-        <div class="who">Head of School • Midwest Academy</div>
-      </aside>
+      <div class="cta-row">
+        <a href="#enroll" class="btn btn--primary">Get Instant Access</a>
+        <a href="#inside" class="btn btn--ghost">See What’s Inside</a>
+      </div>
     </div>
-  </header>
+
+    <aside class="hero__right" data-aos="fade-up" data-aos-delay="120" data-aos-duration="900">
+      <div class="outcomes">
+        <div class="outcomes__head">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V4m0 0h18M7 17v-6M12 17V7M17 17v-3"/></svg>
+          Outcomes You Can Take to the Board
+        </div>
+        <ul class="outcomes__list">
+          <li><strong>Policy & compliance kit</strong> — handbooks, timelines, forms.</li>
+          <li><strong>Recruitment playbook</strong> — agency scripts & partner outreach.</li>
+          <li><strong>Pricing & salary math</strong> — fund raises, facilities, mission.</li>
+          <li><strong>Board deck</strong> — approve in weeks, not years.</li>
+        </ul>
+        <a href="#problem" class="outcomes__link">How it fixes the real problems →</a>
+      </div>
+
+      <div class="hero__badges">
+        <div class="badge"><span class="dot"></span> Visa & onboarding clarity</div>
+        <div class="badge"><span class="dot"></span> Parent-trusted messaging</div>
+        <div class="badge"><span class="dot"></span> Transparent tuition model</div>
+      </div>
+    </aside>
+  </div>
+</header>
 
   <!-- ============================= SECTION 1: THE PROBLEM ============================= -->
   <section class="problem" id="problem">
