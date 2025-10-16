@@ -61,6 +61,43 @@ section{padding:80px 0}
 .about h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:14px}
 .about p{max-width:780px;margin:0 auto 24px}
 .about strong{color:var(--accent)}
+
+  /* ===== FACTS SECTION ===== */
+.lb-facts{
+  background:linear-gradient(rgba(14,42,71,.95),rgba(14,42,71,.95)),
+             url('https://internationalprogram.netlify.app/media/campus-blur.jpg') center/cover no-repeat;
+  color:#fff; padding:70px 0;
+}
+.eyebrow{
+  letter-spacing:.16em;text-transform:uppercase;font-weight:800;font-size:.8rem;
+  color:#dfe8f6;text-align:center;margin:0 0 6px;
+}
+.facts-title{
+  font-family:'Cormorant Garamond',serif;font-weight:700;text-align:center;
+  font-size:clamp(2rem,3vw,2.6rem);margin:0;
+}
+.facts-lead{
+  max-width:78ch;margin:10px auto 28px;text-align:center;color:#e9f0fb;
+}
+.facts-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:stretch;
+}
+@media (max-width:980px){.facts-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.facts-grid{grid-template-columns:1fr}}
+.fact{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);
+  border-radius:16px;padding:22px 20px 18px;backdrop-filter:blur(6px);
+}
+.fact-num{
+  font-weight:700;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;margin-bottom:14px;
+}
+.fact-rule{
+  height:2px;background:rgba(255,255,255,.5);width:72px;margin:0 0 12px;
+}
+.fact-label{font-weight:800;min-height:2.6em;display:flex;align-items:center}
+.fact-note{opacity:.85;margin-top:10px;font-size:.92rem}
+
 </style>
 </head>
 
@@ -98,15 +135,7 @@ section{padding:80px 0}
     </div>
   </div>
 </section>
-
-<!-- OUR ANSWER -->
-<section class="answer" id="book">
-  <div class="container">
-    <h2>Legacy Builders Is the Answer</h2>
-    <p>We give you a proven system to launch and manage your international program—so you can increase revenue, strengthen your mission, and say yes to what your school has been dreaming about.</p>
-    <a href="#">Book a Meeting</a>
-  </div>
-</section>
+  
 
 <!-- ABOUT / MISSION -->
 <section class="about">
@@ -116,6 +145,82 @@ section{padding:80px 0}
     <p>With our help, you’ll finally have the confidence, clarity, and cash flow to do the things you’ve always dreamed of—whether that’s adding staff, launching new programs, or expanding facilities.</p>
   </div>
 </section>
+
+  <!-- ===== FACTS & FIGURES ===== -->
+<section class="lb-facts">
+  <div class="container">
+    <p class="eyebrow">Where Potential Meets Achievement</p>
+    <h2 class="facts-title">Facts & Figures</h2>
+    <p class="facts-lead">
+      Every number tells a story of growth, opportunity, and belonging.
+      Here’s a glimpse at what schools accomplish with Legacy Builders.
+    </p>
+
+    <div class="facts-grid">
+      <div class="fact">
+        <div class="fact-num" data-prefix="$" data-suffix="M+" data-count="11.7">0</div>
+        <div class="fact-rule"></div>
+        <div class="fact-label">New Program Revenue</div>
+        <div class="fact-note">Across partner schools</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num" data-suffix="+" data-count="19">0</div>
+        <div class="fact-rule"></div>
+        <div class="fact-label">Countries Represented</div>
+        <div class="fact-note">Students served globally</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num" data-suffix="%" data-count="100">0</div>
+        <div class="fact-rule"></div>
+        <div class="fact-label">Board Approval Rate</div>
+        <div class="fact-note">Schools approved on first submission</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num" data-suffix="+" data-count="300">0</div>
+        <div class="fact-rule"></div>
+        <div class="fact-label">Teachers Impacted</div>
+        <div class="fact-note">Increased salaries & retention</div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration:1400, easing:'ease', once:true, offset:80 });
+
+// Count-up animation on scroll
+const format=(n,o={})=>{
+  const {prefix='',suffix=''}=o;
+  return `${prefix}${n.toLocaleString('en-US',{maximumFractionDigits:1})}${suffix}`;
+};
+const counters=[...document.querySelectorAll('.fact-num')].map(el=>({
+  el,target:parseFloat(el.dataset.count||'0'),
+  prefix:el.dataset.prefix||'',suffix:el.dataset.suffix||''
+}));
+function animateCounter({el,target,prefix,suffix}){
+  const start=performance.now(),dur=1800,from=0;
+  const step=t=>{
+    const p=Math.min(1,(t-start)/dur);
+    const eased=1-Math.pow(1-p,3);
+    const val=from+(target-from)*eased;
+    el.textContent=format(val,{prefix,suffix});
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const io=new IntersectionObserver((entries,obs)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const n=e.target.querySelector('.fact-num');
+      const cfg=counters.find(c=>c.el===n);
+      if(cfg)animateCounter(cfg);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.45});
+document.querySelectorAll('.fact').forEach(f=>io.observe(f));
+</script>
+
 
 </body>
 </html>
