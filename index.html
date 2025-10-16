@@ -1,167 +1,121 @@
-<!-- =========================================
-   LEGACY BUILDERS — Refined Hero + Message Section
-========================================= -->
-<section class="lb-hero" aria-label="Legacy Builders Hero">
-  <video class="lb-hero__video" autoplay muted playsinline loop poster="media/hero-fallback.jpg">
-    <source src="https://internationalprogram.netlify.app/program-vid.mp4" type="video/mp4" />
-  </video>
-  <div class="lb-hero__topfade"></div>
-  <div class="lb-hero__overlay"></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legacy Builders — Empowering Private Schools</title>
 
-  <div class="lb-hero__content" data-aos="fade-up" data-aos-duration="1200">
-    <div id="logo">
-      <svg viewBox="0 0 200 500" width="100%" height="100%">
-        <text class="l" x="100" y="220">L</text>
-        <path class="bar" d="M 50 280 L 150 280" />
-        <text class="b" x="100" y="470">B</text>
-      </svg>
-    </div>
-
-    <h1 class="lb-headline">Clarity for Every School</h1>
-    <p class="lb-sub">
-      Legacy Builders helps schools design international programs that create stability and long-term growth —
-      turning vision into measurable, sustainable results.
-    </p>
-  </div>
-</section>
-
-<!-- =========================================
-   UNDERSTANDING SECTION
-========================================= -->
-<section class="lb-understanding" id="mission">
-  <div class="container" data-aos="fade-up" data-aos-duration="1400">
-    <h2>We Understand Your Mission</h2>
-    <p>
-      You were called to build something that matters — a school that changes lives.  
-      But keeping programs full, balancing budgets, and finding new revenue streams can feel impossible.
-    </p>
-    <p>
-      That’s why we created <strong>Legacy Builders</strong>: a proven blueprint for schools to launch
-      new international programs, increase enrollment, and generate sustainable revenue —
-      without losing sight of their mission or values.  
-      We don’t just advise schools — we walk beside them, helping leaders move from uncertainty to impact.
-    </p>
-    <a href="#learn" class="btn btn--primary">See How It Works</a>
-  </div>
-</section>
-
-<!-- AOS fade library -->
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({ duration: 1200, easing: 'ease', once: true });</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --navy:#0A2342;
-  --ink:#fff;
-  --cream:#f7f9fc;
+:root{
+  --blue:#0e2a47;
+  --light:#f9fbff;
   --accent:#c6aa6a;
+  --shadow:0 20px 40px rgba(0,0,0,.12);
 }
-body { margin:0; font-family:'Inter',sans-serif; background:#fff; }
-.container { width:min(1100px,92vw); margin-inline:auto; text-align:center; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;color:#1b2434;background:var(--light);line-height:1.6}
+section{padding:80px 0}
+.container{width:min(1100px,92vw);margin-inline:auto;text-align:center}
 
-/* ---------------- HERO ---------------- */
-.lb-hero {
-  position:relative;
-  min-height:480px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:var(--ink);
-  background:var(--navy);
-  overflow:hidden;
-}
-.lb-hero__video {
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  filter:brightness(.75) contrast(1.1);
-  z-index:0;
-}
-.lb-hero__topfade {
-  position:absolute; top:0; left:0; right:0; height:40%;
-  background:linear-gradient(to bottom,rgba(0,0,0,0.6),transparent);
-  z-index:1;
-}
-.lb-hero__overlay {
-  position:absolute; inset:0;
-  background:rgba(10,35,66,0.5);
-  z-index:1;
-}
-.lb-hero__content {
-  position:relative; z-index:2;
-  max-width:720px; padding:60px 20px;
-}
-
-/* logo smaller + faster */
-#logo { width:100px; height:240px; margin:0 auto 1rem; }
-#logo svg text, #logo svg path.bar {
-  fill:none; stroke:#FFFFFF; stroke-width:4;
-  stroke-linecap:round; stroke-linejoin:round;
-  stroke-dasharray:1000; stroke-dashoffset:1000;
-  animation-fill-mode:forwards;
-}
-#logo svg text.l {
-  font-size:120px; font-weight:600; text-anchor:middle;
-  animation:draw 6s cubic-bezier(0.33,0,0.67,1) 0s forwards;
-}
-#logo svg path.bar {
-  animation:draw 6s cubic-bezier(0.33,0,0.67,1) 1s forwards;
-}
-#logo svg text.b {
-  font-size:120px; font-weight:600; text-anchor:middle;
-  animation:draw 6s cubic-bezier(0.33,0,0.67,1) 2s forwards;
-}
-@keyframes draw { to { stroke-dashoffset:0; } }
-
-.lb-headline {
-  font-family:'Cormorant Garamond',serif;
-  font-weight:700;
-  font-size:clamp(1.9rem,3vw,2.6rem);
-  margin:0.5rem 0;
-}
-.lb-sub {
-  font-size:1.05rem;
-  line-height:1.65;
-  color:#f2f6fc;
-  max-width:60ch;
-  margin:0 auto;
-}
-
-/* ---------------- UNDERSTANDING SECTION ---------------- */
-.lb-understanding {
-  background:var(--cream);
-  padding:80px 20px;
-  text-align:center;
-}
-.lb-understanding h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-weight:700;
-  font-size:clamp(2rem,3.2vw,2.6rem);
-  color:var(--navy);
-  margin-bottom:1rem;
-}
-.lb-understanding p {
-  max-width:70ch;
-  margin:0.7rem auto;
-  font-size:1.05rem;
-  line-height:1.7;
-  color:#2b374a;
-}
-.lb-understanding .btn {
-  margin-top:2rem;
-}
-.btn {
-  text-decoration:none;
-  font-weight:700;
-  padding:0.9rem 1.4rem;
-  border-radius:10px;
-  transition:0.3s ease;
-}
-.btn--primary {
-  background:var(--navy);
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(rgba(14,42,71,.7),rgba(14,42,71,.7)),
+             url('https://internationalprogram.netlify.app/program-vid.mp4') center/cover no-repeat;
   color:#fff;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  min-height:80vh;text-align:center;padding:60px 20px;
 }
-.btn--primary:hover { filter:brightness(1.1); }
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.4rem);margin-bottom:18px}
+.hero p{max-width:680px;margin-inline:auto;font-size:1.05rem;margin-bottom:30px}
+.hero a{
+  display:inline-block;padding:14px 28px;background:#fff;color:var(--blue);
+  border-radius:10px;font-weight:700;text-decoration:none;box-shadow:var(--shadow);
+  transition:all .3s ease;
+}
+.hero a:hover{background:var(--accent);color:#fff}
+
+/* ===== PAINPOINTS SECTION ===== */
+.painpoints{background:#fff;color:var(--blue)}
+.painpoints h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:10px}
+.painpoints .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;margin-top:40px}
+.card{background:var(--light);border-radius:16px;padding:30px;box-shadow:var(--shadow);text-align:left;transition:transform .3s ease}
+.card:hover{transform:translateY(-4px)}
+.card svg{width:40px;height:40px;margin-bottom:16px;fill:var(--blue)}
+.card h3{font-size:1.25rem;margin-bottom:10px;font-weight:800}
+.card p{color:#32456b}
+
+/* ===== ANSWER / CTA SECTION ===== */
+.answer{background:var(--blue);color:#fff;text-align:center}
+.answer h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:12px}
+.answer p{max-width:720px;margin:0 auto 36px}
+.answer a{
+  display:inline-block;padding:14px 32px;background:#fff;color:var(--blue);
+  border-radius:10px;font-weight:700;text-decoration:none;transition:all .3s ease;
+}
+.answer a:hover{background:var(--accent);color:#fff}
+
+/* ===== ABOUT SECTION ===== */
+.about{background:#f2f6fc;color:var(--blue);text-align:center}
+.about h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:14px}
+.about p{max-width:780px;margin:0 auto 24px}
+.about strong{color:var(--accent)}
 </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>No More Guessing. No More Strain.</h1>
+  <p>Your school deserves stability. Legacy Builders helps leaders design international programs that fund growth, increase enrollment, and strengthen mission impact.</p>
+  <a href="#book">Book a Meeting</a>
+</section>
+
+<!-- PAINPOINTS -->
+<section class="painpoints">
+  <div class="container">
+    <h2>We Understand the Challenges</h2>
+    <p>Every head of school we meet faces the same obstacles. Sound familiar?</p>
+
+    <div class="grid">
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0Zm8-4h2v6h-2V8Zm0 8h2v2h-2v-2Z"/></svg>
+        <h3>Uncertain Enrollment</h3>
+        <p>Planning budgets feels impossible when student numbers swing from year to year.</p>
+      </div>
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c4.97 0 9 3.58 9 8 0 2.76-2.24 5.18-5.5 6.32L12 21l-3.5-3.68C5.24 16.18 3 13.76 3 11c0-4.42 4.03-8 9-8Z"/></svg>
+        <h3>Limited Funding</h3>
+        <p>Teacher raises, facility upgrades, and outreach dreams stay on hold because the money just isn’t there.</p>
+      </div>
+      <div class="card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2v6H2v14h20V8h-4V2H6Zm2 2h8v4H8V4Zm12 6v10H4V10h16Z"/></svg>
+        <h3>Too Many Unknowns</h3>
+        <p>Recruiting international students feels complicated, expensive, and risky to start alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR ANSWER -->
+<section class="answer" id="book">
+  <div class="container">
+    <h2>Legacy Builders Is the Answer</h2>
+    <p>We give you a proven system to launch and manage your international program—so you can increase revenue, strengthen your mission, and say yes to what your school has been dreaming about.</p>
+    <a href="#">Book a Meeting</a>
+  </div>
+</section>
+
+<!-- ABOUT / MISSION -->
+<section class="about">
+  <div class="container">
+    <h2>We Understand Your Mission</h2>
+    <p>As educators ourselves, we know what it feels like to carry the weight of tuition goals and faculty expectations. <strong>Legacy Builders</strong> exists to help schools thrive financially <em>without compromising their values.</em></p>
+    <p>With our help, you’ll finally have the confidence, clarity, and cash flow to do the things you’ve always dreamed of—whether that’s adding staff, launching new programs, or expanding facilities.</p>
+  </div>
+</section>
+
+</body>
+</html>
