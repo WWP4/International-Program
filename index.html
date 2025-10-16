@@ -319,17 +319,102 @@ section{padding:80px 0}
   color:#455b7f;
 }
 
+  /* ===== HERO (CALENDAR VERSION) ===== */
+.hero--calendar{
+  position:relative;overflow:hidden;color:#fff;min-height:90vh;
+  display:flex;align-items:center;background:#0e2a47;
+}
+.hero__video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:brightness(.75) contrast(1.1);
+  z-index:0;
+}
+.hero__overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(14,42,71,.9) 0%,rgba(14,42,71,.65) 45%,rgba(14,42,71,.4) 100%);
+  z-index:1;
+}
+.hero__grid{
+  position:relative;z-index:2;display:grid;align-items:center;
+  grid-template-columns:1.1fr 0.9fr;gap:40px;
+  width:min(1200px,90vw);margin:auto;padding:80px 0;
+}
+@media(max-width:960px){.hero__grid{grid-template-columns:1fr;padding:60px 0}}
+
+.hero__text h1{
+  font-family:"Cormorant Garamond",serif;font-weight:700;
+  font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin-bottom:16px;
+}
+.hero__text p{font-size:1.05rem;line-height:1.6;max-width:600px;margin-bottom:22px;opacity:.95}
+.hero__points{list-style:none;padding:0;margin:0;color:#e8eef6}
+.hero__points li{margin-bottom:8px;font-weight:600;font-size:.95rem}
+
+.hero__calendar{
+  display:flex;align-items:center;justify-content:center;
+}
+.calendar-card{
+  background:#fff;color:#0e2a47;width:100%;max-width:420px;
+  border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.25);
+  padding:24px 20px 28px;text-align:center;
+  transform:translateY(10px);transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.calendar-card:hover{transform:translateY(0)}
+.calendar-card h3{
+  font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.6rem;margin-bottom:8px;color:#0e2a47;
+}
+.calendar-card p{font-size:.95rem;color:#455b7f;margin-bottom:14px}
+.calendar-frame{
+  border-radius:12px;overflow:hidden;border:1px solid #e0e7f3;
+  box-shadow:inset 0 0 0 2px #e6ecf7;
+}
+.calendar-note{
+  display:block;margin-top:10px;font-size:.8rem;color:#6a7da1;
+}
+
 
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>No More Guessing. No More Strain.</h1>
-  <p>Your school deserves stability. Legacy Builders helps leaders design international programs that fund growth, increase enrollment, and strengthen mission impact.</p>
-  <a href="#book">Book a Meeting</a>
+<!-- ===== HERO — BOOK A MEETING ===== -->
+<section class="hero hero--calendar">
+  <video class="hero__video" autoplay muted playsinline loop
+          poster="/media/legacy-poster.jpg">
+    <source src="https://internationalprogram.netlify.app/program-vid.mp4" type="video/mp4">
+  </video>
+  <div class="hero__overlay"></div>
+
+  <div class="container hero__grid">
+    <!-- LEFT CONTENT -->
+    <div class="hero__text" data-aos="fade-right" data-aos-duration="1400">
+      <h1>No More Guessing. Just Growth.</h1>
+      <p>Every great program starts with one conversation. Let’s explore how your school can grow enrollment, funding, and impact with a board-approved plan.</p>
+      <ul class="hero__points">
+        <li> Personalized 30-min discovery call</li>
+        <li> Live demo of the Legacy Builders System</li>
+        <li> Step-by-step implementation roadmap</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT CALENDAR CARD -->
+    <div class="hero__calendar" data-aos="fade-left" data-aos-duration="1500">
+      <div class="calendar-card">
+        <h3>Book a Meeting</h3>
+        <p>Select a time that fits your schedule below.</p>
+
+        <!-- Embedded calendar — replace Calendly link below -->
+        <div class="calendar-frame">
+          <iframe src="https://calendly.com/legacybuilders/30min"
+                  width="100%" height="450" frameborder="0"
+                  style="border:0;" allowfullscreen
+                  title="Book a Meeting"></iframe>
+        </div>
+
+        <small class="calendar-note">Secure your time — spots fill fast each week.</small>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- PAINPOINTS -->
