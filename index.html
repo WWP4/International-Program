@@ -34,13 +34,23 @@
     .lb-hero2__wrap { position: relative; z-index: 1; display: grid; grid-template-columns: .5fr 1.5fr; align-items: center; gap: 40px; min-height: 60vh; }
     .lb-divider { height: 18px; background: linear-gradient(#c7d1e2,#e8ecf4); opacity:.35; -webkit-mask: linear-gradient(180deg,#000 60%, transparent); mask: linear-gradient(180deg,#000 60%, transparent); margin-top: 14px; }
 
-    /* Logo (SVG draw) */
-    .lb-logo { display: flex; justify-content: center; }
-    .lb-logo__svg { width: min(160px, 25vw); height: auto; }
-    .lb-logo__svg [data-animate-stroke] {
-      fill: none; stroke: #fff; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; opacity: .95;
-      transition: stroke-dashoffset 1.6s ease .2s, opacity .3s ease;
-    }
+ /* Crest drawing style */
+.lb-logo__svg {
+  width: 160px;              /* change this to scale the logo */
+  height: auto;
+}
+
+.lb-logo__svg [data-animate-stroke] {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.95;
+  /* animated drawing: these will be set by JS on load */
+  transition: stroke-dashoffset 1.6s ease 0.2s, opacity 0.3s ease;
+}
+
 
     /* Text + buttons */
     .lb-headline { color: #fff; }
@@ -107,31 +117,32 @@
     <div class="lb-divider" aria-hidden="true"></div>
   </section>
 
-  <!-- AOS + Logo draw script -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1400, easing: 'ease', once: true, offset: 80 });
-
-    // Stroke-draw animation for LB logo
-    (function () {
-      const svg = document.querySelector('.lb-logo__svg');
-      if (!svg) return;
-      const parts = svg.querySelectorAll('[data-animate-stroke]');
-
-      // Set initial dash lengths
-      parts.forEach(p => {
-        const len = p.getTotalLength ? Math.ceil(p.getTotalLength()) : 300;
-        p.style.strokeDasharray = len;
-        p.style.strokeDashoffset = len;
+ <!-- Include only once (after your main content, before </body>) -->
+<script>
+  // Set up dash lengths and animate when the logo enters view
+  document.addEventListener('DOMContentLoaded', function () {
+    const logos = document.querySelectorAll('.lb-logo__svg');
+    logos.forEach(svg => {
+      const paths = svg.querySelectorAll('[data-animate-stroke]');
+      // set dash arrays based on path length
+      paths.forEach(path => {
+        const len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = len;
       });
-
-      // Trigger when in view
-      const animate = () => parts.forEach(p => p.style.strokeDashoffset = 0);
-      const io = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => { if (e.isIntersecting) { animate(); obs.disconnect(); } });
-      }, { threshold: 0.4 });
-      io.observe(svg);
-    })();
-  </script>
+      // animate when in view
+      const animate = () => paths.forEach(p => p.style.strokeDashoffset = 0);
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            animate();
+            obs.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(svg);
+    });
+  });
+</script>
 </body>
 </html>
