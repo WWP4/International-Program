@@ -98,6 +98,64 @@ section{padding:80px 0}
 .fact-label{font-weight:800;min-height:2.6em;display:flex;align-items:center}
 .fact-note{opacity:.85;margin-top:10px;font-size:.92rem}
 
+  /* ===== BLUEPRINT PATH SECTION ===== */
+.bp{
+  position: relative;
+  background: linear-gradient(180deg, #0e2a47 0%, #0c213c 100%);
+  color: #fff;
+  overflow: hidden;
+  padding: 84px 0;
+}
+.bp__wrap{position:relative}
+.bp__path{
+  position:absolute; inset:0; width:100%; height:100%; z-index:0; opacity:.55;
+}
+.bp__path path{
+  fill:none;
+  stroke:#bcd3f5;                 /* blueprint ink */
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:1;              /* works with pathLength="1" */
+  stroke-dashoffset:1;
+  transition:stroke-dashoffset 1600ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* grid of steps sits above the path */
+.bp__grid{
+  position:relative; z-index:1;
+  display:grid; gap:28px;
+  grid-template-columns: repeat(2, minmax(280px,1fr));
+  align-items:stretch;
+}
+@media (max-width: 900px){
+  .bp__grid{grid-template-columns:1fr}
+}
+
+.bp__step{
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:18px;
+  padding:24px 22px;
+  box-shadow: 0 24px 48px rgba(0,0,0,.18);
+  backdrop-filter: blur(6px);
+  text-align:left;
+}
+.bp__icon{
+  width:48px; height:48px; border-radius:12px;
+  display:grid; place-items:center; margin-bottom:12px;
+  background: rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+}
+.bp__icon svg{width:26px;height:26px;fill:#fff}
+.bp__step h3{
+  font:700 1.25rem/1.2 "Cormorant Garamond", serif; margin-bottom:6px;
+}
+.bp__step p{opacity:.95}
+
+/* when section is in view, draw the path */
+.bp.is-drawn .bp__path path{ stroke-dashoffset:0; }
+
+
 </style>
 </head>
 
@@ -135,6 +193,65 @@ section{padding:80px 0}
     </div>
   </div>
 </section>
+
+  <!-- ===== BLUEPRINT PATH SECTION ===== -->
+<section class="bp" id="blueprint">
+  <div class="container bp__wrap">
+
+    <!-- Drawing path (behind the steps) -->
+    <svg class="bp__path" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <!-- dashed, rounded path; stroke-dasharray is animated via CSS/JS -->
+      <path id="bpPath" d="M 80 520 C 260 520, 300 440, 380 420
+                           S 540 360, 640 340
+                           S 820 300, 900 220
+                           S 1040 140, 1120 80"
+            pathLength="1"/>
+    </svg>
+
+    <div class="bp__grid">
+      <!-- Step 1 -->
+      <article class="bp__step" data-aos="fade-right" data-aos-duration="900">
+        <div class="bp__icon" aria-hidden="true">
+          <!-- clipboard icon -->
+          <svg viewBox="0 0 24 24"><path d="M9 3h6a2 2 0 0 1 2 2h2v16H5V5h2a2 2 0 0 1 2-2Zm0 4h6V5H9v2Zm1 5h8v2h-8v-2Zm0 4h8v2h-8v-2Z"/></svg>
+        </div>
+        <h3>Board-Ready Plan</h3>
+        <p>Policies, timelines, and risk controls packaged to win approval in weeks.</p>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="bp__step" data-aos="fade-left" data-aos-duration="900" data-aos-delay="120">
+        <div class="bp__icon" aria-hidden="true">
+          <!-- globe icon -->
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2Zm0 2a8 8 0 0 0 0 16V4Zm2.7.5A9.6 9.6 0 0 1 20 12c0 3.1-1.5 5.9-3.8 7.5"/></svg>
+        </div>
+        <h3>Global Recruitment</h3>
+        <p>Agency playbooks, partner scripts, and messaging parents trust.</p>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="bp__step" data-aos="fade-right" data-aos-duration="900" data-aos-delay="240">
+        <div class="bp__icon" aria-hidden="true">
+          <!-- calculator icon -->
+          <svg viewBox="0 0 24 24"><path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm2 4h8v2H8V6Zm0 5h3v3H8v-3Zm5 0h3v3h-3v-3Zm-5 5h3v3H8v-3Zm5 0h3v3h-3v-3Z"/></svg>
+        </div>
+        <h3>Revenue Model</h3>
+        <p>Transparent tuition math that funds raises, facilities, and mission.</p>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="bp__step" data-aos="fade-left" data-aos-duration="900" data-aos-delay="360">
+        <div class="bp__icon" aria-hidden="true">
+          <!-- shield-check icon -->
+          <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4Zm-1 13l6-6-1.4-1.4L11 12.2 8.4 9.6 7 11l4 4Z"/></svg>
+        </div>
+        <h3>Onboarding & Care</h3>
+        <p>SEVIS clarity, host-family flow, and student support you can trust.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
   
 
 <!-- ABOUT / MISSION -->
@@ -221,6 +338,22 @@ const io=new IntersectionObserver((entries,obs)=>{
 document.querySelectorAll('.fact').forEach(f=>io.observe(f));
 </script>
 
+<script>
+  // Trigger the blueprint path draw when the section comes into view
+  (function(){
+    const section = document.querySelector('.bp');
+    if(!section) return;
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          section.classList.add('is-drawn');
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(section);
+  })();
+</script>
 
 </body>
 </html>
