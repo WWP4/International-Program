@@ -371,99 +371,45 @@ section{padding:80px 0}
   display:block;margin-top:10px;font-size:.8rem;color:#6a7da1;
 }
 
-/* ===== FOOTER ===== */
-.footer{
+/* ===== SIMPLE FOOTER ===== */
+.simple-footer{
   background:#0e2a47;
-  color:#fff;
-  padding:70px 0 20px;
-  position:relative;
-  overflow:hidden;
+  color:#e9effa;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:16px 0;
+  font: 500 14px/1.4 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
-.footer::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(600px 400px at 20% -10%, rgba(255,255,255,.06), transparent);
-  opacity:.8;
-}
-.footer__grid{
-  position:relative;z-index:1;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:40px;
-  align-items:flex-start;
+.simple-footer .sf__row{
   width:min(1100px,92vw);
-  margin:0 auto 40px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: 1fr auto auto;
+  align-items:center;
+  gap:14px;
 }
-@media(max-width:900px){
-  .footer__grid{grid-template-columns:1fr;text-align:center}
+@media (max-width:900px){
+  .simple-footer .sf__row{
+    grid-template-columns:1fr;
+    text-align:center;
+    row-gap:6px;
+  }
 }
-
-.footer__brand h3{
-  font-family:"Cormorant Garamond",serif;
-  font-size:1.8rem;
+.sf__name{
+  font-family:"Cormorant Garamond", serif;
   font-weight:700;
-  margin-bottom:10px;
-  color:#fff;
+  letter-spacing:.2px;
+  color:#ffffff;
 }
-.footer__brand p{
-  color:#dfe6f4;
-  font-size:.95rem;
-  max-width:420px;
-  line-height:1.6;
+.sf__contact{
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  margin:0; font-style:normal; color:#d7e3f7;
 }
-.footer__contact h4{
-  font-family:"Cormorant Garamond",serif;
-  font-weight:700;
-  font-size:1.3rem;
-  margin-bottom:10px;
-  color:#fff;
+.sf__contact .dot{opacity:.6}
+.sf__contact a{
+  color:#d7e3f7; text-decoration:none; border-bottom:1px solid transparent;
 }
-.footer__contact ul{
-  list-style:none;
-  padding:0;margin:0 0 20px;
-}
-.footer__contact li{
-  font-size:.95rem;
-  margin-bottom:10px;
-  color:#dfe6f4;
-}
-.footer__contact a{
-  color:#fff;
-  text-decoration:none;
-  border-bottom:1px solid transparent;
-  transition:border .2s ease,color .2s ease;
-}
-.footer__contact a:hover{
-  color:#c6aa6a;
-  border-bottom:1px solid #c6aa6a;
-}
-
-.footer__cta{
-  display:inline-block;
-  margin-top:8px;
-  padding:12px 26px;
-  border-radius:10px;
-  background:#fff;
-  color:#0e2a47;
-  font-weight:700;
-  letter-spacing:.3px;
-  text-decoration:none;
-  transition:all .25s ease;
-}
-.footer__cta:hover{
-  background:#c6aa6a;
-  color:#fff;
-  transform:translateY(-2px);
-}
-
-.footer__bottom{
-  border-top:1px solid rgba(255,255,255,.1);
-  text-align:center;
-  padding-top:14px;
-  color:#b8c3da;
-  font-size:.85rem;
-}
+.sf__contact a:hover{color:#ffffff; border-bottom-color:#ffffff}
+.sf__copy{color:#b9c7df; white-space:nowrap}
 
 </style>
 </head>
@@ -759,31 +705,26 @@ section{padding:80px 0}
   </div>
 </section>
 
-  <!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="container footer__grid">
-    <!-- Left: Branding -->
-    <div class="footer__brand" data-aos="fade-right">
-      <h3>Legacy Builders</h3>
-      <p>Empowering schools to grow enrollment, strengthen mission, and fund the future through sustainable international programs.</p>
+<footer class="simple-footer">
+  <div class="sf__row">
+    <div class="sf__brand">
+      <span class="sf__name">Legacy Builders</span>
     </div>
 
-    <!-- Right: Contact Info -->
-    <div class="footer__contact" data-aos="fade-left">
-      <h4>Contact Us</h4>
-      <ul>
-        <li><strong>Email:</strong> <a href="mailto:melissa@grantlegacybuilders.com">melissa@grantlegacybuilders.com</a></li>
-        <li><strong>Phone:</strong> <a href="tel:3148042307">314-804-2307</a></li>
-        <li><strong>Address:</strong> 1360 Grandview Dr,<br>Florissant, MO 63033</li>
-      </ul>
-      <a href="#book" class="footer__cta">Book a Meeting</a>
-    </div>
-  </div>
+    <address class="sf__contact">
+      <a href="mailto:melissa@grantlegacybuilders.com">melissa@grantlegacybuilders.com</a>
+      <span class="dot">•</span>
+      <a href="tel:3148042307">314-804-2307</a>
+      <span class="dot">•</span>
+      <span>1360 Grandview Dr, Florissant, MO 63033</span>
+    </address>
 
-  <div class="footer__bottom">
-    <p>© <span id="year"></span> Legacy Builders. All rights reserved.</p>
+    <div class="sf__copy">
+      © <span id="sfYear"></span> Legacy Builders
+    </div>
   </div>
 </footer>
+
 
 
   
