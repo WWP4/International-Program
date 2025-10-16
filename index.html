@@ -1,256 +1,368 @@
-<!-- =========================================================
-   HERO — Full-Bleed Video • High-End Minimal (Red / Black)
-   - No borders, no globe, subtle overlays for legibility
-   - AOS fade/slide on text
-   - Paste inside <body>. Self-contained + responsive.
-========================================================= -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<!-- =======================================================================
+  LANDING PAGE (Hero + 3 Sections) — High-End Minimal (Red / Black / White)
+  Goal: Sell the COURSE as the proven solution for private schools.
+  Includes: AOS animations + inline SVG icons + full-bleed video hero
+  Paste as a full page, or drop sections inside your site and move the <head> bits to your global head.
+=========================================================================== -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>International Program Mastercourse</title>
 
-<!-- AOS (Animate On Scroll) -->
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
 
-<style>
-  :root{
-    --red:#C6161A;
-    --red-700:#8E0D10;
-    --ink:#0B0B0B;
-    --white:#FFFFFF;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0; background:#000; color:#fff; font-family:Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;}
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
 
-  .hero{
-    position:relative;
-    min-height:100vh; /* fill the page */
-    display:grid;
-    align-items:center;
-    isolation:isolate;
-    overflow:hidden;
-  }
+  <style>
+    :root{
+      --red:#C6161A; --red-700:#8E0D10;
+      --ink:#0B0B0B; --white:#fff; --black:#000;
+      --muted:rgba(255,255,255,.88);
+      --line:rgba(255,255,255,.2);
+      --line-dark:#1d1d1d;
+      --shadow:0 24px 60px rgba(0,0,0,.35), 0 6px 18px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:#000; color:#fff; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
 
-  /* Background video */
-  .hero__bg{position:absolute; inset:0; z-index:-3; overflow:hidden;}
-  .hero__bg video{
-    width:100%; height:100%;
-    object-fit:cover; object-position:center 40%;
-    filter:saturate(1.05) contrast(1.04) brightness(.96);
-  }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1200px; margin:0 auto; padding:clamp(20px,5vw,72px)}
 
-  /* Subtle, elegant overlays for legibility (not heavy/dark) */
-  .hero::before{
-    content:""; position:absolute; inset:0; z-index:-2;
-    /* very light black vignette for text readability */
-    background:
-      radial-gradient(60% 70% at 30% 35%, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.65) 100%);
-    pointer-events:none;
-  }
-  .hero::after{
-    content:""; position:absolute; inset:0; z-index:-1;
-    /* tasteful red wash from top-right, very subtle */
-    background:
-      linear-gradient(135deg, rgba(198,22,26,.20) 0%, rgba(198,22,26,.06) 40%, rgba(0,0,0,0) 70%);
-    mix-blend:multiply; pointer-events:none;
-  }
+    /* ---------------------- HERO ---------------------- */
+    .hero{
+      position:relative; min-height:100vh; display:grid; align-items:center; isolation:isolate; overflow:hidden;
+    }
+    .hero__bg{position:absolute; inset:0; z-index:-3; overflow:hidden}
+    .hero__bg video{width:100%; height:100%; object-fit:cover; object-position:center 40%; filter:saturate(1.05) contrast(1.05) brightness(.96)}
+    .hero::before{content:""; position:absolute; inset:0; z-index:-2;
+      background:radial-gradient(62% 72% at 30% 36%, rgba(0,0,0,.26) 0%, rgba(0,0,0,.48) 64%, rgba(0,0,0,.64) 100%)}
+    .hero::after{content:""; position:absolute; inset:0; z-index:-1;
+      background:linear-gradient(135deg, rgba(198,22,26,.16) 0%, rgba(198,22,26,.04) 38%, rgba(0,0,0,0) 72%);
+      mix-blend:multiply}
 
-  /* Layout */
-  .hero__wrap{
-    width:100%;
-    max-width:1200px;
-    margin:0 auto;
-    padding: clamp(20px, 5vw, 72px);
-    display:grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: clamp(18px, 4vw, 48px);
-    align-items:center;
-  }
-  @media (max-width: 1024px){ .hero__wrap{grid-template-columns:1fr} }
+    .grid-hero{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(18px,4vw,44px); align-items:center;
+    }
+    @media (max-width:1024px){ .grid-hero{grid-template-columns:1fr} }
 
-  /* Typographic system (high-end minimal) */
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:.55rem;
-    font:700 11px/1.1 Montserrat, sans-serif; letter-spacing:.22em; text-transform:uppercase;
-    padding:7px 11px; border:1px solid rgba(255,255,255,.35); border-radius:999px;
-    backdrop-filter: blur(6px); background:rgba(17,17,17,.25);
-  }
-  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--red)}
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:.55rem; padding:8px 12px;
+      font:700 11px/1.1 Montserrat,sans-serif; letter-spacing:.22em; text-transform:uppercase;
+      border:1px solid rgba(255,255,255,.35); border-radius:999px; background:rgba(17,17,17,.22);
+      backdrop-filter:blur(6px);
+    }
+    .dot{width:6px; height:6px; border-radius:50%; background:var(--red)}
 
-  h1{
-    margin:.65rem 0 .5rem;
-    font-family:"Playfair Display", serif;
-    font-weight:700;
-    font-size: clamp(34px, 6vw, 72px);
-    line-height:1.04;
-    letter-spacing:.2px;
-    text-wrap:balance;
-  }
-  .lead{
-    max-width:60ch;
-    font:400 clamp(14px,1.25vw,18px)/1.7 Montserrat, sans-serif;
-    color:rgba(255,255,255,.94);
-  }
+    h1{
+      margin:.7rem 0 .45rem; font-family:"Playfair Display",serif; font-weight:700;
+      font-size:clamp(34px,6vw,72px); line-height:1.04; letter-spacing:.2px; text-wrap:balance;
+      text-shadow:0 2px 18px rgba(0,0,0,.25);
+    }
+    .accent{white-space:nowrap; position:relative}
+    .accent::after{
+      content:""; position:absolute; left:0; bottom:-8px; height:8px; width:100%;
+      background:linear-gradient(90deg,var(--red),var(--red-700)); border-radius:999px; transform:scaleX(0);
+      transform-origin:left; animation:underline 900ms cubic-bezier(.2,.8,.2,1) .35s forwards; opacity:.92
+    }
+    @keyframes underline{to{transform:scaleX(1)}}
 
-  /* Minimal underline accent */
-  .underline{position:relative; white-space:nowrap}
-  .underline::after{
-    content:""; position:absolute; left:0; bottom:-8px; height:8px; width:100%;
-    background:linear-gradient(90deg,var(--red),var(--red-700));
-    border-radius:999px; opacity:.9; transform:scaleX(0); transform-origin:left;
-    animation:draw 900ms cubic-bezier(.2,.8,.2,1) .35s forwards;
-  }
-  @keyframes draw{to{transform:scaleX(1)}}
+    .lead{max-width:60ch; font:400 clamp(14px,1.25vw,18px)/1.7 Montserrat,sans-serif; color:var(--muted); text-shadow:0 2px 18px rgba(0,0,0,.25)}
 
-  /* CTA */
-  .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
-  .btn{
-    appearance:none; cursor:pointer; border:0; border-radius:14px; padding:14px 18px;
-    font:800 14px/1 Montserrat, sans-serif; letter-spacing:.3px; transition:.2s ease;
-    box-shadow:0 12px 28px rgba(0,0,0,.25), 0 3px 8px rgba(0,0,0,.25);
-  }
-  .btn--primary{background:var(--red); color:#fff}
-  .btn--ghost{background:transparent; color:#fff; border:2px solid rgba(255,255,255,.82)}
-  .btn:hover{transform:translateY(-1px)}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+    .btn{
+      appearance:none; cursor:pointer; border:0; border-radius:14px; padding:14px 18px;
+      font:800 14px/1 Montserrat,sans-serif; letter-spacing:.3px; transition:.2s ease;
+      box-shadow:var(--shadow)
+    }
+    .btn--primary{background:var(--red); color:#fff}
+    .btn--ghost{background:transparent; color:#fff; border:2px solid rgba(255,255,255,.82)}
+    .btn:hover{transform:translateY(-1px)}
 
-  /* Micro-credibility line (minimal, helpful) */
-  .cred{
-    display:flex; align-items:center; gap:14px; margin-top:14px;
-    color:rgba(255,255,255,.87); font:600 12px/1.4 Montserrat, sans-serif;
-  }
-  .cred .sep{width:6px; height:6px; border-radius:50%; background:var(--red)}
+    .pill-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid rgba(255,255,255,.22);
+      border-radius:999px; background:rgba(17,17,17,.18); backdrop-filter:blur(6px);
+      font:600 12px/1.2 Montserrat,sans-serif; color:rgba(255,255,255,.9)
+    }
+    .pill svg{width:14px; height:14px; stroke:var(--red)}
 
-  /* Elevated quote card (soft, not bulky) */
-  .card{
-    background:rgba(17,17,17,.22);
-    border:1px solid rgba(255,255,255,.22);
-    border-radius:16px; padding:18px 18px 16px; backdrop-filter: blur(8px);
-    max-width:520px; margin-left:auto;
-    box-shadow:0 10px 40px rgba(0,0,0,.25);
-  }
-  .card .kicker{font:700 12px/1.2 Montserrat, sans-serif; letter-spacing:.18em; text-transform:uppercase; opacity:.85}
-  .card .quote{font-family:"Playfair Display", serif; font-weight:600; font-size: clamp(14px,1.5vw,18px); line-height:1.55; margin:8px 0 0}
-  .card .who{font:600 12px/1.4 Montserrat, sans-serif; opacity:.8; margin-top:8px}
+    .trust{
+      background:rgba(17,17,17,.22); border:1px solid rgba(255,255,255,.22); border-radius:16px;
+      padding:18px 18px 16px; backdrop-filter:blur(8px); max-width:520px; margin-left:auto; box-shadow:var(--shadow)
+    }
+    .trust .kicker{font:700 12px/1.2 Montserrat,sans-serif; letter-spacing:.18em; text-transform:uppercase; opacity:.85}
+    .trust .quote{font-family:"Playfair Display",serif; font-weight:600; font-size:clamp(14px,1.5vw,18px); line-height:1.55; margin:8px 0 0}
+    .trust .who{font:600 12px/1.4 Montserrat,sans-serif; opacity:.8; margin-top:8px}
 
-  /* Reduce text shadow, keep crisp */
-  .hero h1, .lead { text-shadow: 0 2px 18px rgba(0,0,0,.25); }
-</style>
+    /* ---------------------- SECTION: PROBLEM ---------------------- */
+    section.problem{
+      background:#0a0a0a;
+      border-top:1px solid var(--line-dark);
+      border-bottom:1px solid var(--line-dark);
+    }
+    .sec-title{
+      font-family:"Playfair Display",serif; font-weight:700; font-size:clamp(26px,3.6vw,42px); margin:0 0 8px;
+    }
+    .muted-sub{color:rgba(255,255,255,.86); max-width:70ch; font-size:clamp(14px,1.2vw,18px)}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,22px); margin-top:28px}
+    @media (max-width:960px){.cards{grid-template-columns:1fr}}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:20px; min-height:200px
+    }
+    .card h3{margin:10px 0 6px; font:700 18px/1.2 Montserrat,sans-serif}
+    .card p{margin:0; color:rgba(255,255,255,.88); font:400 14px/1.7 Montserrat,sans-serif}
+    .icon{
+      width:36px; height:36px; border-radius:10px; display:grid; place-items:center; background:rgba(198,22,26,.18);
+      border:1px solid rgba(198,22,26,.45); color:#fff
+    }
+    .icon svg{width:20px; height:20px; stroke:var(--red); stroke-width:2; fill:none}
 
-<!-- =========================================================
-   HERO — We Are The Answer (Full-Bleed Video, High-End Minimal)
-   Goal: Sell the COURSE as the proven solution for private schools.
-   Paste inside <body>. Uses AOS for tasteful motion.
-========================================================= -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+    .divider{
+      margin:34px 0 6px; height:1px; background:linear-gradient(90deg, rgba(198,22,26,.0), rgba(198,22,26,.6), rgba(198,22,26,.0));
+    }
+    .center-line{ text-align:center; font:700 16px/1.4 Montserrat,sans-serif; color:rgba(255,255,255,.92) }
 
-<style>
-  :root{
-    --red:#C6161A; --red-700:#8E0D10; --white:#fff; --black:#000;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0; background:#000; color:#fff; font-family:Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
+    /* ---------------------- SECTION: ANSWER ---------------------- */
+    section.answer{
+      background:#fff; color:#0b0b0b;
+    }
+    .answer .sec-title{color:#0b0b0b}
+    .answer .muted-sub{color:#3b3b3b}
+    .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2vw,22px); margin-top:24px}
+    @media (max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid-4{grid-template-columns:1fr}}
 
-  .hero{position:relative; min-height:100vh; display:grid; align-items:center; isolation:isolate; overflow:hidden}
-  .hero__bg{position:absolute; inset:0; z-index:-3; overflow:hidden}
-  .hero__bg video{width:100%; height:100%; object-fit:cover; object-position:center 40%; filter:saturate(1.06) contrast(1.05) brightness(.96)}
-  /* Subtle overlays (legible, not heavy) */
-  .hero::before{content:""; position:absolute; inset:0; z-index:-2;
-    background:radial-gradient(62% 72% at 30% 36%, rgba(0,0,0,.32) 0%, rgba(0,0,0,.54) 64%, rgba(0,0,0,.68) 100%)}
-  .hero::after{content:""; position:absolute; inset:0; z-index:-1;
-    background:linear-gradient(135deg, rgba(198,22,26,.20) 0%, rgba(198,22,26,.06) 38%, rgba(0,0,0,0) 72%); mix-blend:multiply}
+    .tile{
+      background:linear-gradient(180deg,#ffffff,#fafafa);
+      border:1px solid #ededed; border-radius:14px; padding:18px; min-height:180px; box-shadow:0 6px 20px rgba(0,0,0,.05)
+    }
+    .tile h4{margin:10px 0 6px; font:800 16px/1.2 Montserrat,sans-serif}
+    .tile p{margin:0; color:#3d3d3d; font:400 14px/1.6 Montserrat,sans-serif}
+    .tile .icon{background:rgba(198,22,26,.08); border-color:rgba(198,22,26,.25)}
+    .tile .icon svg{stroke:var(--red)}
 
-  .hero__wrap{width:100%; max-width:1220px; margin:0 auto; padding:clamp(20px,5vw,72px);
-    display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(18px,4vw,44px); align-items:center}
-  @media (max-width:1024px){.hero__wrap{grid-template-columns:1fr}}
+    .cta-band{
+      margin-top:30px; padding:18px; border:1px solid #ededed; border-radius:14px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+      background:linear-gradient(180deg,#ffffff,#f9f9f9)
+    }
+    .cta-band strong{font:800 16px/1.2 Montserrat,sans-serif}
+    .cta-band .btn{box-shadow:0 14px 28px rgba(198,22,26,.18)}
 
-  .eyebrow{display:inline-flex; align-items:center; gap:.55rem; padding:8px 12px;
-    font:700 11px/1.1 Montserrat,sans-serif; letter-spacing:.22em; text-transform:uppercase;
-    border:1px solid rgba(255,255,255,.35); border-radius:999px; background:rgba(17,17,17,.22); backdrop-filter:blur(6px)}
-  .dot{width:6px; height:6px; border-radius:50%; background:var(--red)}
+    /* Accessibility: reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      [data-aos]{opacity:1 !important; transform:none !important; transition:none !important}
+    }
+  </style>
+</head>
+<body>
 
-  h1{margin:.7rem 0 .45rem; font-family:"Playfair Display",serif; font-weight:700;
-     font-size:clamp(34px,6vw,72px); line-height:1.04; letter-spacing:.2px; text-wrap:balance}
-  .accent{white-space:nowrap; position:relative}
-  .accent::after{content:""; position:absolute; left:0; bottom:-8px; height:8px; width:100%;
-    background:linear-gradient(90deg,var(--red),var(--red-700)); border-radius:999px; transform:scaleX(0);
-    transform-origin:left; animation:underline 900ms cubic-bezier(.2,.8,.2,1) .35s forwards; opacity:.92}
-  @keyframes underline{to{transform:scaleX(1)}}
-
-  .lead{max-width:60ch; font:400 clamp(14px,1.25vw,18px)/1.7 Montserrat,sans-serif; color:rgba(255,255,255,.94)}
-
-  .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
-  .btn{appearance:none; cursor:pointer; border:0; border-radius:14px; padding:14px 18px;
-       font:800 14px/1 Montserrat,sans-serif; letter-spacing:.3px; transition:.2s ease;
-       box-shadow:0 12px 28px rgba(0,0,0,.25), 0 3px 8px rgba(0,0,0,.25)}
-  .btn--primary{background:var(--red); color:#fff}
-  .btn--ghost{background:transparent; color:#fff; border:2px solid rgba(255,255,255,.82)}
-  .btn:hover{transform:translateY(-1px)}
-
-  /* Proof strip — minimal, confident */
-  .proof{display:flex; flex-wrap:wrap; gap:14px; margin-top:14px; color:rgba(255,255,255,.9); font:600 12px/1.4 Montserrat,sans-serif}
-  .proof .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid rgba(255,255,255,.22);
-               border-radius:999px; background:rgba(17,17,17,.18); backdrop-filter:blur(6px)}
-  .p-dot{width:6px; height:6px; background:var(--red); border-radius:50%}
-
-  /* Right-side trust card */
-  .card{background:rgba(17,17,17,.22); border:1px solid rgba(255,255,255,.22); border-radius:16px;
-        padding:18px 18px 16px; backdrop-filter:blur(8px); max-width:520px; margin-left:auto; box-shadow:0 10px 40px rgba(0,0,0,.25)}
-  .card .kicker{font:700 12px/1.2 Montserrat,sans-serif; letter-spacing:.18em; text-transform:uppercase; opacity:.85}
-  .card .quote{font-family:"Playfair Display",serif; font-weight:600; font-size:clamp(14px,1.5vw,18px); line-height:1.55; margin:8px 0 0}
-  .card .who{font:600 12px/1.4 Montserrat,sans-serif; opacity:.8; margin-top:8px}
-  .guarantee{margin-top:12px; font:600 12px/1.4 Montserrat,sans-serif; color:rgba(255,255,255,.9)}
-  .guarantee .badge{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; background:rgba(198,22,26,.22); border:1px solid rgba(198,22,26,.45)}
-</style>
-
-<section class="hero" aria-label="International Program Course Hero">
-  <div class="hero__bg" aria-hidden="true">
-    <video src="https://internationalprogram.netlify.app/program-vid.mp4"
-           autoplay muted playsinline loop preload="metadata"></video>
-  </div>
-
-  <div class="hero__wrap">
-    <div>
-      <span class="eyebrow" data-aos="fade-up" data-aos-duration="700">
-        <span class="dot"></span> The Proven System for Private Schools
-      </span>
-
-      <h1 data-aos="fade-up" data-aos-delay="60" data-aos-duration="800">
-        We Are the <span class="accent">Answer</span> to Launching Your International Program
-      </h1>
-
-      <p class="lead" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
-        Our mastercourse gives your team the exact playbook to plan, approve, and operate a mission-driven international exchange program—so your school stabilizes its budget, raises teacher pay, and expands its impact this year.
-      </p>
-
-      <div class="cta-row" data-aos="fade-up" data-aos-delay="180" data-aos-duration="800">
-        <a class="btn btn--primary" href="#enroll">Get the Course</a>
-        <a class="btn btn--ghost" href="#inside">See What’s Inside</a>
-      </div>
-
-      <div class="proof" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800" aria-label="Proof points">
-        <span class="pill"><span class="p-dot"></span> Board-Ready in 60 Days Framework</span>
-        <span class="pill"><span class="p-dot"></span> SEVIS • J-1 • F-1 Simplified</span>
-        <span class="pill"><span class="p-dot"></span> Recruitment & Host-Family Kits</span>
-        <span class="pill"><span class="p-dot"></span> Financial Models & Templates</span>
-      </div>
+  <!-- ============================= HERO ============================= -->
+  <header class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <video autoplay muted playsinline loop preload="metadata"
+             src="https://internationalprogram.netlify.app/program-vid.mp4"></video>
     </div>
 
-    <aside class="card" data-aos="fade-left" data-aos-delay="260" data-aos-duration="900" aria-label="Trust">
-      <div class="kicker">Case Study</div>
-      <p class="quote">“We were weeks from cutting programs. This course gave us the playbook. Within 24 months we raised salaries, paid down debt, and grew enrollment with international students.”</p>
-      <div class="who">Head of School • Midwest Academy</div>
-      <div class="guarantee">
-        <span class="badge">✔ Results-oriented, board-approved materials included</span>
-      </div>
-    </aside>
-  </div>
-</section>
+    <div class="container grid-hero">
+      <div>
+        <span class="eyebrow" data-aos="fade-up" data-aos-duration="700">
+          <span class="dot"></span> The Proven System for Private Schools
+        </span>
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ once:true, offset:80, easing:'ease-out' });
-</script>
+        <h1 data-aos="fade-up" data-aos-delay="60" data-aos-duration="800">
+          No More Guessing. No More Strain. <span class="accent">Your School Deserves Stability</span> — We’ll Show You How to Build It.
+        </h1>
+
+        <p class="lead" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
+          Our mastercourse gives your team the exact playbook to plan, approve, and operate a mission-driven international exchange program—so your school stabilizes its budget, raises teacher pay, and expands its impact this year.
+        </p>
+
+        <div class="cta-row" data-aos="fade-up" data-aos-delay="180" data-aos-duration="800">
+          <a class="btn btn--primary" href="#answer">Get the Course</a>
+          <a class="btn btn--ghost" href="#problem">Watch How It Works</a>
+        </div>
+
+        <div class="pill-row" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800" aria-label="Key pillars">
+          <span class="pill">
+            <!-- target icon -->
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
+            Board-Ready Framework
+          </span>
+          <span class="pill">
+            <!-- globe pin icon -->
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="6"/><path d="M12 16v6"/></svg>
+            Recruitment & Visa Simplified
+          </span>
+          <span class="pill">
+            <!-- coins icon -->
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+            Financial Models that Work
+          </span>
+        </div>
+      </div>
+
+      <aside class="trust" data-aos="fade-left" data-aos-delay="260" data-aos-duration="900" aria-label="Testimonial">
+        <div class="kicker">Case Study</div>
+        <p class="quote">“We were weeks from cutting programs. This course gave us the playbook. Within 24 months we raised salaries, paid down debt, and grew enrollment with international students.”</p>
+        <div class="who">Head of School • Midwest Academy</div>
+      </aside>
+    </div>
+  </header>
+
+  <!-- ============================= SECTION 1: THE PROBLEM ============================= -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <h2 class="sec-title" data-aos="fade-up">Why Schools Are Stuck</h2>
+      <p class="muted-sub" data-aos="fade-up" data-aos-delay="60">
+        Rising costs. Donor fatigue. Enrollment uncertainty. Teachers carrying the burden on below-market pay. It isn’t a lack of passion—it’s a lack of a plan you can trust.
+      </p>
+
+      <div class="cards">
+        <div class="card" data-aos="fade-up" data-aos-delay="120">
+          <div class="icon" aria-hidden="true">
+            <!-- trend down icon -->
+            <svg viewBox="0 0 24 24"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 15v6h-6"/></svg>
+          </div>
+          <h3>Enrollment Decline</h3>
+          <p>Families love your mission—but the math no longer works for many. You need a sustainable, values-aligned revenue stream.</p>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="160">
+          <div class="icon" aria-hidden="true">
+            <!-- receipt icon -->
+            <svg viewBox="0 0 24 24"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+          </div>
+          <h3>Rising Costs</h3>
+          <p>Budgets stretch. Programs pause. Salaries stall. Without a predictable plan, every year feels like a reset.</p>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon" aria-hidden="true">
+            <!-- hourglass icon -->
+            <svg viewBox="0 0 24 24"><path d="M6 2h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V2z"/><path d="M6 22h12v-5a5 5 0 0 0-5-5h-2a5 5 0 0 0-5 5v5z"/></svg>
+          </div>
+          <h3>No Clear Path</h3>
+          <p>Leaders are forced to guess—about visas, pricing, policies, partners. Guessing isn’t leadership. The right plan changes everything.</p>
+        </div>
+      </div>
+
+      <div class="divider" data-aos="fade-up" data-aos-delay="240"></div>
+      <p class="center-line" data-aos="fade-up" data-aos-delay="260">It’s not a lack of passion — it’s a lack of a plan.</p>
+    </div>
+  </section>
+
+  <!-- ============================= SECTION 2: THE ANSWER ============================= -->
+  <section class="answer" id="answer">
+    <div class="container">
+      <h2 class="sec-title" data-aos="fade-up">The Blueprint That Works</h2>
+      <p class="muted-sub" data-aos="fade-up" data-aos-delay="60">
+        A complete, board-ready system to launch and operate a mission-driven international program—without confusion, expensive consultants, or years of trial and error.
+      </p>
+
+      <div class="grid-4">
+        <div class="tile" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon" aria-hidden="true">
+            <!-- checklist icon -->
+            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M3 7h6M3 12h6M3 17h6"/></svg>
+          </div>
+          <h4>Plan Confidently</h4>
+          <p>SEVIS / J-1 / F-1 made simple. Policies, handbooks, and compliance timelines ready to customize and deploy.</p>
+        </div>
+
+        <div class="tile" data-aos="fade-up" data-aos-delay="140">
+          <div class="icon" aria-hidden="true">
+            <!-- globe lines icon -->
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+          </div>
+          <h4>Recruit Globally</h4>
+          <p>Proven agency/partner scripts, school-to-school outreach, and message frameworks parents trust.</p>
+        </div>
+
+        <div class="tile" data-aos="fade-up" data-aos-delay="180">
+          <div class="icon" aria-hidden="true">
+            <!-- rocket icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 2c4.5 0 8 3.5 8 8 0 5.5-8 12-8 12S4 15.5 4 10c0-4.5 3.5-8 8-8z"/><path d="M9 10l3 3 3-3"/></svg>
+          </div>
+          <h4>Launch Easily</h4>
+          <p>Ready-to-use pricing models, host-family handbook, student care plans, and board presentation deck.</p>
+        </div>
+
+        <div class="tile" data-aos="fade-up" data-aos-delay="220">
+          <div class="icon" aria-hidden="true">
+            <!-- bar chart icon -->
+            <svg viewBox="0 0 24 24"><path d="M3 21V3"/><path d="M7 21v-8"/><path d="M12 21v-14"/><path d="M17 21v-5"/><path d="M21 21V9"/></svg>
+          </div>
+          <h4>Thrive Financially</h4>
+          <p>Transparent tuition math and allocation templates so you can raise salaries, upgrade facilities, and fund missions.</p>
+        </div>
+      </div>
+
+      <div class="cta-band" data-aos="fade-up" data-aos-delay="260">
+        <strong>Join the schools transforming struggle into stability.</strong>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="#enroll">Get Instant Access</a>
+          <a class="btn btn--ghost" href="#inside">See What’s Inside</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= SECTION 3: PROOF / CTA ============================= -->
+  <section class="problem" id="proof">
+    <div class="container">
+      <h2 class="sec-title" data-aos="fade-up">Real Results. Real Renewal.</h2>
+      <p class="muted-sub" data-aos="fade-up" data-aos-delay="60">
+        Schools using this system report teacher raises, stabilized budgets, and revived mission focus—without sacrificing values.
+      </p>
+
+      <div class="cards">
+        <div class="card" data-aos="fade-up" data-aos-delay="120">
+          <div class="icon" aria-hidden="true">
+            <!-- star badge -->
+            <svg viewBox="0 0 24 24"><path d="M12 3l2.9 6 6.6.6-4.9 4.2 1.5 6.4L12 17.6 5.9 20.2 7.4 13.8 2.5 9.6 9.1 9z"/></svg>
+          </div>
+          <h3>“Board-Ready in Weeks”</h3>
+          <p>“The board finally saw a clear, compliant path. We approved the program unanimously.”</p>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="160">
+          <div class="icon" aria-hidden="true">
+            <!-- heart -->
+            <svg viewBox="0 0 24 24"><path d="M20.8 8.6A5.4 5.4 0 0 0 12 8.2a5.4 5.4 0 1 0-8.8 6.3L12 22l8.8-7.5a5.4 5.4 0 0 0 0-5.9z"/></svg>
+          </div>
+          <h3>Mission + Margin</h3>
+          <p>“We didn’t have to choose between finances and discipleship. We finally have both.”</p>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon" aria-hidden="true">
+            <!-- trending up -->
+            <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M21 7v6h-6"/></svg>
+          </div>
+          <h3>Financial Stability</h3>
+          <p>“Within 24 months we raised salaries, paid down debt, and grew enrollment with international students.”</p>
+        </div>
+      </div>
+
+      <div class="divider" data-aos="fade-up" data-aos-delay="240"></div>
+      <div class="cta-row" data-aos="fade-up" data-aos-delay="260">
+        <a class="btn btn--primary" href="#enroll">Get the Course</a>
+        <a class="btn btn--ghost" href="#inside">What’s Included</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script> AOS.init({ once:true, offset:80, easing:'ease-out' }); </script>
+</body>
+</html>
+
