@@ -116,6 +116,117 @@ section{padding:80px 0}
     <p>With our help, you’ll finally have the confidence, clarity, and cash flow to do the things you’ve always dreamed of—whether that’s adding staff, launching new programs, or expanding facilities.</p>
   </div>
 </section>
+<!-- Facts & Figures (AATL style, with animated counters) -->
+.lb-hero2__wrap{position:relative;z-index:1;display:grid;grid-template-columns: 0.5fr 1.5fr;gap:36px;align-items:center;min-height:58vh}
+@media (max-width:980px){.lb-hero2__wrap{grid-template-columns:1fr;gap:18px;min-height:auto}}
 
+
+.lb-crest{display:flex;justify-content:center}
+.lb-crest img{width:min(140px,22vw);height:auto;display:block;filter:drop-shadow(0 8px 26px rgba(0,0,0,.35))}
+.lb-headline{color:#fff}
+.lb-title{font-weight:700;line-height:1.06;font-size:clamp(2rem,3.2vw,3rem);margin:.2rem 0 .6rem}
+.lb-sub{max-width:62ch;color:#f2f6ff;font:500 1.05rem/1.65 Inter, system-ui, -apple-system, Segoe UI, sans-serif}
+.lb-cta{display:flex;gap:.8rem;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.1rem;border-radius:12px;text-decoration:none;font-weight:800;letter-spacing:.2px}
+.btn--primary{background:#fff;color:var(--navy);box-shadow:var(--shadow)}
+.btn--primary:hover{filter:brightness(1.05)}
+.btn--ghost{border:2px solid rgba(255,255,255,.9);color:#fff}
+.lb-divider{height:18px;background:linear-gradient(#c7d1e2,#e8ecf4);opacity:.35;mask:linear-gradient(180deg,#000 60%, transparent);margin-top:14px}
+
+
+/* FACTS (equal columns, equal internal rhythm) */
+.lb-facts{background:linear-gradient(rgba(14,42,71,.94), rgba(14,42,71,.94)), url('/media/campus-blur.jpg') center/cover no-repeat;color:#fff;padding:64px 0}
+.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-weight:800;font-size:.8rem;color:#dfe8f6;text-align:center;margin:0 0 6px}
+.facts-title{font-weight:700;text-align:center;font-size:clamp(2rem,3vw,2.6rem);margin:0}
+.facts-lead{max-width:78ch;margin:10px auto 28px;text-align:center;color:#e9f0fb}
+
+
+.facts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:stretch}
+@media (max-width:980px){.facts-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.facts-grid{grid-template-columns:1fr}}
+
+
+.fact{display:flex;flex-direction:column;align-items:center;text-align:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:22px 20px 18px;backdrop-filter:blur(6px)}
+.fact-num{font-weight:700;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;margin-bottom:14px}
+.fact-rule{height:2px;background:rgba(255,255,255,.5);width:72px;margin:0 0 12px}
+.fact-label{font-weight:800}
+.fact-note{opacity:.85;margin-top:10px;font-size:.92rem}
+
+
+/* balance the heights so labels align across rows */
+.fact-label{min-height:2.6em;display:flex;align-items:center}
+/* LOGO draw animation */
+.lb-logo{display:flex;justify-content:center;align-items:center}
+.lb-logo__svg{width:min(160px,24vw);height:auto}
+.lb-logo__svg [data-animate-stroke]{
+fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;
+opacity:.95; /* dash values set by JS */
+}
+@media (prefers-reduced-motion: reduce){
+.lb-logo__svg [data-animate-stroke]{transition:none;stroke-dasharray:0;stroke-dashoffset:0}
+}
+</style>
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+// AOS — only slow left/right/up fades
+AOS.init({ duration: 1400, easing: 'ease', once: true, offset: 80 });
+
+
+// Count-up on intersect
+const format = (n, opts={}) => {
+const { prefix='', suffix='' } = opts;
+const parts = n.toLocaleString('en-US', { maximumFractionDigits: 1 });
+return `${prefix}${parts}${suffix}`;
+};
+const counters = [...document.querySelectorAll('.fact-num')].map(el => ({
+el,
+target: parseFloat(el.dataset.count || '0'),
+prefix: el.dataset.prefix || '',
+suffix: el.dataset.suffix || ''
+}));
+const animate = ({el, target, prefix, suffix}) => {
+const start = performance.now();
+const dur = 1800;
+const from = 0;
+const step = (t) => {
+const p = Math.min(1, (t - start) / dur);
+const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+const val = from + (target - from) * eased;
+el.textContent = format(val, {prefix, suffix});
+if (p < 1) requestAnimationFrame(step);
+};
+requestAnimationFrame(step);
+};
+const io = new IntersectionObserver((entries, obs) => {
+entries.forEach(e => {
+if (e.isIntersecting) {
+const n = e.target.querySelector('.fact-num');
+const cfg = counters.find(c => c.el === n);
+if (cfg) animate(cfg);
+obs.unobserve(e.target);
+}
+});
+}, { threshold: 0.45 });
+document.querySelectorAll('.fact').forEach(f => io.observe(f));
+// SVG logo stroke-draw on view
+(function(){
+const logo = document.querySelector('.lb-logo__svg');
+if(!logo) return;
+const parts = logo.querySelectorAll('[data-animate-stroke]');
+parts.forEach(p=>{
+const len = Math.ceil((p.getTotalLength ? p.getTotalLength() : 300));
+p.style.strokeDasharray = len;
+p.style.strokeDashoffset = len;
+p.style.transition = 'stroke-dashoffset 1600ms ease 200ms, opacity 300ms ease';
+});
+const go = () => parts.forEach(p=>{ p.style.strokeDashoffset = 0; });
+const io2 = new IntersectionObserver((es,ob)=>{
+es.forEach(e=>{ if(e.isIntersecting){ go(); ob.disconnect(); } });
+},{threshold:.4});
+io2.observe(logo);
+})();
+</script>
 </body>
 </html>
