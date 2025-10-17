@@ -618,6 +618,43 @@ section{padding:80px 0}
 }
 .cal-note{display:block;margin-top:10px;font-size:.8rem;color:#6a7da1;}
 
+/* Clean left column text */
+.eyebrow{
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:700;
+  font-size:.9rem;
+  color:#d8e4f7;
+  margin-bottom:8px;
+}
+.hero-main-title{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:800;
+  font-size:clamp(2.6rem,7vw,5.4rem);
+  line-height:1.05;
+  margin:0 0 16px;
+  color:#fff;
+}
+.hero-sub{
+  font-size:1.08rem;
+  line-height:1.65;
+  color:#eef3ff;
+  opacity:.95;
+  max-width:620px;
+  margin-bottom:18px;
+}
+
+/* Adjust layout balance */
+.hero-split__grid{
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:60px;
+}
+@media(max-width:960px){
+  .hero-split__grid{grid-template-columns:1fr;}
+  .hero-main-title{text-align:center;}
+  .hero-sub{text-align:center;margin-inline:auto;}
+}
 
 </style>
 </head>
@@ -633,16 +670,20 @@ section{padding:80px 0}
   </video>
   <div class="hero-modern__overlay"></div>
 
-  <div class="hero-modern__content" data-aos="fade-up" data-aos-duration="1400">
-    <p class="hero-modern__eyebrow">WELCOME TO</p>
-    <h1 class="hero-modern__title">LEGACY BUILDERS</h1>
-    <p class="hero-modern__lead">
-      Imagine what your school could do with an extra <strong>$150,000</strong> in its first year.  
-      We help schools launch board-approved international programs that generate sustainable revenue and strengthen their mission — without guesswork.
-    </p>
-    <button class="hero-modern__btn" id="openCal">Book a Meeting</button>
-  </div>
-</section>
+<!-- LEFT TEXT — clean, no SVG -->
+<div class="hero-split__text" data-aos="fade-right">
+  <p class="eyebrow">WELCOME TO</p>
+  <h1 class="hero-main-title">LEGACY BUILDERS</h1>
+  <p class="hero-sub">
+    What if your school could add <strong>$150,000 in new revenue</strong> this year — while strengthening your mission,
+    raising teacher pay, and expanding what’s possible? That’s what we help schools do every single day.
+  </p>
+  <p class="hero-sub">
+    We walk alongside your team to plan, launch, and manage a board-approved international program that
+    generates sustainable income and long-term stability for your school.
+  </p>
+</div>
+
 
     <!-- RIGHT CALENDAR -->
     <div class="hero-split__calendar" data-aos="fade-left">
