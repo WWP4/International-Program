@@ -554,58 +554,95 @@ section{padding:80px 0}
   }
 }
 
-/* ===== Calendly Modal ===== */
-.cal-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(8, 18, 30, 0.6);
-  backdrop-filter: blur(6px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  padding: 20px;
+/* ===== SPLIT HERO ===== */
+.hero-split{
+  position:relative;
+  overflow:hidden;
+  min-height:90vh;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  background:#0e2a47;
 }
-.cal-modal[aria-hidden="false"] {
-  display: flex;
+.hero-split__video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;filter:brightness(.85) contrast(1.1);z-index:0;
 }
-.cal-modal__dialog {
-  width: min(820px, 92vw);
-  background: #fff;
-  color: #0e2a47;
-  border-radius: 14px;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, .3);
-  padding: 22px 24px;
-  position: relative;
+.hero-split__overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(14,42,71,.9) 0%,rgba(14,42,71,.75) 40%,rgba(14,42,71,.4) 100%);
 }
-.cal-modal__close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: #edf2ff;
-  color: #0e2a47;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+.hero-split__grid{
+  position:relative;z-index:2;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:50px;
+  align-items:center;
+  width:min(1200px,92vw);
+  margin:auto;
+  padding:80px 0;
 }
-.cal-modal__close:hover {
-  background: #c6aa6a;
-  color: #fff;
+@media(max-width:960px){
+  .hero-split__grid{grid-template-columns:1fr;padding:60px 0;}
 }
-.cal-note {
-  color: #5770a1;
-  font-size: .95rem;
-  margin: 0 0 12px;
+
+/* LEFT */
+.hero-split__text h1{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:800;
+  font-size:clamp(2rem,4.5vw,3.4rem);
+  line-height:1.15;
+  margin-bottom:16px;
 }
-.cal-frame {
-  border: 1px solid #e0e7f5;
-  border-radius: 10px;
-  overflow: hidden;
+.hero-split__text .hl{color:#c6aa6a;text-decoration:underline;text-underline-offset:6px;}
+.hero-split__text p{font-size:1.05rem;line-height:1.6;color:#eef3ff;margin-bottom:24px;max-width:600px;}
+.hero-split__points{
+  list-style:none;margin:0;padding:0;display:grid;gap:10px;max-width:640px;
 }
+.hero-split__points li{
+  display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;
+  padding:8px 10px;
+  font-size:.95rem;
+  color:#e8eef6;
+}
+.hero-split__points svg{width:22px;height:22px;color:#fff;margin-top:3px;}
+.hero-split__points strong{color:#fff;}
+
+/* RIGHT Calendly Card */
+.hero-split__calendar{
+  display:flex;align-items:center;justify-content:center;
+}
+.cal-card{
+  background:#fff;
+  color:#0e2a47;
+  border-radius:16px;
+  box-shadow:0 30px 60px rgba(0,0,0,.25);
+  padding:24px 22px 30px;
+  text-align:center;
+  width:100%;
+  max-width:420px;
+  transform:translateY(10px);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.cal-card:hover{transform:translateY(0);}
+.cal-card h3{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:700;
+  font-size:1.5rem;
+  margin-bottom:6px;
+}
+.cal-card .cal-sub{font-size:.95rem;color:#5871a0;margin-bottom:14px;}
+.cal-frame{
+  border:1px solid #e0e7f5;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:inset 0 0 0 2px #e6ecf7;
+}
+.cal-note{display:block;margin-top:10px;font-size:.8rem;color:#6a7da1;}
+
 
 </style>
 </head>
@@ -614,38 +651,46 @@ section{padding:80px 0}
 
 
 
-<!-- ===== HERO (Left-aligned with Calendly Modal) ===== -->
-<section class="hero-modern">
-  <video class="hero-modern__video" autoplay muted playsinline loop poster="/media/legacy-poster.jpg">
+<!-- ===== HERO (Split Layout with Calendly Right Column) ===== -->
+<section class="hero-split">
+  <video class="hero-split__video" autoplay muted playsinline loop poster="/media/legacy-poster.jpg">
     <source src="https://internationalprogram.netlify.app/program-vid.mp4" type="video/mp4">
   </video>
-  <div class="hero-modern__overlay"></div>
+  <div class="hero-split__overlay"></div>
 
-  <div class="hero-modern__content" data-aos="fade-up" data-aos-duration="1400">
-    <p class="hero-modern__eyebrow">WELCOME TO</p>
-    <h1 class="hero-modern__title">LEGACY BUILDERS</h1>
-    <p class="hero-modern__lead">
-      Imagine what your school could do with an extra <strong>$150,000</strong> in its first year.  
-      We help schools launch board-approved international programs that generate sustainable revenue and strengthen their mission — without guesswork.
-    </p>
-    <button class="hero-modern__btn" id="openCal">Book a Meeting</button>
-  </div>
-</section>
+  <div class="container hero-split__grid">
+    <!-- LEFT TEXT -->
+    <div class="hero-split__text" data-aos="fade-right">
+      <h1>What would you do with an extra <span class="hl">$150,000</span> this year?</h1>
+      <p>
+        We help schools unlock six-figure, year-one revenue by launching a board-approved international program—
+        without guesswork, risk, or endless planning meetings.
+      </p>
+      <ul class="hero-split__points">
+        <li><svg viewBox="0 0 24 24"><path d="M12 2v2M12 20v2M7 7c0-1.66 2.24-3 5-3s5 1.34 5 3-1.5 2.5-5 3-5 1.5-5 3 2.24 3 5 3 5-1.34 5-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <strong>Revenue that funds what matters.</strong> Add ~$150K in year one to invest in raises and student experience.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M3 12l4 4 5-5 3 3 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <strong>Board-ready from day one.</strong> We handle your playbook, policy kit, and training to fast-track approval.</li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 19a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          <strong>Lasting impact.</strong> Reach more families, grow your mission, and build something sustainable.</li>
+      </ul>
+    </div>
 
-<!-- ===== Calendly Modal ===== -->
-<div class="cal-modal" id="calModal" aria-hidden="true">
-  <div class="cal-modal__dialog" role="dialog" aria-modal="true">
-    <button class="cal-modal__close" id="closeCal" aria-label="Close">×</button>
-    <h3>Book a Meeting</h3>
-    <p class="cal-note">Choose a time that fits your schedule below:</p>
-    <div class="cal-frame">
-      <!-- ✅ Calendly embed link -->
-      <iframe 
-        src="https://calendly.com/legacybuilders/30min?embed_domain=yourdomain.com&embed_type=Inline"
-        width="100%" height="520" frameborder="0" title="Book a Meeting"></iframe>
+    <!-- RIGHT CALENDAR -->
+    <div class="hero-split__calendar" data-aos="fade-left">
+      <div class="cal-card">
+        <h3>Book a Meeting</h3>
+        <p class="cal-sub">Select a time that fits your schedule below.</p>
+        <div class="cal-frame">
+          <!-- Calendly embed -->
+          <iframe src="https://calendly.com/legacybuilders/30min?embed_domain=yourdomain.com&embed_type=Inline"
+                  width="100%" height="500" frameborder="0" title="Book a Meeting"></iframe>
+        </div>
+        <small class="cal-note">Secure your spot — calls fill fast each week.</small>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 
 <!-- PAINPOINTS -->
