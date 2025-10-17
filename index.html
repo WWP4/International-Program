@@ -738,6 +738,49 @@ section{padding:80px 0}
 .ps__muted a{color:#4b6da7; text-decoration:none; border-bottom:1px solid #cfdaf2}
 .ps__muted a:hover{border-bottom-color:#4b6da7}
 
+/* HERO DEPOSIT CTA (Left section add-on) */
+.hero-deposit{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:16px;
+  padding:20px 22px;
+  margin-top:24px;
+  backdrop-filter:blur(8px);
+  box-shadow:0 10px 24px rgba(0,0,0,.15);
+  color:#fff;
+  max-width:520px;
+}
+.hero-deposit h3{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:700;
+  font-size:1.5rem;
+  margin:0 0 6px;
+  color:#fff;
+}
+.hero-deposit p{font-size:.95rem;line-height:1.5;color:#e9eef9;margin:0 0 10px}
+.hero-deposit__points{
+  list-style:none;padding:0;margin:0 0 12px;display:grid;gap:6px
+}
+.hero-deposit__points li{
+  display:grid;grid-template-columns:16px 1fr;align-items:start;gap:8px;
+  color:#dbe6ff;font-size:.93rem;
+}
+.hero-deposit__points li::before{
+  content:"";width:8px;height:8px;border-radius:50%;
+  background:#c6aa6a;margin-top:.4rem;
+}
+.hero-deposit__btn{
+  appearance:none;border:0;cursor:pointer;
+  background:#fff;color:#0e2a47;font-weight:800;
+  border-radius:10px;padding:12px 20px;
+  box-shadow:0 12px 24px rgba(0,0,0,.25);
+  transition:.25s ease;
+}
+.hero-deposit__btn:hover{background:#c6aa6a;color:#fff;transform:translateY(-1px)}
+.hero-deposit__note{
+  font-size:.85rem;color:#d0dcf7;margin-top:8px;
+}
+.hero-deposit__note a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
 
 </style>
 </head>
@@ -752,21 +795,40 @@ section{padding:80px 0}
   </video>
   <div class="hero-modern__overlay"></div>
 
-  <!-- GRID WRAPPER ADDED -->
-  <div class="hero-split__grid">
-    <!-- LEFT TEXT -->
-    <div class="hero-split__text" data-aos="fade-right">
-      <p class="eyebrow">WELCOME TO</p>
-      <h1 class="hero-main-title">LEGACY BUILDERS</h1>
-      <p class="hero-sub">
-        What if your school could add <strong>$150,000 in new revenue</strong> this year — while strengthening your mission,
-        raising teacher pay, and expanding what’s possible? That’s what we help schools do every single day.
-      </p>
-      <p class="hero-sub">
-        We walk alongside your team to plan, launch, and manage a board-approved international program that
-        generates sustainable income and long-term stability for your school.
-      </p>
-    </div>
+<!-- LEFT TEXT — with integrated deposit CTA -->
+<div class="hero-split__text" data-aos="fade-right">
+  <p class="eyebrow">WELCOME TO</p>
+  <h1 class="hero-main-title">LEGACY BUILDERS</h1>
+  <p class="hero-sub">
+    What if your school could add <strong>$150,000 in new revenue</strong> this year — while strengthening your mission,
+    raising teacher pay, and expanding what’s possible? That’s what we help schools do every single day.
+  </p>
+  <p class="hero-sub">
+    We walk alongside your team to plan, launch, and manage a board-approved international program that
+    generates sustainable income and long-term stability for your school.
+  </p>
+
+  <!-- Deposit CTA -->
+  <div class="hero-deposit" data-aos="fade-up" data-aos-delay="200">
+    <h3>Ready to Begin?</h3>
+    <p>
+      Secure your spot in the next onboarding cycle. Once your deposit is received, you’ll get a direct link
+      to our private landing page outlining next steps, timeline, and how your program launch unfolds.
+    </p>
+    <ul class="hero-deposit__points">
+      <li><strong>Immediate access</strong> to your setup checklist</li>
+      <li><strong>Board packet</strong> & compliance templates unlocked</li>
+      <li><strong>Dedicated onboarding</strong> with our leadership team</li>
+    </ul>
+    <button class="hero-deposit__btn" id="depositBtn">Place Deposit</button>
+    <p class="hero-deposit__note">
+      Your deposit is <strong>fully credited</strong> toward your implementation fee.
+      <br>
+      Prefer to explore first? Use the <a href="#calc">Estimator below</a> to tailor projections for your school.
+    </p>
+  </div>
+</div>
+
 
     <!-- RIGHT CALENDAR -->
     <div class="hero-split__calendar" data-aos="fade-left">
@@ -1397,6 +1459,14 @@ document.addEventListener("DOMContentLoaded",()=>{
 <script>
   // Set dynamic year in footer
   document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script>
+  document.getElementById('depositBtn')?.addEventListener('click', () => {
+    // Change this to your real landing page or Stripe Checkout session
+    const depositUrl = '/next-steps.html';
+    // Example: const depositUrl = 'https://checkout.stripe.com/c/session_xxx';
+    window.location.href = depositUrl;
+  });
 </script>
 
 </body>
