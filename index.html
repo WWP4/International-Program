@@ -782,6 +782,39 @@ section{padding:80px 0}
 }
 .hero-deposit__note a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
 
+  /* Minimal Deposit Button CTA in Hero */
+.hero-deposit-btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 18px;
+  padding: 16px 30px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0e2a47;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: .2px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+  transition: all .25s ease;
+}
+.hero-deposit-btn:hover {
+  background: #c6aa6a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.hero-deposit-note {
+  margin-top: 12px;
+  font-size: .9rem;
+  color: #e9eef9;
+  opacity: .9;
+  max-width: 420px;
+}
+.hero-deposit-note strong {
+  color: #fff;
+}
+
+
 </style>
 </head>
 
@@ -795,39 +828,23 @@ section{padding:80px 0}
   </video>
   <div class="hero-modern__overlay"></div>
 
-<!-- LEFT TEXT — with integrated deposit CTA -->
+<!-- LEFT TEXT — minimal version with deposit CTA -->
 <div class="hero-split__text" data-aos="fade-right">
   <p class="eyebrow">WELCOME TO</p>
   <h1 class="hero-main-title">LEGACY BUILDERS</h1>
   <p class="hero-sub">
-    What if your school could add <strong>$150,000 in new revenue</strong> this year — while strengthening your mission,
-    raising teacher pay, and expanding what’s possible? That’s what we help schools do every single day.
-  </p>
-  <p class="hero-sub">
-    We walk alongside your team to plan, launch, and manage a board-approved international program that
-    generates sustainable income and long-term stability for your school.
+    Add <strong>$150,000+ in new annual revenue</strong> through a board-approved
+    international program — designed, launched, and supported by our team.
   </p>
 
-  <!-- Deposit CTA -->
-  <div class="hero-deposit" data-aos="fade-up" data-aos-delay="200">
-    <h3>Ready to Begin?</h3>
-    <p>
-      Secure your spot in the next onboarding cycle. Once your deposit is received, you’ll get a direct link
-      to our private landing page outlining next steps, timeline, and how your program launch unfolds.
-    </p>
-    <ul class="hero-deposit__points">
-      <li><strong>Immediate access</strong> to your setup checklist</li>
-      <li><strong>Board packet</strong> & compliance templates unlocked</li>
-      <li><strong>Dedicated onboarding</strong> with our leadership team</li>
-    </ul>
-    <button class="hero-deposit__btn" id="depositBtn">Place Deposit</button>
-    <p class="hero-deposit__note">
-      Your deposit is <strong>fully credited</strong> toward your implementation fee.
-      <br>
-      Prefer to explore first? Use the <a href="#calc">Estimator below</a> to tailor projections for your school.
-    </p>
-  </div>
+  <button class="hero-deposit-btn" id="depositBtn">Place a Deposit</button>
+
+  <p class="hero-deposit-note">
+    Your deposit unlocks the <strong>Next Steps Portal</strong> — including your
+    board packet, onboarding timeline, and program overview.
+  </p>
 </div>
+
 
 
     <!-- RIGHT CALENDAR -->
