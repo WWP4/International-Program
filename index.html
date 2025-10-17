@@ -466,27 +466,146 @@ section{padding:80px 0}
   .hero-min__title{ font-size: clamp(2.2rem, 12vw, 4rem); }
 }
 
-/* ===== Booking Modal ===== */
-.cal-modal{
-  position:fixed; inset:0; background:rgba(8,20,36,.55); backdrop-filter: blur(4px);
-  display:none; align-items:center; justify-content:center; padding:20px; z-index: 999;
+/* ===== HERO ===== */
+.hero-modern {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 90vh;
+  color: #fff;
+  overflow: hidden;
+  background: #0e2a47;
 }
-.cal-modal[aria-hidden="false"]{display:flex;}
-.cal-modal__dialog{
-  width:min(820px, 92vw); background:#fff; color:#0e2a47; border-radius:16px;
-  box-shadow:0 40px 80px rgba(0,0,0,.28); padding:18px 18px 22px; position:relative;
+.hero-modern__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.85) contrast(1.1);
+  z-index: 0;
 }
-.cal-modal__dialog h3{
-  margin:0 0 6px; font-family:"Cormorant Garamond", serif; font-weight:700; font-size:1.6rem;
+.hero-modern__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(14, 42, 71, 0.9) 0%,
+    rgba(14, 42, 71, 0.7) 40%,
+    rgba(14, 42, 71, 0.35) 100%
+  );
 }
-.cal-note{margin:0 0 12px; color:#5871a0; font-size:.95rem}
-.cal-frame{border:1px solid #e2e9f6; border-radius:12px; overflow:hidden;}
-.cal-modal__close{
-  position:absolute; top:8px; right:12px; width:36px; height:36px; border-radius:10px;
-  border:none; background:#f1f5ff; color:#0e2a47; font-size:22px; line-height:1; cursor:pointer;
-  box-shadow:0 8px 18px rgba(2,15,30,.12);
+.hero-modern__content {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 92vw);
+  margin-left: max(6vw, 40px);
+  padding: 80px 0;
 }
-.cal-modal__close:hover{background:#e6edff;}
+.hero-modern__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-weight: 700;
+  font-size: .9rem;
+  margin-bottom: 6px;
+  color: #dfe6f8;
+}
+.hero-modern__title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+.hero-modern__lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  color: #eef4ff;
+  margin-bottom: 28px;
+}
+.hero-modern__btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 28px;
+  border-radius: 10px;
+  background: #fff;
+  color: #0e2a47;
+  font-weight: 800;
+  letter-spacing: .2px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+  transition: all .25s ease;
+}
+.hero-modern__btn:hover {
+  background: #c6aa6a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .hero-modern__content {
+    margin-left: 5vw;
+    padding: 60px 0;
+  }
+  .hero-modern__title {
+    font-size: clamp(2.4rem, 10vw, 4.4rem);
+  }
+}
+
+/* ===== Calendly Modal ===== */
+.cal-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 18, 30, 0.6);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+.cal-modal[aria-hidden="false"] {
+  display: flex;
+}
+.cal-modal__dialog {
+  width: min(820px, 92vw);
+  background: #fff;
+  color: #0e2a47;
+  border-radius: 14px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, .3);
+  padding: 22px 24px;
+  position: relative;
+}
+.cal-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #edf2ff;
+  color: #0e2a47;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+}
+.cal-modal__close:hover {
+  background: #c6aa6a;
+  color: #fff;
+}
+.cal-note {
+  color: #5770a1;
+  font-size: .95rem;
+  margin: 0 0 12px;
+}
+.cal-frame {
+  border: 1px solid #e0e7f5;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
 </style>
 </head>
@@ -494,45 +613,40 @@ section{padding:80px 0}
 <body>
 
 
- <!-- ===== HERO — MINIMAL, LEFT-ALIGNED ===== -->
-<section class="hero-min">
-  <video class="hero-min__video" autoplay muted playsinline loop
-         poster="/media/legacy-poster.jpg">
+
+<!-- ===== HERO (Left-aligned with Calendly Modal) ===== -->
+<section class="hero-modern">
+  <video class="hero-modern__video" autoplay muted playsinline loop poster="/media/legacy-poster.jpg">
     <source src="https://internationalprogram.netlify.app/program-vid.mp4" type="video/mp4">
   </video>
-  <div class="hero-min__overlay"></div>
+  <div class="hero-modern__overlay"></div>
 
-  <div class="hero-min__content" data-aos="fade-right" data-aos-duration="1200">
-    <p class="hero-min__eyebrow">WELCOME TO</p>
-    <h1 class="hero-min__title">LEGACY<br>BUILDERS</h1>
-    <p class="hero-min__lead">
-      Launch a board-approved international program that funds your mission—without guesswork.
-      Average schools see six-figure, year-one revenue and lasting community impact.
+  <div class="hero-modern__content" data-aos="fade-up" data-aos-duration="1400">
+    <p class="hero-modern__eyebrow">WELCOME TO</p>
+    <h1 class="hero-modern__title">LEGACY BUILDERS</h1>
+    <p class="hero-modern__lead">
+      Imagine what your school could do with an extra <strong>$150,000</strong> in its first year.  
+      We help schools launch board-approved international programs that generate sustainable revenue and strengthen their mission — without guesswork.
     </p>
-    <button class="btn-min" id="openCal">Book a Meeting</button>
+    <button class="hero-modern__btn" id="openCal">Book a Meeting</button>
   </div>
 </section>
 
-
-    <!-- RIGHT CALENDAR CARD -->
-    <div class="hero__calendar" data-aos="fade-left" data-aos-duration="1500">
-      <div class="calendar-card">
-        <h3>Book a Meeting</h3>
-        <p>Select a time that fits your schedule below.</p>
-
-        <!-- Embedded calendar — replace Calendly link below -->
-        <div class="calendar-frame">
-          <iframe src="https://calendly.com/melissa-cnu/30min"
-                  width="100%" height="450" frameborder="0"
-                  style="border:0;" allowfullscreen
-                  title="Book a Meeting"></iframe>
-        </div>
-
-        <small class="calendar-note">Secure your time — spots fill fast each week.</small>
-      </div>
+<!-- ===== Calendly Modal ===== -->
+<div class="cal-modal" id="calModal" aria-hidden="true">
+  <div class="cal-modal__dialog" role="dialog" aria-modal="true">
+    <button class="cal-modal__close" id="closeCal" aria-label="Close">×</button>
+    <h3>Book a Meeting</h3>
+    <p class="cal-note">Choose a time that fits your schedule below:</p>
+    <div class="cal-frame">
+      <!-- ✅ Calendly embed link -->
+      <iframe 
+        src="https://calendly.com/legacybuilders/30min?embed_domain=yourdomain.com&embed_type=Inline"
+        width="100%" height="520" frameborder="0" title="Book a Meeting"></iframe>
     </div>
   </div>
-</section>
+</div>
+
 
 <!-- PAINPOINTS -->
 <section class="painpoints">
