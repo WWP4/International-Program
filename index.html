@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Legacy Builders — Empowering Private Schools</title>
 
+  <!-- AOS (Animate On Scroll) CSS -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -907,9 +910,154 @@ section{padding:80px 0}
   .cp *{ transition:none !important; animation:none !important; }
 }
 
+  /* =========================
+   PROGRAM SHOWCASE (Immersive Blue)
+========================= */
+:root{
+  --blue:#0e2a47;
+  --blue-2:#0c213c;
+  --ink:#1b2434;
+  --muted:#e6eeff;
+  --accent:#c6aa6a;
+  --line:#1b3556;
+  --card:rgba(255,255,255,.06);
+  --shadow:0 30px 60px rgba(0,0,0,.25);
+}
+
+.ps--blue{
+  position:relative;
+  color:#fff;
+  background:
+    radial-gradient(1200px 500px at 18% -10%, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(1000px 420px at 85% 120%, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, var(--blue) 0%, var(--blue-2) 100%);
+  padding:84px 0;
+  overflow:hidden;
+}
+
+.ps__edge{
+  position:absolute; left:0; width:100%; height:80px; fill:var(--blue); opacity:.98;
+}
+.ps__edge--top{ top:0; transform:translateY(-100%); }
+.ps__edge--bottom{ bottom:0; transform:translateY(100%); }
+
+.ps__wrap{ width:min(1100px,92vw); margin:0 auto; }
+
+.ps__head{ text-align:center; margin-bottom:22px; }
+.ps__eyebrow{
+  letter-spacing:.16em; text-transform:uppercase; font-weight:800; font-size:.82rem; color:#dfe8f6; margin-bottom:6px;
+}
+.ps__title{
+  font-family:"Cormorant Garamond",serif; font-weight:800;
+  font-size:clamp(2rem,3.4vw,2.8rem); line-height:1.1; margin:0 0 8px;
+}
+.ps__lead{ max-width:75ch; margin:0 auto; color:#e9f1ff; opacity:.96; }
+
+/* metrics */
+.ps__metrics{
+  display:grid; gap:14px; margin:18px auto 6px;
+  grid-template-columns:repeat(3,1fr);
+}
+@media (max-width:900px){ .ps__metrics{ grid-template-columns:1fr } }
+
+.ps__stat{
+  display:grid; place-items:center; text-align:center;
+  padding:16px 14px; border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.04);
+}
+.ps__num{
+  display:block; font-weight:800; line-height:1;
+  font-size:clamp(24px,4vw,36px); margin-bottom:6px; color:#fff;
+}
+.ps__lbl{ color:#d7e5ff; font-size:.95rem; }
+.ps__fine{ text-align:center; color:#bcd3f5; margin-top:10px; }
+
+/* 3-card band */
+.ps__sub{
+  font-family:"Cormorant Garamond",serif; font-weight:800; font-size:clamp(1.4rem,2.2vw,1.8rem);
+  margin:28px 0 12px; text-align:center;
+}
+.ps__grid{ display:grid; gap:16px; }
+.ps__grid--3{ grid-template-columns:repeat(3,1fr); }
+@media (max-width:980px){ .ps__grid--3{ grid-template-columns:1fr 1fr } }
+@media (max-width:640px){ .ps__grid--3{ grid-template-columns:1fr } }
+
+.ps__card{
+  border-radius:16px; padding:18px 16px;
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(6px);
+  box-shadow:var(--shadow);
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.ps__card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,.28);
+  box-shadow:0 36px 72px rgba(0,0,0,.28);
+}
+.ps__cardTitle{
+  margin:0 0 6px;
+  font:700 1.1rem/1.2 "Cormorant Garamond",serif;
+  color:#fff;
+}
+.ps__card p{ color:#e6eeff; opacity:.95; margin:0 0 10px; }
+.ps__points{
+  list-style:none; margin:0; padding:0; display:grid; gap:6px;
+}
+.ps__points li{
+  display:grid; grid-template-columns:10px 1fr; gap:10px; color:#dbe6ff; font-size:.98rem;
+}
+.ps__points li::before{
+  content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-top:.45rem;
+}
+
+/* CTA row */
+.ps__cta{
+  display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:26px;
+}
+.ps__btn{
+  appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px;
+  border-radius:12px; padding:12px 18px; text-decoration:none;
+  background:#fff; color:var(--blue);
+  box-shadow:0 20px 40px rgba(2,15,30,.18);
+  transition:transform .2s ease, background .2s ease, color .2s ease;
+}
+.ps__btn:hover{ transform:translateY(-1px); background:var(--accent); color:#fff; }
+.ps__btn--ghost{
+  background:transparent; color:#e6eeff; border:1px solid rgba(255,255,255,.22);
+}
+.ps__btn--ghost:hover{ color:#fff; border-color:#fff; }
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .ps--blue *{ transition:none !important; animation:none !important; }
+}
+
 
 </style>
 </head>
+<!-- AOS JS (load after your content) -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+
+<script>
+  // Init after AOS script is ready
+  window.addEventListener('load', function () {
+    if (!window.AOS) return; // guard if CDN blocked
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    AOS.init({
+      duration: reduced ? 0 : 900,   // animation length
+      easing: 'ease',                // easing curve
+      offset: 80,                    // trigger offset
+      once: true,                    // animate only once
+      delay: 0,                      // per-element delay (ms)
+      anchorPlacement: 'top-bottom', // when to trigger
+      disable: reduced               // auto-disable if user prefers less motion
+    });
+  });
+</script>
 
 <body>
 
@@ -1098,50 +1246,91 @@ section{padding:80px 0}
 </section>
 
 
-  <!-- ===== PROGRAM SHOWCASE / SALES SECTION ===== -->
-<section class="program-showcase" id="program">
-  <div class="ps__wrap">
+<!-- =========================
+     PROGRAM SHOWCASE (Immersive Blue)
+========================= -->
+<section class="program-showcase ps--blue" id="program">
+  <!-- angled edges (no icons needed) -->
+  <svg class="ps__edge ps__edge--top" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,80 L1200,0 L1200,80 Z"></path>
+  </svg>
 
+  <div class="ps__wrap">
     <!-- Headline & Lead -->
     <header class="ps__head" data-aos="fade-up">
       <p class="ps__eyebrow">International Program Extension</p>
       <h2 class="ps__title">Add $150,000 in Year-One Revenue — Without Derailing Your Mission</h2>
       <p class="ps__lead">
-        Launch a board-approved international extension program that strengthens your school, raises teacher pay,
+        Launch a board-approved international extension that strengthens your school, raises teacher pay,
         and expands what’s possible — with a partner that’s done it before.
       </p>
     </header>
 
-    <!-- Pain Points -->
+    <!-- Metrics / Proof (count up) -->
+    <div class="ps__metrics" role="list" aria-label="Program proof metrics">
+      <div class="ps__stat" role="listitem" data-aos="fade-up">
+        <span class="ps__num" data-prefix="$" data-suffix="+" data-count="150000">0</span>
+        <span class="ps__lbl">Target Year-One Net Potential*</span>
+      </div>
+      <div class="ps__stat" role="listitem" data-aos="fade-up" data-aos-delay="80">
+        <span class="ps__num" data-suffix="%" data-count="100">0</span>
+        <span class="ps__lbl">First-Submission Board Approvals</span>
+      </div>
+      <div class="ps__stat" role="listitem" data-aos="fade-up" data-aos-delay="160">
+        <span class="ps__num" data-suffix="+" data-count="19">0</span>
+        <span class="ps__lbl">Countries Represented</span>
+      </div>
+    </div>
+    <p class="ps__fine" data-aos="fade-up" data-aos-delay="220">*Projection based on typical tuition and cohort sizes. Use the Estimator to tailor assumptions.</p>
+
+    <!-- 3-card band (Pain → How we solve it) -->
     <section class="ps__pain" aria-labelledby="pain-h">
       <h3 id="pain-h" class="ps__sub" data-aos="fade-up">We Know the Pressure You’re Under</h3>
-      <div class="ps__grid3">
-        <article class="ps__card" data-aos="fade-up" data-aos-delay="0">
-          <div class="ps__icon" aria-hidden="true">
-            <!-- budget icon -->
-            <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3 5h18v14H3V5zm2 2v10h14V7H5zm2 2h6v2H7V9zm0 4h10v2H7v-2z"/></svg>
-          </div>
-          <h4>Flat Budgets, Rising Costs</h4>
-          <p>Teacher raises and campus upgrades get delayed because new revenue is unpredictable.</p>
+      <div class="ps__grid ps__grid--3">
+        <article class="ps__card" data-aos="fade-up">
+          <h4 class="ps__cardTitle">Flat Budgets, Rising Costs</h4>
+          <p>Raises and campus upgrades stall without predictable new revenue.</p>
+          <ul class="ps__points">
+            <li>Transparent per-student cost model</li>
+            <li>Conservative net projections</li>
+            <li>Allocation policy for raises/facilities</li>
+          </ul>
         </article>
-        <article class="ps__card" data-aos="fade-up" data-aos-delay="80">
-          <div class="ps__icon" aria-hidden="true">
-            <!-- compass icon -->
-            <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="m14.5 14.5-5 2 2-5 5-2-2 5zM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg>
-          </div>
-          <h4>Unclear Path to Start</h4>
-          <p>Compliance, recruitment, housing, ESL, guardianship — it’s a lot to solve alone.</p>
+
+        <article class="ps__card" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="ps__cardTitle">Unclear Path to Start</h4>
+          <p>Compliance, recruitment, housing, ESL, guardianship — hard to solve alone.</p>
+          <ul class="ps__points">
+            <li>Board-ready policy & risk packet</li>
+            <li>Agent network & intake calendar</li>
+            <li>ESL supports and onboarding</li>
+          </ul>
         </article>
-        <article class="ps__card" data-aos="fade-up" data-aos-delay="160">
-          <div class="ps__icon" aria-hidden="true">
-            <!-- shield icon -->
-            <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3z"/></svg>
-          </div>
-          <h4>Board & Parent Confidence</h4>
-          <p>You need a responsible model that protects culture, standards, and student care.</p>
+
+        <article class="ps__card" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="ps__cardTitle">Board & Parent Confidence</h4>
+          <p>A responsible model that protects culture, standards, and care.</p>
+          <ul class="ps__points">
+            <li>Guardrails & escalation ladder</li>
+            <li>Host family vetting & oversight</li>
+            <li>Audit trails and reporting</li>
+          </ul>
         </article>
       </div>
     </section>
+
+    <!-- CTA row -->
+    <div class="ps__cta" data-aos="fade-up" data-aos-delay="120">
+      <a class="ps__btn" href="#calc">See the Assumptions</a>
+      <a class="ps__btn ps__btn--ghost" href="#challenges">How We Solve It</a>
+    </div>
+  </div>
+
+  <svg class="ps__edge ps__edge--bottom" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 L1200,80 L0,80 Z"></path>
+  </svg>
+</section>
+
 
     <!-- Value Proposition / What You Get -->
     <section class="ps__value" aria-labelledby="value-h">
@@ -1646,6 +1835,46 @@ document.addEventListener("DOMContentLoaded",()=>{
     // Example: const depositUrl = 'https://checkout.stripe.com/c/session_xxx';
     window.location.href = depositUrl;
   });
+</script>
+<script>
+  // Count-up for .ps__num elements when metrics enter view
+  (function(){
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const els = Array.from(document.querySelectorAll('.ps__num'));
+    if (!els.length) return;
+
+    function animate(el){
+      const target = parseFloat(el.dataset.count || '0');
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const dur = 1800;
+      const start = performance.now();
+      const from = 0;
+
+      function step(t){
+        const p = Math.min(1, (t - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = from + (target - from) * (prefersReduced ? 1 : eased);
+        el.textContent = prefix + Math.round(val).toLocaleString('en-US') + suffix;
+        if (p < 1 && !prefersReduced) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const nums = e.target.querySelectorAll('.ps__num');
+          nums.forEach(animate);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    // watch the metrics container for a single trigger
+    const metrics = document.querySelector('.ps__metrics');
+    if (metrics) io.observe(metrics);
+  })();
 </script>
 
 </body>
