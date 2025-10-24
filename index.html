@@ -342,7 +342,91 @@ input[type="range"]{padding:0}
   opacity:.9;
 }
 
-  
+  /* =========================
+   FAITH & IMPACT SECTION
+========================= */
+.faith-impact{
+  background:#f9fbff;
+  color:#0e2a47;
+  padding:84px 0;
+  text-align:center;
+}
+.fi__wrap{width:min(1100px,92vw);margin:0 auto;}
+.fi__eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-weight:800;
+  font-size:.82rem;
+  color:#6c82a8;
+  margin-bottom:6px;
+}
+.fi__title{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:800;
+  font-size:clamp(2rem,3vw,2.6rem);
+  color:#0e2a47;
+  margin:0 0 10px;
+}
+.fi__lead{
+  max-width:72ch;
+  margin:0 auto 28px;
+  color:#455b7f;
+  font-size:1.05rem;
+  opacity:.95;
+}
+
+.fi__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:24px;
+  text-align:left;
+}
+@media(max-width:980px){.fi__grid{grid-template-columns:1fr 1fr;text-align:center}}
+@media(max-width:640px){.fi__grid{grid-template-columns:1fr}}
+
+.fi__card{
+  background:#fff;
+  border:1px solid #e1e8f5;
+  border-radius:16px;
+  padding:24px 22px;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.fi__card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(0,0,0,.12);}
+.fi__card h3{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:700;
+  font-size:1.25rem;
+  color:#0e2a47;
+  margin-bottom:10px;
+}
+.fi__card p{color:#32456b; font-size:.98rem;}
+
+.fi__cta{margin-top:40px;}
+.fi__btn{
+  appearance:none;
+  border:0;
+  cursor:pointer;
+  font-weight:800;
+  letter-spacing:.2px;
+  border-radius:12px;
+  padding:14px 24px;
+  text-decoration:none;
+  background:#0e2a47;
+  color:#fff;
+  box-shadow:0 20px 40px rgba(2,15,30,.18);
+  transition:transform .2s ease,background .2s ease;
+}
+.fi__btn:hover{transform:translateY(-1px);background:#c6aa6a;color:#fff;}
+.fi__note{
+  max-width:70ch;
+  margin:16px auto 0;
+  font-size:.9rem;
+  color:#455b7f;
+  opacity:.9;
+}
+
 </style>
 </head>
 <body>
@@ -597,6 +681,59 @@ input[type="range"]{padding:0}
     </div>
   </div>
 </section>
+
+
+
+<!-- =========================
+     FAITH & IMPACT SECTION
+========================= -->
+<section class="faith-impact" id="faith">
+  <div class="fi__wrap">
+    <header class="fi__head" data-aos="fade-up">
+      <p class="fi__eyebrow">A Mission That Goes Beyond Numbers</p>
+      <h2 class="fi__title">Your Growth Can Change a Generation</h2>
+      <p class="fi__lead">
+        Every new student, every scholarship, every expanded classroom represents more than progress — it’s a story of redemption and purpose.
+        When your school grows, the reach of your ministry grows with it.
+      </p>
+    </header>
+
+    <div class="fi__grid">
+      <article class="fi__card" data-aos="fade-up">
+        <h3>Reach Lives You Couldn’t Before</h3>
+        <p>
+          Through international partnerships and local outreach, your expansion becomes an open door for families who might never
+          experience Christian education or the hope it brings.
+        </p>
+      </article>
+
+      <article class="fi__card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Build Influence That Echoes Generations</h3>
+        <p>
+          The students you invest in today will become the leaders, missionaries, and innovators of tomorrow — carrying the values
+          of faith and excellence into every corner of society.
+        </p>
+      </article>
+
+      <article class="fi__card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Expand Your Kingdom Impact</h3>
+        <p>
+          What begins as sustainable growth in your school becomes a ripple of restoration that touches nations.  
+          This isn’t just about enrollment — it’s about stewardship, calling, and purpose.
+        </p>
+      </article>
+    </div>
+
+    <div class="fi__cta" data-aos="fade-up" data-aos-delay="250">
+      <a class="fi__btn" href="#decision">Take the Next Step</a>
+      <p class="fi__note">
+        Legacy Builders exists to equip faith-based schools with the tools and strategy to reach more students — and through them, more hearts.
+      </p>
+    </div>
+  </div>
+</section>
+
+  
 
 <!-- CALCULATOR -->
 <section class="calc" id="calc">
