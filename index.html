@@ -1,1133 +1,270 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Legacy Builders — Empowering Private Schools</title>
 
-  <!-- AOS (Animate On Scroll) CSS -->
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<!-- AOS CSS -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
 <style>
 :root{
-  --blue:#0e2a47;
-  --light:#f9fbff;
-  --accent:#c6aa6a;
-  --shadow:0 20px 40px rgba(0,0,0,.12);
+  --blue:#0e2a47; --blue-2:#0c213c;
+  --light:#f9fbff; --ink:#1b2434; --muted:#4a648d;
+  --accent:#c6aa6a; --line:#e6ecf7;
+  --shadow-sm:0 10px 24px rgba(0,0,0,.06);
+  --shadow-lg:0 30px 60px rgba(0,0,0,.25);
 }
+
+/* Base */
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;color:#1b2434;background:var(--light);line-height:1.6}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--light);line-height:1.6}
 section{padding:80px 0}
-.container{width:min(1100px,92vw);margin-inline:auto;text-align:center}
+.container{width:min(1100px,92vw);margin-inline:auto}
 
-/* ===== HERO ===== */
+/* ---------------- HERO (split with Calendly) ---------------- */
 .hero{
-  background:linear-gradient(rgba(14,42,71,.7),rgba(14,42,71,.7)),
-             url('https://internationalprogram.netlify.app/program-vid.mp4') center/cover no-repeat;
-  color:#fff;
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
-  min-height:80vh;text-align:center;padding:60px 20px;
+  position:relative; min-height:90vh; color:#fff; overflow:hidden; background:var(--blue);
+  display:flex; align-items:center;
 }
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.4rem);margin-bottom:18px}
-.hero p{max-width:680px;margin-inline:auto;font-size:1.05rem;margin-bottom:30px}
-.hero a{
-  display:inline-block;padding:14px 28px;background:#fff;color:var(--blue);
-  border-radius:10px;font-weight:700;text-decoration:none;box-shadow:var(--shadow);
-  transition:all .3s ease;
-}
-.hero a:hover{background:var(--accent);color:#fff}
-
-/* ===== PAINPOINTS SECTION ===== */
-.painpoints{background:#fff;color:var(--blue)}
-.painpoints h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:10px}
-.painpoints .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;margin-top:40px}
-.card{background:var(--light);border-radius:16px;padding:30px;box-shadow:var(--shadow);text-align:left;transition:transform .3s ease}
-.card:hover{transform:translateY(-4px)}
-.card svg{width:40px;height:40px;margin-bottom:16px;fill:var(--blue)}
-.card h3{font-size:1.25rem;margin-bottom:10px;font-weight:800}
-.card p{color:#32456b}
-
-/* ===== ANSWER / CTA SECTION ===== */
-.answer{background:var(--blue);color:#fff;text-align:center}
-.answer h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:12px}
-.answer p{max-width:720px;margin:0 auto 36px}
-.answer a{
-  display:inline-block;padding:14px 32px;background:#fff;color:var(--blue);
-  border-radius:10px;font-weight:700;text-decoration:none;transition:all .3s ease;
-}
-.answer a:hover{background:var(--accent);color:#fff}
-
-/* ===== ABOUT SECTION ===== */
-.about{background:#f2f6fc;color:var(--blue);text-align:center}
-.about h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:14px}
-.about p{max-width:780px;margin:0 auto 24px}
-.about strong{color:var(--accent)}
-
-  /* ===== FACTS SECTION ===== */
-.lb-facts{
-  background:linear-gradient(rgba(14,42,71,.95),rgba(14,42,71,.95)),
-             url('https://internationalprogram.netlify.app/media/campus-blur.jpg') center/cover no-repeat;
-  color:#fff; padding:70px 0;
-}
-.eyebrow{
-  letter-spacing:.16em;text-transform:uppercase;font-weight:800;font-size:.8rem;
-  color:#dfe8f6;text-align:center;margin:0 0 6px;
-}
-.facts-title{
-  font-family:'Cormorant Garamond',serif;font-weight:700;text-align:center;
-  font-size:clamp(2rem,3vw,2.6rem);margin:0;
-}
-.facts-lead{
-  max-width:78ch;margin:10px auto 28px;text-align:center;color:#e9f0fb;
-}
-.facts-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:stretch;
-}
-@media (max-width:980px){.facts-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.facts-grid{grid-template-columns:1fr}}
-.fact{
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);
-  border-radius:16px;padding:22px 20px 18px;backdrop-filter:blur(6px);
-}
-.fact-num{
-  font-weight:700;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;margin-bottom:14px;
-}
-.fact-rule{
-  height:2px;background:rgba(255,255,255,.5);width:72px;margin:0 0 12px;
-}
-.fact-label{font-weight:800;min-height:2.6em;display:flex;align-items:center}
-.fact-note{opacity:.85;margin-top:10px;font-size:.92rem}
-
-  /* ===== BLUEPRINT PATH SECTION ===== */
-.bp{
-  position: relative;
-  background: linear-gradient(180deg, #0e2a47 0%, #0c213c 100%);
-  color: #fff;
-  overflow: hidden;
-  padding: 84px 0;
-}
-.bp__wrap{position:relative}
-.bp__path{
-  position:absolute; inset:0; width:100%; height:100%; z-index:0; opacity:.55;
-}
-.bp__path path{
-  fill:none;
-  stroke:#bcd3f5;                 /* blueprint ink */
-  stroke-width:6;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  stroke-dasharray:1;              /* works with pathLength="1" */
-  stroke-dashoffset:1;
-  transition:stroke-dashoffset 1600ms cubic-bezier(.2,.8,.2,1);
-}
-
-/* grid of steps sits above the path */
-.bp__grid{
-  position:relative; z-index:1;
-  display:grid; gap:28px;
-  grid-template-columns: repeat(2, minmax(280px,1fr));
-  align-items:stretch;
-}
-@media (max-width: 900px){
-  .bp__grid{grid-template-columns:1fr}
-}
-
-.bp__step{
-  background: rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:18px;
-  padding:24px 22px;
-  box-shadow: 0 24px 48px rgba(0,0,0,.18);
-  backdrop-filter: blur(6px);
-  text-align:left;
-}
-.bp__icon{
-  width:48px; height:48px; border-radius:12px;
-  display:grid; place-items:center; margin-bottom:12px;
-  background: rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
-}
-.bp__icon svg{width:26px;height:26px;fill:#fff}
-.bp__step h3{
-  font:700 1.25rem/1.2 "Cormorant Garamond", serif; margin-bottom:6px;
-}
-.bp__step p{opacity:.95}
-
-/* when section is in view, draw the path */
-.bp.is-drawn .bp__path path{ stroke-dashoffset:0; }
-
-/* ===== LB CALC (COMPACT, BLUE/WHITE) ===== */
-.lb-calc{
-  background:#f7faff;
-  padding:60px 0;
-  color:#0e2a47;
-}
-.lb-calc__wrap{width:min(980px,92vw);margin:0 auto}
-.lb-calc__head{text-align:center;margin-bottom:18px}
-.lb-calc__head h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:700;
-  font-size: clamp(1.6rem, 3vw, 2.1rem);
-  margin:0 0 6px;
-}
-.lb-calc__head .muted{color:#5874a0}
-
-.lb-calc__grid{
-  display:grid; gap:18px;
-  grid-template-columns: 1.05fr .95fr; /* smaller than full */
-}
-@media (max-width: 980px){
-  .lb-calc__grid{grid-template-columns:1fr}
-}
-
-.lb-calc .card{
-  background:#fff; border:1px solid #e1e8f5; border-radius:16px; box-shadow:0 10px 24px rgba(0,0,0,.06);
-  text-align:left;
-}
-.lb-calc .card .hd{padding:14px 16px;background:linear-gradient(180deg,#fff,#f7fbff);border-bottom:1px solid #e9f0fb}
-.lb-calc .card .bd{padding:14px 16px}
-.lb-calc .card h3{margin:0;font-size:1.05rem}
-.lb-calc .stack{display:grid; gap:12px}
-.lb-calc label{font-weight:700; font-size:12px; color:#5d6f8d; display:block; margin:0 0 6px}
-.lb-calc input[type="number"], .lb-calc input[type="range"], .lb-calc select, .lb-calc .taglist{
-  width:100%; padding:10px 10px; border:1px solid #d7e3f7; border-radius:10px; background:#fff; font:inherit; color:#0e2a47;
-}
-.lb-calc input[type="range"]{padding:0}
-.lb-calc .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-.lb-calc .help{font-size:11px; color:#6a7da1; margin-top:4px}
-
-.lb-calc .kpi-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
-@media (max-width: 800px){.lb-calc .kpi-grid{grid-template-columns:1fr}}
-.lb-calc .kpi{
-  background:linear-gradient(180deg,#ffffff, #f7fbff);
-  border:1px solid #e1e8f5; border-radius:12px; padding:12px 12px;
-}
-.lb-calc .kpi h4{margin:0; font-size:11px; font-weight:900; color:#5874a0; text-transform:uppercase; letter-spacing:.8px}
-.lb-calc .kpi .big{font-size: clamp(18px, 3vw, 28px); font-weight:800; margin-top:4px; color:#0e2a47}
-
-.lb-calc .impact{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
-@media (max-width:900px){.lb-calc .impact{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.lb-calc .impact{grid-template-columns:1fr}}
-.lb-calc .impact .tile{
-  background:#fff; border:1px solid #e1e8f5; border-radius:12px; padding:12px 12px;
-}
-.lb-calc .impact .num{font-weight:900; font-size:22px; color:#0e2a47}
-.lb-calc .impact .lbl{font-size:12px; color:#5874a0}
-
-.lb-calc .actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
-.lb-calc .btn{
-  appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px;
-  border-radius:10px; padding:10px 14px; transition:.2s ease;
-  background:#0e2a47; color:#fff; box-shadow:0 8px 18px rgba(2,15,30,.15);
-}
-.lb-calc .btn:hover{transform:translateY(-1px)}
-.lb-calc .muted{color:#5874a0}
-.lb-calc .bar{height:6px; background:#edf2fe; border-radius:999px; overflow:hidden}
-.lb-calc .bar > span{display:block; height:100%;
-  background:linear-gradient(90deg, #0e2a47, #4c6aa3); width:0}
-.lb-calc .hr{border:0; border-top:1px solid #e8eef9; margin:14px 0}
-
-.lb-calc .taglist{display:flex; flex-wrap:wrap; gap:6px; padding:8px; border:1px solid #d7e3f7; border-radius:10px; background:#fff}
-.lb-calc .taglist label{margin:0}
-.lb-calc .taglist .tag{
-  display:inline-flex; align-items:center; gap:8px; border:1px solid #e1e8f5; border-radius:999px; padding:6px 10px; background:#fff; font-size:12px
-}
-
-.lb-calc .warn{color:#b45309; font-weight:700}
-.lb-calc .ok{color:#16a34a; font-weight:700}
-.lb-calc .bad{color:#dc2626; font-weight:700}
-.lb-calc .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:12px}
-.lb-calc .summary{white-space:pre-wrap; border:1px solid #e1e8f5; border-radius:10px; padding:10px; background:#fff}
-
-  /* ===== JOURNEY SECTION ===== */
-.journey{
-  background:#f9fbff;
-  color:#0e2a47;
-  text-align:center;
-  padding:80px 0;
-  position:relative;
-  overflow:hidden;
-}
-.journey__title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:700;
-  font-size:clamp(1.8rem,3vw,2.4rem);
-  margin-bottom:8px;
-}
-.journey__lead{
-  color:#5771a1;
-  max-width:700px;
-  margin:0 auto 40px;
-}
-.journey__progress{
-  position:relative;
-  width:min(900px,85%);
-  height:6px;
-  margin:0 auto 60px;
-}
-.journey__line-bg{
-  position:absolute;
-  inset:0;
-  background:#d5def1;
-  border-radius:999px;
-}
-.journey__line-fill{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,#0e2a47,#4b6da7);
-  border-radius:999px;
-  width:0;
-  transition:width 2s cubic-bezier(.2,.8,.2,1);
-}
-.journey__grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:28px;
-  max-width:1100px;
-  margin:0 auto;
-}
-@media(max-width:980px){.journey__grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.journey__grid{grid-template-columns:1fr}}
-
-.journey__step{
-  background:#fff;
-  border:1px solid #e1e8f5;
-  border-radius:16px;
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
-  padding:22px 18px;
-  position:relative;
-  z-index:1;
-}
-.journey__num{
-  width:48px; height:48px;
-  margin:0 auto 12px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#0e2a47,#4b6da7);
-  color:#fff;
-  font-weight:800;
-  font-size:1.3rem;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 14px rgba(0,0,0,.15);
-}
-.journey__step h3{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:700;
-  font-size:1.2rem;
-  margin-bottom:6px;
-}
-.journey__step p{
-  font-size:.95rem;
-  color:#455b7f;
-}
-
-  /* ===== HERO (CALENDAR VERSION) ===== */
-.hero--calendar{
-  position:relative;overflow:hidden;color:#fff;min-height:90vh;
-  display:flex;align-items:center;background:#0e2a47;
-}
-.hero__video{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  filter:brightness(.75) contrast(1.1);
-  z-index:0;
-}
-.hero__overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(14,42,71,.9) 0%,rgba(14,42,71,.65) 45%,rgba(14,42,71,.4) 100%);
-  z-index:1;
-}
+.hero__video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.85) contrast(1.1); z-index:0;}
+.hero__overlay{position:absolute; inset:0; z-index:1; background:linear-gradient(90deg, rgba(14,42,71,.9) 0%, rgba(14,42,71,.7) 40%, rgba(14,42,71,.35) 100%);}
 .hero__grid{
-  position:relative;z-index:2;display:grid;align-items:center;
-  grid-template-columns:1.1fr 0.9fr;gap:40px;
-  width:min(1200px,90vw);margin:auto;padding:80px 0;
+  position:relative; z-index:2; width:min(1200px,92vw); margin:auto; padding:80px 0;
+  display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
 }
-@media(max-width:960px){.hero__grid{grid-template-columns:1fr;padding:60px 0}}
+@media (max-width:960px){ .hero__grid{grid-template-columns:1fr; padding:64px 0} }
 
-.hero__text h1{
-  font-family:"Cormorant Garamond",serif;font-weight:700;
-  font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin-bottom:16px;
-}
-.hero__text p{font-size:1.05rem;line-height:1.6;max-width:600px;margin-bottom:22px;opacity:.95}
-.hero__points{list-style:none;padding:0;margin:0;color:#e8eef6}
-.hero__points li{margin-bottom:8px;font-weight:600;font-size:.95rem}
-
-.hero__calendar{
-  display:flex;align-items:center;justify-content:center;
-}
-.calendar-card{
-  background:#fff;color:#0e2a47;width:100%;max-width:420px;
-  border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.25);
-  padding:24px 20px 28px;text-align:center;
-  transform:translateY(10px);transition:transform .5s cubic-bezier(.2,.8,.2,1);
-}
-.calendar-card:hover{transform:translateY(0)}
-.calendar-card h3{
-  font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.6rem;margin-bottom:8px;color:#0e2a47;
-}
-.calendar-card p{font-size:.95rem;color:#455b7f;margin-bottom:14px}
-.calendar-frame{
-  border-radius:12px;overflow:hidden;border:1px solid #e0e7f3;
-  box-shadow:inset 0 0 0 2px #e6ecf7;
-}
-.calendar-note{
-  display:block;margin-top:10px;font-size:.8rem;color:#6a7da1;
-}
-
-/* ===== SIMPLE FOOTER ===== */
-.simple-footer{
-  background:#0e2a47;
-  color:#e9effa;
-  border-top:1px solid rgba(255,255,255,.08);
-  padding:16px 0;
-  font: 500 14px/1.4 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-}
-.simple-footer .sf__row{
-  width:min(1100px,92vw);
-  margin:0 auto;
-  display:grid;
-  grid-template-columns: 1fr auto auto;
-  align-items:center;
-  gap:14px;
-}
-@media (max-width:900px){
-  .simple-footer .sf__row{
-    grid-template-columns:1fr;
-    text-align:center;
-    row-gap:6px;
-  }
-}
-.sf__name{
-  font-family:"Cormorant Garamond", serif;
-  font-weight:700;
-  letter-spacing:.2px;
-  color:#ffffff;
-}
-.sf__contact{
-  display:flex; flex-wrap:wrap; gap:8px; align-items:center;
-  margin:0; font-style:normal; color:#d7e3f7;
-}
-.sf__contact .dot{opacity:.6}
-.sf__contact a{
-  color:#d7e3f7; text-decoration:none; border-bottom:1px solid transparent;
-}
-.sf__contact a:hover{color:#ffffff; border-bottom-color:#ffffff}
-.sf__copy{color:#b9c7df; white-space:nowrap}
-/* Highlight number */
-.hero__text .hl{color:#c6aa6a;text-decoration:underline;text-underline-offset:6px}
-
-/* Lead paragraph tighter and clearer */
-.hero__lead{max-width:640px;margin:10px 0 18px;color:#f2f6ff;opacity:.96}
-
-/* Icon row */
-.hero__icons{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:12px}
-.hero__icons li{
-  display:grid; grid-template-columns:42px 1fr; gap:12px;
-  align-items:start; background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:10px 12px;
-}
-.ic{width:28px;height:28px;color:#ffffff;opacity:.95}
-.hero__icons p{margin:0;color:#e9f1ff}
-.hero__icons strong{color:#ffffff}
-/* ===== Minimal Hero (left block, navy overlay) ===== */
-.hero-min{
-  position:relative; min-height:88vh; display:flex; align-items:center; overflow:hidden; background:#0e2a47;
-}
-.hero-min__video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.86) contrast(1.06); z-index:0;}
-.hero-min__overlay{
-  position:absolute; inset:0; z-index:1;
-  /* soft blue-left overlay like your ref */
-  background:
-    linear-gradient(90deg, rgba(14,42,71,.88) 0%, rgba(14,42,71,.70) 42%, rgba(14,42,71,.32) 100%);
-}
-.hero-min__content{
-  position:relative; z-index:2; color:#fff;
-  width:min(760px, 92vw); margin-left: max(6vw, 40px);
-  padding: 56px 0;
-}
-.hero-min__eyebrow{
-  margin:0 0 10px; letter-spacing:.18em; text-transform:uppercase; font-weight:800; font-size:.85rem; color:#d8e4f7;
-}
-.hero-min__title{
-  margin:0 0 16px; font-family:"Cormorant Garamond", serif;
-  font-weight:800; line-height:1; letter-spacing:.5px;
-  font-size: clamp(2.4rem, 10vw, 5.2rem); /* BIG, like screenshot */
-}
-.hero-min__lead{
-  max-width:560px; font-size:1.05rem; line-height:1.65; color:#eef3ff; opacity:.95; margin:0 0 22px;
-}
-.btn-min{
+.hero__eyebrow{letter-spacing:.18em; text-transform:uppercase; font-weight:800; font-size:.9rem; color:#dfe6f8; margin-bottom:8px}
+.hero__title{font-family:"Cormorant Garamond",serif; font-weight:800; line-height:1.05; font-size:clamp(2.6rem,7vw,5rem); margin:0 0 14px}
+.hero__lead{max-width:620px; color:#eef4ff; opacity:.96; font-size:1.08rem; margin-bottom:20px}
+.hero__btn{
   appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px;
-  padding:14px 22px; border-radius:12px; background:#fff; color:#0e2a47;
-  box-shadow:0 20px 40px rgba(0,0,0,.22);
-  transition:transform .25s ease, background .25s ease, color .25s ease;
+  border-radius:12px; padding:14px 22px; background:#fff; color:var(--blue);
+  box-shadow:var(--shadow-lg); transition:transform .25s ease, background .25s ease, color .25s ease;
 }
-.btn-min:hover{transform:translateY(-2px); background:#c6aa6a; color:#fff;}
+.hero__btn:hover{transform:translateY(-2px); background:var(--accent); color:#fff}
 
-@media (max-width: 900px){
-  .hero-min__content{ margin-left: 5vw; padding: 48px 0; }
-  .hero-min__title{ font-size: clamp(2.2rem, 12vw, 4rem); }
-}
-
-/* ===== HERO ===== */
-.hero-modern {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 90vh;
-  color: #fff;
-  overflow: hidden;
-  background: #0e2a47;
-}
-.hero-modern__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(.85) contrast(1.1);
-  z-index: 0;
-}
-.hero-modern__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    90deg,
-    rgba(14, 42, 71, 0.9) 0%,
-    rgba(14, 42, 71, 0.7) 40%,
-    rgba(14, 42, 71, 0.35) 100%
-  );
-}
-.hero-modern__content {
-  position: relative;
-  z-index: 2;
-  width: min(720px, 92vw);
-  margin-left: max(6vw, 40px);
-  padding: 80px 0;
-}
-.hero-modern__eyebrow {
-  text-transform: uppercase;
-  letter-spacing: .16em;
-  font-weight: 700;
-  font-size: .9rem;
-  margin-bottom: 6px;
-  color: #dfe6f8;
-}
-.hero-modern__title {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.8rem, 8vw, 5.2rem);
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 18px;
-}
-.hero-modern__lead {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 600px;
-  color: #eef4ff;
-  margin-bottom: 28px;
-}
-.hero-modern__btn {
-  appearance: none;
-  border: none;
-  cursor: pointer;
-  padding: 14px 28px;
-  border-radius: 10px;
-  background: #fff;
-  color: #0e2a47;
-  font-weight: 800;
-  letter-spacing: .2px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
-  transition: all .25s ease;
-}
-.hero-modern__btn:hover {
-  background: #c6aa6a;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 900px) {
-  .hero-modern__content {
-    margin-left: 5vw;
-    padding: 60px 0;
-  }
-  .hero-modern__title {
-    font-size: clamp(2.4rem, 10vw, 4.4rem);
-  }
-}
-
-/* ===== SPLIT HERO ===== */
-.hero-split{
-  position:relative;
-  overflow:hidden;
-  min-height:90vh;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  background:#0e2a47;
-}
-.hero-split__video{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;filter:brightness(.85) contrast(1.1);z-index:0;
-}
-.hero-split__overlay{
-  position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,rgba(14,42,71,.9) 0%,rgba(14,42,71,.75) 40%,rgba(14,42,71,.4) 100%);
-}
-.hero-split__grid{
-  position:relative;z-index:2;
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:50px;
-  align-items:center;
-  width:min(1200px,92vw);
-  margin:auto;
-  padding:80px 0;
-}
-@media(max-width:960px){
-  .hero-split__grid{grid-template-columns:1fr;padding:60px 0;}
-}
-
-/* RIGHT Calendly Card */
-.hero-split__calendar{
-  display:flex;align-items:center;justify-content:center;
-}
+.hero__cal{display:flex; align-items:center; justify-content:center}
 .cal-card{
-  background:#fff;
-  color:#0e2a47;
-  border-radius:16px;
-  box-shadow:0 30px 60px rgba(0,0,0,.25);
-  padding:24px 22px 30px;
-  text-align:center;
-  width:100%;
-  max-width:420px;
-  transform:translateY(10px);
-  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  background:#fff; color:var(--blue); border-radius:18px; box-shadow:var(--shadow-lg);
+  padding:22px; width:100%; max-width:420px; text-align:center; transform:translateY(8px); transition:transform .5s cubic-bezier(.2,.8,.2,1);
 }
-.cal-card:hover{transform:translateY(0);}
-.cal-card h3{
-  font-family:"Cormorant Garamond",serif;
-  font-weight:700;
-  font-size:1.5rem;
-  margin-bottom:6px;
-}
-.cal-card .cal-sub{font-size:.95rem;color:#5871a0;margin-bottom:14px;}
-.cal-frame{
-  border:1px solid #e0e7f5;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:inset 0 0 0 2px #e6ecf7;
-}
-.cal-note{display:block;margin-top:10px;font-size:.8rem;color:#6a7da1;}
+.cal-card:hover{transform:translateY(0)}
+.cal-card h3{font-family:"Cormorant Garamond",serif; font-weight:700; font-size:1.6rem; margin-bottom:6px}
+.cal-card p{color:#455b7f; margin-bottom:12px}
+.cal-frame{border:1px solid #e0e7f5; border-radius:12px; overflow:hidden; box-shadow:inset 0 0 0 2px #e6ecf7}
 
-/* Clean left column text */
-.eyebrow{
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  font-weight:700;
-  font-size:.9rem;
-  color:#d8e4f7;
-  margin-bottom:8px;
-}
-.hero-main-title{
-  font-family:"Cormorant Garamond",serif;
-  font-weight:800;
-  font-size:clamp(2.6rem,7vw,5.4rem);
-  line-height:1.05;
-  margin:0 0 16px;
-  color:#fff;
-}
-.hero-sub{
-  font-size:1.08rem;
-  line-height:1.65;
-  color:#eef3ff;
-  opacity:.95;
-  max-width:620px;
-  margin-bottom:18px;
-}
-
-/* Adjust layout balance */
-.hero-split__grid{
-  grid-template-columns:1.05fr .95fr;
-  align-items:center;
-  gap:60px;
-}
-@media(max-width:960px){
-  .hero-split__grid{grid-template-columns:1fr;}
-  .hero-main-title{text-align:center;}
-  .hero-sub{text-align:center;margin-inline:auto;}
-}
-
-  /* ===== PROGRAM SHOWCASE ===== */
-.program-showcase{
-  background: linear-gradient(180deg,#f7faff 0%, #ffffff 100%);
-  color: var(--blue);
-  padding: 84px 0;
-}
-.ps__wrap{width:min(1100px,92vw);margin:0 auto}
-.ps__eyebrow{
-  text-transform:uppercase; letter-spacing:.16em; font-weight:800; font-size:.85rem; color:#6c82a8; margin:0 0 8px;
-}
-.ps__title{
-  font-family:'Cormorant Garamond',serif; font-weight:800; line-height:1.1;
-  font-size:clamp(1.9rem,3.2vw,2.6rem); margin:0 0 10px; color:#0e2a47;
-}
-.ps__lead{max-width:780px; color:#455b7f; margin:0 0 28px}
-
-.ps__sub{
-  font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(1.4rem,2.2vw,1.8rem); margin:26px 0 10px;
-}
-
-.ps__grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-@media (max-width:980px){.ps__grid3{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){.ps__grid3{grid-template-columns:1fr}}
-
-.ps__card{
-  background:#fff; border:1px solid #e1e8f5; border-radius:16px; padding:18px 16px;
-  box-shadow:0 10px 24px rgba(0,0,0,.06); text-align:left;
-}
-.ps__card h4{margin:6px 0 6px; font-size:1.05rem}
-.ps__card p{color:#4a648d; margin:0}
-.ps__icon{
-  width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
-  background:#f0f5ff; color:#0e2a47; border:1px solid #e1e8f5;
-}
-
-.ps__value{margin-top:18px}
-.ps__grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
-@media (max-width:980px){.ps__grid4{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.ps__grid4{grid-template-columns:1fr}}
-.ps__tile{
-  background:linear-gradient(180deg,#ffffff,#f7fbff);
-  border:1px solid #e1e8f5; border-radius:14px; padding:16px 14px; text-align:center;
-}
-.ps__num{display:block; font-weight:800; font-size:clamp(20px,3vw,28px); color:#0e2a47}
-.ps__lbl{display:block; font-size:.92rem; color:#5874a0; margin-top:4px}
-.ps__fine{font-size:.85rem; color:#6a7da1; margin-top:10px}
-
-.ps__steps{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px
-}
-@media (max-width:980px){.ps__steps{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.ps__steps{grid-template-columns:1fr}}
-.ps__step{
-  background:#fff; border:1px solid #e1e8f5; border-radius:16px; padding:18px 16px;
-  box-shadow:0 10px 24px rgba(0,0,0,.06);
-}
-.ps__badge{
-  width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#0e2a47,#4b6da7); color:#fff; font-weight:800; margin-bottom:10px;
-}
-
-.ps__gallery{margin-top:18px}
-.ps__gridGal{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px}
-@media (max-width:980px){.ps__gridGal{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.ps__gridGal{grid-template-columns:1fr}}
-.ps__shot{margin:0}
-.ps__shot img{width:100%;height:100%;object-fit:cover;border-radius:14px;border:1px solid #e1e8f5;box-shadow:0 10px 24px rgba(0,0,0,.06)}
-
-.ps__cta{margin-top:26px; text-align:center}
-.ps__ctaLead{max-width:720px; margin:0 auto 12px; color:#455b7f}
-.ps__ctaRow{display:flex; gap:12px; align-items:center; justify-content:center}
-.ps__btn{
-  appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px;
-  border-radius:12px; padding:14px 22px; background:#0e2a47; color:#fff;
-  box-shadow:0 20px 40px rgba(2,15,30,.18); transition:transform .2s ease, background .2s ease;
-}
-.ps__btn:hover{transform:translateY(-1px); background:#c6aa6a; color:#fff}
-.ps__note{margin:0; font-size:.9rem; color:#6a7da1}
-.ps__muted{margin:12px 0 0; color:#6a7da1; font-size:.95rem}
-.ps__muted a{color:#4b6da7; text-decoration:none; border-bottom:1px solid #cfdaf2}
-.ps__muted a:hover{border-bottom-color:#4b6da7}
-
-/* HERO DEPOSIT CTA (Left section add-on) */
-.hero-deposit{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:16px;
-  padding:20px 22px;
-  margin-top:24px;
-  backdrop-filter:blur(8px);
-  box-shadow:0 10px 24px rgba(0,0,0,.15);
-  color:#fff;
-  max-width:520px;
-}
-.hero-deposit h3{
-  font-family:"Cormorant Garamond",serif;
-  font-weight:700;
-  font-size:1.5rem;
-  margin:0 0 6px;
-  color:#fff;
-}
-.hero-deposit p{font-size:.95rem;line-height:1.5;color:#e9eef9;margin:0 0 10px}
-.hero-deposit__points{
-  list-style:none;padding:0;margin:0 0 12px;display:grid;gap:6px
-}
-.hero-deposit__points li{
-  display:grid;grid-template-columns:16px 1fr;align-items:start;gap:8px;
-  color:#dbe6ff;font-size:.93rem;
-}
-.hero-deposit__points li::before{
-  content:"";width:8px;height:8px;border-radius:50%;
-  background:#c6aa6a;margin-top:.4rem;
-}
-.hero-deposit__btn{
-  appearance:none;border:0;cursor:pointer;
-  background:#fff;color:#0e2a47;font-weight:800;
-  border-radius:10px;padding:12px 20px;
-  box-shadow:0 12px 24px rgba(0,0,0,.25);
-  transition:.25s ease;
-}
-.hero-deposit__btn:hover{background:#c6aa6a;color:#fff;transform:translateY(-1px)}
-.hero-deposit__note{
-  font-size:.85rem;color:#d0dcf7;margin-top:8px;
-}
-.hero-deposit__note a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
-
-  /* Minimal Deposit Button CTA in Hero */
-.hero-deposit-btn {
-  appearance: none;
-  border: none;
-  cursor: pointer;
-  margin-top: 18px;
-  padding: 16px 30px;
-  border-radius: 12px;
-  background: #ffffff;
-  color: #0e2a47;
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: .2px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
-  transition: all .25s ease;
-}
-.hero-deposit-btn:hover {
-  background: #c6aa6a;
-  color: #fff;
-  transform: translateY(-2px);
-}
-.hero-deposit-note {
-  margin-top: 12px;
-  font-size: .9rem;
-  color: #e9eef9;
-  opacity: .9;
-  max-width: 420px;
-}
-.hero-deposit-note strong {
-  color: #fff;
-}
-
-/* =========================
-   CHALLENGES → SOLUTIONS (White, Clean)
-========================= */
-:root{
-  --blue:#0e2a47;
-  --light:#f9fbff;
-  --ink:#1b2434;
-  --muted:#4a648d;
-  --accent:#c6aa6a;
-  --line:#e6ecf7;
-  --card:#ffffff;
-  --shadow:0 10px 24px rgba(0,0,0,.06);
-}
-
-.cp{ background:#fff; padding:80px 0; color:var(--ink); }
-.cp__wrap{ width:min(1100px,92vw); margin:0 auto; }
-
-.cp__head{ text-align:center; margin-bottom:26px; }
-.cp__eyebrow{
-  letter-spacing:.16em; text-transform:uppercase; font-weight:800; font-size:.8rem; color:#6c82a8; margin-bottom:6px;
-}
-.cp__title{
-  font-family:"Cormorant Garamond",serif; font-weight:800;
-  font-size:clamp(1.9rem,3.2vw,2.6rem); margin:0 0 8px; color:var(--blue);
-}
-.cp__lead{ max-width:72ch; margin:0 auto; color:#5874a0; }
-
-/* list rows */
-.cp__list{ display:grid; gap:16px; margin-top:22px; }
+/* ---------------- CHALLENGES → SOLUTIONS (white) ---------------- */
+.cp{ background:#fff; }
+.cp__head{text-align:center; margin-bottom:24px}
+.cp__eyebrow{letter-spacing:.16em; text-transform:uppercase; font-weight:800; font-size:.82rem; color:#6c82a8; margin-bottom:6px}
+.cp__title{font-family:"Cormorant Garamond",serif; font-weight:800; font-size:clamp(2rem,3.2vw,2.6rem); color:var(--blue); margin:0 0 6px}
+.cp__lead{max-width:72ch; margin:0 auto; color:#5874a0}
+.cp__list{display:grid; gap:16px; margin-top:22px}
 .cp__row{
   display:grid; grid-template-columns:1.05fr .95fr; gap:18px;
-  background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
-  padding:18px;
+  background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-sm); padding:18px; position:relative;
 }
-@media (max-width:980px){ .cp__row{ grid-template-columns:1fr } }
-
-.cp__col{ position:relative; padding:10px; }
-.cp__col + .cp__col{ border-left:1px solid var(--line); }
-@media (max-width:980px){ .cp__col + .cp__col{ border-left:0; border-top:1px solid var(--line); padding-top:18px; } }
-
-/* left cap bar for the whole row (blue accent) */
-.cp__row::before{
-  content:""; position:absolute; left:-1px; top:12px; bottom:12px; width:4px; border-radius:8px;
-  background:linear-gradient(180deg, var(--blue), #4b6da7);
-}
-
-/* labels */
-.cp__label{
-  display:inline-block; font-weight:900; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
-  color:#6c82a8; background:#f3f6ff; border:1px solid var(--line); border-radius:999px; padding:6px 10px; margin-bottom:8px;
-}
-.cp__label--solve{ color:#0e2a47; background:#eaf1ff; border-color:#dbe6ff; }
-
-.cp__q{ display:flex; align-items:flex-start; gap:10px; font:700 1.1rem/1.25 "Cormorant Garamond",serif; color:var(--blue); margin:0 0 6px; }
-.cp__ico{ width:28px; height:28px; display:grid; place-items:center; color:#4b6da7; }
-.cp__desc{ margin:0; color:#4a648d; }
-
-/* bullets */
-.cp__bullets{ margin:0 0 8px; padding-left:0; list-style:none; display:grid; gap:6px; }
-.cp__bullets li{
-  display:grid; grid-template-columns:10px 1fr; align-items:start; gap:10px; color:#2a3b59; font-size:.97rem;
-}
-.cp__bullets li::before{
-  content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-top:.45rem;
-}
-
-/* links + cta */
-.cp__link{
-  color:#365e9e; text-decoration:none; border-bottom:1px solid #cfdaf2;
-}
-.cp__link:hover{ border-bottom-color:#365e9e; }
-
-.cp__cta{
-  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:20px;
-}
+.cp__row::before{content:""; position:absolute; left:-1px; top:12px; bottom:12px; width:4px; border-radius:8px; background:linear-gradient(180deg, var(--blue), #4b6da7)}
+@media (max-width:980px){ .cp__row{grid-template-columns:1fr} .cp__row::before{left:12px; width:3px} }
+.cp__label{display:inline-block; font-weight:900; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:#6c82a8; background:#f3f6ff; border:1px solid var(--line); border-radius:999px; padding:6px 10px; margin-bottom:8px}
+.cp__label--solve{color:var(--blue); background:#eaf1ff; border-color:#dbe6ff}
+.cp__q{font:700 1.12rem/1.25 "Cormorant Garamond",serif; color:var(--blue); margin:0 0 6px}
+.cp__desc{color:#4a648d; margin:0}
+.cp__bullets{list-style:none; margin:8px 0 8px; padding:0; display:grid; gap:6px}
+.cp__bullets li{display:grid; grid-template-columns:10px 1fr; gap:10px; color:#2a3b59; font-size:.98rem}
+.cp__bullets li::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-top:.45rem}
+.cp__link{color:#365e9e; text-decoration:none; border-bottom:1px solid #cfdaf2}
+.cp__link:hover{border-bottom-color:#365e9e}
+.cp__cta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:20px}
 .cp__btn{
-  appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px;
-  border-radius:12px; padding:12px 18px; text-decoration:none;
-  background:var(--blue); color:#fff; box-shadow:0 16px 32px rgba(2,15,30,.15);
-  transition:transform .2s ease, background .2s ease;
+  appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px; border-radius:12px; padding:12px 18px; text-decoration:none;
+  background:var(--blue); color:#fff; box-shadow:0 16px 32px rgba(2,15,30,.15); transition:transform .2s ease, background .2s ease;
 }
-.cp__btn:hover{ transform:translateY(-1px); background:#173b61; }
-.cp__btn--outline{
-  background:#fff; color:var(--blue); border:1px solid var(--line);
-  box-shadow:0 10px 24px rgba(0,0,0,.06);
-}
-.cp__btn--outline:hover{ background:#f8fbff; }
+.cp__btn:hover{transform:translateY(-1px); background:#173b61}
+.cp__btn--outline{background:#fff; color:var(--blue); border:1px solid var(--line)}
 
-/* reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .cp *{ transition:none !important; animation:none !important; }
+/* ---------------- PROGRAM SHOWCASE (blue, immersive) ---------------- */
+.ps{position:relative; color:#fff; background:
+  radial-gradient(1200px 500px at 18% -10%, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 60%),
+  radial-gradient(1000px 420px at 85% 120%, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 60%),
+  linear-gradient(180deg, var(--blue) 0%, var(--blue-2) 100%);
+  padding:84px 0; overflow:hidden;
 }
+.ps__wrap{width:min(1100px,92vw); margin:0 auto}
+.ps__edge{position:absolute; left:0; width:100%; height:80px; fill:var(--blue); opacity:.98}
+.ps__edge--top{top:0; transform:translateY(-100%)}
+.ps__edge--bottom{bottom:0; transform:translateY(100%)}
+.ps__head{text-align:center; margin-bottom:20px}
+.ps__eyebrow{letter-spacing:.16em; text-transform:uppercase; font-weight:800; font-size:.82rem; color:#dfe8f6; margin-bottom:6px}
+.ps__title{font-family:"Cormorant Garamond",serif; font-weight:800; font-size:clamp(2rem,3.4vw,2.8rem); margin:0 0 8px}
+.ps__lead{max-width:75ch; margin:0 auto; color:#e9f1ff; opacity:.96}
 
-  /* =========================
-   PROGRAM SHOWCASE (Immersive Blue)
-========================= */
-:root{
-  --blue:#0e2a47;
-  --blue-2:#0c213c;
-  --ink:#1b2434;
-  --muted:#e6eeff;
-  --accent:#c6aa6a;
-  --line:#1b3556;
-  --card:rgba(255,255,255,.06);
-  --shadow:0 30px 60px rgba(0,0,0,.25);
-}
-
-.ps--blue{
-  position:relative;
-  color:#fff;
-  background:
-    radial-gradient(1200px 500px at 18% -10%, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 60%),
-    radial-gradient(1000px 420px at 85% 120%, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 60%),
-    linear-gradient(180deg, var(--blue) 0%, var(--blue-2) 100%);
-  padding:84px 0;
-  overflow:hidden;
-}
-
-.ps__edge{
-  position:absolute; left:0; width:100%; height:80px; fill:var(--blue); opacity:.98;
-}
-.ps__edge--top{ top:0; transform:translateY(-100%); }
-.ps__edge--bottom{ bottom:0; transform:translateY(100%); }
-
-.ps__wrap{ width:min(1100px,92vw); margin:0 auto; }
-
-.ps__head{ text-align:center; margin-bottom:22px; }
-.ps__eyebrow{
-  letter-spacing:.16em; text-transform:uppercase; font-weight:800; font-size:.82rem; color:#dfe8f6; margin-bottom:6px;
-}
-.ps__title{
-  font-family:"Cormorant Garamond",serif; font-weight:800;
-  font-size:clamp(2rem,3.4vw,2.8rem); line-height:1.1; margin:0 0 8px;
-}
-.ps__lead{ max-width:75ch; margin:0 auto; color:#e9f1ff; opacity:.96; }
-
-/* metrics */
-.ps__metrics{
-  display:grid; gap:14px; margin:18px auto 6px;
-  grid-template-columns:repeat(3,1fr);
-}
-@media (max-width:900px){ .ps__metrics{ grid-template-columns:1fr } }
-
-.ps__stat{
-  display:grid; place-items:center; text-align:center;
-  padding:16px 14px; border-radius:14px;
+/* Proof metrics */
+.ps__metrics{display:grid; gap:14px; margin:18px auto 8px; grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.ps__metrics{grid-template-columns:1fr}}
+.ps__stat{display:grid; place-items:center; text-align:center; padding:16px 14px; border-radius:14px;
   background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:inset 0 0 0 2px rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.16); box-shadow:inset 0 0 0 2px rgba(255,255,255,.04);
 }
-.ps__num{
-  display:block; font-weight:800; line-height:1;
-  font-size:clamp(24px,4vw,36px); margin-bottom:6px; color:#fff;
-}
-.ps__lbl{ color:#d7e5ff; font-size:.95rem; }
-.ps__fine{ text-align:center; color:#bcd3f5; margin-top:10px; }
+.ps__num{display:block; font-weight:800; line-height:1; font-size:clamp(24px,4vw,36px); margin-bottom:6px}
+.ps__lbl{color:#d7e5ff; font-size:.95rem}
+.ps__fine{text-align:center; color:#bcd3f5; margin-top:8px}
 
-/* 3-card band */
-.ps__sub{
-  font-family:"Cormorant Garamond",serif; font-weight:800; font-size:clamp(1.4rem,2.2vw,1.8rem);
-  margin:28px 0 12px; text-align:center;
-}
-.ps__grid{ display:grid; gap:16px; }
-.ps__grid--3{ grid-template-columns:repeat(3,1fr); }
-@media (max-width:980px){ .ps__grid--3{ grid-template-columns:1fr 1fr } }
-@media (max-width:640px){ .ps__grid--3{ grid-template-columns:1fr } }
-
+/* Pain → solution cards */
+.ps__sub{font-family:"Cormorant Garamond",serif; font-weight:800; font-size:clamp(1.4rem,2.2vw,1.8rem); margin:28px 0 12px; text-align:center}
+.ps__grid{display:grid; gap:16px}
+.ps__grid--3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:980px){.ps__grid--3{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.ps__grid--3{grid-template-columns:1fr}}
 .ps__card{
-  border-radius:16px; padding:18px 16px;
-  background:var(--card);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(6px);
-  box-shadow:var(--shadow);
+  border-radius:16px; padding:18px 16px; background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18); backdrop-filter:blur(6px); box-shadow:var(--shadow-lg);
   transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
-.ps__card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(255,255,255,.28);
-  box-shadow:0 36px 72px rgba(0,0,0,.28);
+.ps__card:hover{transform:translateY(-3px); border-color:rgba(255,255,255,.28); box-shadow:0 36px 72px rgba(0,0,0,.28)}
+.ps__cardTitle{margin:0 0 6px; font:700 1.1rem/1.2 "Cormorant Garamond",serif; color:#fff}
+.ps__card p{color:#e6eeff; opacity:.95; margin:0 0 10px}
+.ps__points{list-style:none; margin:0; padding:0; display:grid; gap:6px}
+.ps__points li{display:grid; grid-template-columns:10px 1fr; gap:10px; color:#dbe6ff; font-size:.98rem}
+.ps__points li::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-top:.45rem}
+
+.ps__cta{display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:24px}
+.ps__btn{
+  appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px; border-radius:12px; padding:12px 18px; text-decoration:none;
+  background:#fff; color:var(--blue); box-shadow:0 20px 40px rgba(2,15,30,.18); transition:transform .2s ease, background .2s ease, color .2s ease;
 }
-.ps__cardTitle{
-  margin:0 0 6px;
-  font:700 1.1rem/1.2 "Cormorant Garamond",serif;
+.ps__btn:hover{transform:translateY(-1px); background:var(--accent); color:#fff}
+.ps__btn--ghost{background:transparent; color:#e6eeff; border:1px solid rgba(255,255,255,.22)}
+.ps__btn--ghost:hover{color:#fff; border-color:#fff}
+
+/* ---------------- FACTS & FIGURES (dark image, counters) ---------------- */
+.facts{
+  background:linear-gradient(rgba(14,42,71,.95),rgba(14,42,71,.95)), url('https://internationalprogram.netlify.app/media/campus-blur.jpg') center/cover no-repeat;
   color:#fff;
 }
-.ps__card p{ color:#e6eeff; opacity:.95; margin:0 0 10px; }
-.ps__points{
-  list-style:none; margin:0; padding:0; display:grid; gap:6px;
+.facts .eyebrow{letter-spacing:.16em; text-transform:uppercase; font-weight:800; font-size:.82rem; color:#dfe8f6; text-align:center; margin-bottom:6px}
+.facts__title{font-family:"Cormorant Garamond",serif; font-weight:800; text-align:center; font-size:clamp(2rem,3vw,2.6rem)}
+.facts__lead{max-width:78ch; margin:10px auto 28px; text-align:center; color:#e9f0fb}
+.facts__grid{display:grid; grid-template-columns:repeat(4,1fr); gap:28px}
+@media (max-width:980px){.facts__grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.facts__grid{grid-template-columns:1fr}}
+.fact{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.16);
+  border-radius:16px; padding:22px 20px 18px; backdrop-filter:blur(6px);
 }
-.ps__points li{
-  display:grid; grid-template-columns:10px 1fr; gap:10px; color:#dbe6ff; font-size:.98rem;
-}
-.ps__points li::before{
-  content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-top:.45rem;
-}
+.fact-num{font-weight:800; font-size:clamp(2.2rem,4vw,3.2rem); line-height:1; margin-bottom:14px}
+.fact-rule{height:2px; background:rgba(255,255,255,.5); width:72px; margin:0 0 12px}
+.fact-label{font-weight:800; min-height:2.6em; display:flex; align-items:center}
+.fact-note{opacity:.85; margin-top:10px; font-size:.92rem}
 
-/* CTA row */
-.ps__cta{
-  display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:26px;
-}
-.ps__btn{
-  appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px;
-  border-radius:12px; padding:12px 18px; text-decoration:none;
-  background:#fff; color:var(--blue);
-  box-shadow:0 20px 40px rgba(2,15,30,.18);
-  transition:transform .2s ease, background .2s ease, color .2s ease;
-}
-.ps__btn:hover{ transform:translateY(-1px); background:var(--accent); color:#fff; }
-.ps__btn--ghost{
-  background:transparent; color:#e6eeff; border:1px solid rgba(255,255,255,.22);
-}
-.ps__btn--ghost:hover{ color:#fff; border-color:#fff; }
+/* ---------------- CALCULATOR (kept compact) ---------------- */
+.calc{background:#f7faff; color:var(--blue)}
+.calc__wrap{width:min(980px,92vw); margin:0 auto}
+.calc__head{text-align:center; margin-bottom:18px}
+.calc__head h2{font-family:"Cormorant Garamond",serif; font-weight:700; font-size:clamp(1.6rem,3vw,2.1rem); margin:0 0 6px}
+.calc__head .muted{color:#5874a0}
+.calc__grid{display:grid; gap:18px; grid-template-columns:1.05fr .95fr}
+@media (max-width:980px){.calc__grid{grid-template-columns:1fr}}
 
-/* reduced motion */
+.card{background:#fff; border:1px solid #e1e8f5; border-radius:16px; box-shadow:var(--shadow-sm); text-align:left}
+.card .hd{padding:14px 16px; background:linear-gradient(180deg,#fff,#f7fbff); border-bottom:1px solid #e9f0fb}
+.card .bd{padding:14px 16px}
+.card h3{margin:0; font-size:1.05rem}
+.stack{display:grid; gap:12px}
+.row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+label{font-weight:700; font-size:12px; color:#5d6f8d; display:block; margin:0 0 6px}
+input[type="number"], input[type="range"]{
+  width:100%; padding:10px 10px; border:1px solid #d7e3f7; border-radius:10px; background:#fff; font:inherit; color:var(--blue);
+}
+input[type="range"]{padding:0}
+.help{font-size:11px; color:#6a7da1; margin-top:4px}
+.kpi-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+@media (max-width:800px){.kpi-grid{grid-template-columns:1fr}}
+.kpi{background:linear-gradient(180deg,#ffffff,#f7fbff); border:1px solid #e1e8f5; border-radius:12px; padding:12px}
+.kpi h4{margin:0; font-size:11px; font-weight:900; color:#5874a0; text-transform:uppercase; letter-spacing:.8px}
+.kpi .big{font-size:clamp(18px,3vw,28px); font-weight:800; margin-top:4px; color:var(--blue)}
+
+.impact{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+@media (max-width:900px){.impact{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.impact{grid-template-columns:1fr}}
+.tile{background:#fff; border:1px solid #e1e8f5; border-radius:12px; padding:12px}
+.num{font-weight:900; font-size:22px; color:var(--blue)}
+.lbl{font-size:12px; color:#5874a0}
+.hr{border:0; border-top:1px solid #e8eef9; margin:14px 0}
+.bar{height:6px; background:#edf2fe; border-radius:999px; overflow:hidden}
+.bar > span{display:block; height:100%; background:linear-gradient(90deg, #0e2a47, #4c6aa3); width:0}
+.warn{color:#b45309; font-weight:700} .ok{color:#16a34a; font-weight:700}
+
+/* ---------------- FOOTER ---------------- */
+.simple-footer{background:var(--blue); color:#e9effa; border-top:1px solid rgba(255,255,255,.08); padding:16px 0; font:500 14px/1.4 Inter,sans-serif}
+.sf__row{width:min(1100px,92vw); margin:0 auto; display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:14px}
+@media (max-width:900px){.sf__row{grid-template-columns:1fr; text-align:center; row-gap:6px}}
+.sf__name{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; color:#fff}
+.sf__contact{display:flex; flex-wrap:wrap; gap:8px; align-items:center; color:#d7e3f7}
+.sf__contact a{color:#d7e3f7; text-decoration:none; border-bottom:1px solid transparent}
+.sf__contact a:hover{color:#fff; border-bottom-color:#fff}
+.sf__copy{color:#b9c7df; white-space:nowrap}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .ps--blue *{ transition:none !important; animation:none !important; }
+  [data-aos]{opacity:1 !important; transform:none !important; transition:none !important}
 }
-
-
 </style>
 </head>
-<!-- AOS JS (load after your content) -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
-
-<script>
-  // Init after AOS script is ready
-  window.addEventListener('load', function () {
-    if (!window.AOS) return; // guard if CDN blocked
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    AOS.init({
-      duration: reduced ? 0 : 900,   // animation length
-      easing: 'ease',                // easing curve
-      offset: 80,                    // trigger offset
-      once: true,                    // animate only once
-      delay: 0,                      // per-element delay (ms)
-      anchorPlacement: 'top-bottom', // when to trigger
-      disable: reduced               // auto-disable if user prefers less motion
-    });
-  });
-</script>
-
 <body>
 
-
-
-<section class="hero-modern">
-  <video class="hero-modern__video" autoplay muted playsinline loop poster="/media/legacy-poster.jpg">
+<!-- HERO -->
+<section class="hero">
+  <video class="hero__video" autoplay muted playsinline loop poster="/media/legacy-poster.jpg">
     <source src="https://internationalprogram.netlify.app/program-vid.mp4" type="video/mp4">
   </video>
-  <div class="hero-modern__overlay"></div>
+  <div class="hero__overlay"></div>
 
-<!-- LEFT TEXT — minimal version with deposit CTA -->
-<div class="hero-split__text" data-aos="fade-right">
-  <p class="eyebrow">WELCOME TO</p>
-  <h1 class="hero-main-title">LEGACY BUILDERS</h1>
-  <p class="hero-sub">
-    Add <strong>$150,000+ in new annual revenue</strong> through a board-approved
-    international program — designed, launched, and supported by our team.
-  </p>
+  <div class="hero__grid">
+    <div class="hero__text" data-aos="fade-right">
+      <p class="hero__eyebrow">Welcome To</p>
+      <h1 class="hero__title">LEGACY BUILDERS</h1>
+      <p class="hero__lead">Add <strong>$150,000+ in new annual revenue</strong> with a board-approved international program — designed, launched, and supported by our team.</p>
+      <a class="hero__btn" href="#program">See How It Works</a>
+    </div>
 
-  <button class="hero-deposit-btn" id="depositBtn">Place a Deposit</button>
-
-  <p class="hero-deposit-note">
-    Your deposit unlocks the <strong>Next Steps Portal</strong> — including your
-    board packet, onboarding timeline, and program overview.
-  </p>
-</div>
-
-
-
-    <!-- RIGHT CALENDAR -->
-    <div class="hero-split__calendar" data-aos="fade-left">
+    <div class="hero__cal" data-aos="fade-left">
       <div class="cal-card">
         <h3>Book a Meeting</h3>
-        <p class="cal-sub">Select a time that fits your schedule below.</p>
+        <p>Select a time that fits your schedule.</p>
         <div class="cal-frame">
-          <iframe src="https://calendly.com/melissa-cnu/30min"
-                  width="100%" height="500" frameborder="0" title="Book a Meeting"></iframe>
+          <iframe src="https://calendly.com/melissa-cnu/30min" width="100%" height="500" frameborder="0" loading="lazy" title="Schedule a 30-minute call"></iframe>
         </div>
-        <small class="cal-note">Secure your spot — calls fill fast each week.</small>
       </div>
     </div>
   </div>
 </section>
 
-
-
+<!-- CHALLENGES → SOLUTIONS -->
 <section class="cp" id="challenges">
-  <div class="cp__wrap">
+  <div class="container">
     <header class="cp__head" data-aos="fade-up">
       <p class="cp__eyebrow">Your Pain Points</p>
       <h2 class="cp__title">We Understand the Challenges — And We Solve Them</h2>
-      <p class="cp__lead">Here are the top questions we hear from heads of school, and exactly how our program addresses them.</p>
+      <p class="cp__lead">The top questions we hear from heads of school, and exactly how we address them.</p>
     </header>
 
     <div class="cp__list">
-      <!-- Row 1 -->
       <article class="cp__row" data-aos="fade-up">
-        <div class="cp__col cp__col--pain">
+        <div>
           <div class="cp__label">Challenge</div>
-          <h3 class="cp__q">
-            <span class="cp__ico" aria-hidden="true">
-              <!-- Question mark circle (clear, recognizable) -->
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 18h.01"/><path d="M9.09 9a3 3 0 1 1 5.83 1c-.44 1.17-1.76 1.64-2.42 2.5-.2.26-.33.58-.33 1v.25"/><circle cx="12" cy="12" r="9"/></svg>
-            </span>
-            Enrollment is volatile. How do we budget responsibly?
-          </h3>
+          <h3 class="cp__q">Enrollment is volatile. How do we budget responsibly?</h3>
           <p class="cp__desc">Year-to-year swings make long-range planning (and raises) feel risky.</p>
         </div>
-        <div class="cp__col cp__col--solve">
+        <div>
           <div class="cp__label cp__label--solve">How we solve it</div>
           <ul class="cp__bullets">
             <li>Board-approved recruiting calendar aligned to visa windows</li>
@@ -1138,49 +275,35 @@ section{padding:80px 0}
         </div>
       </article>
 
-      <!-- Row 2 -->
       <article class="cp__row" data-aos="fade-up" data-aos-delay="100">
-        <div class="cp__col cp__col--pain">
+        <div>
           <div class="cp__label">Challenge</div>
-          <h3 class="cp__q">
-            <span class="cp__ico" aria-hidden="true">
-              <!-- Bank/coins icon -->
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M5 6h14l-7-3-7 3ZM4 10v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/></svg>
-            </span>
-            We need raises and facility upgrades—but new revenue feels uncertain.
-          </h3>
+          <h3 class="cp__q">We need raises and facility upgrades — but new revenue feels uncertain.</h3>
           <p class="cp__desc">Without predictable net revenue, strategic projects keep getting delayed.</p>
         </div>
-        <div class="cp__col cp__col--solve">
+        <div>
           <div class="cp__label cp__label--solve">How we solve it</div>
           <ul class="cp__bullets">
-            <li>Transparent per-student cost model and conservative net projections</li>
-            <li>Dedicated allocation policy (raises / facilities / scholarships / missions)</li>
-            <li>Board-ready financial summary + Estimator you can adjust live</li>
+            <li>Transparent per-student cost model + conservative net projections</li>
+            <li>Allocation policy (raises / facilities / scholarships / missions)</li>
+            <li>Board-ready financial summary + live Estimator</li>
           </ul>
           <a href="#calc" class="cp__link">Open the financial assumptions</a>
         </div>
       </article>
 
-      <!-- Row 3 -->
       <article class="cp__row" data-aos="fade-up" data-aos-delay="200">
-        <div class="cp__col cp__col--pain">
+        <div>
           <div class="cp__label">Challenge</div>
-          <h3 class="cp__q">
-            <span class="cp__ico" aria-hidden="true">
-              <!-- Shield/check icon -->
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V7l8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
-            </span>
-            Compliance, housing, and ESL feel complex—how do we protect culture?
-          </h3>
+          <h3 class="cp__q">Compliance, housing, and ESL feel complex — how do we protect culture?</h3>
           <p class="cp__desc">Launching alone risks gaps in care standards and governance.</p>
         </div>
-        <div class="cp__col cp__col--solve">
+        <div>
           <div class="cp__label cp__label--solve">How we solve it</div>
           <ul class="cp__bullets">
             <li>Policy & risk packet (guardianship, host vetting, incident response)</li>
             <li>ESL supports and onboarding for staff, families, and students</li>
-            <li>Clear roles & escalation ladder mapped to school governance</li>
+            <li>Clear roles & escalation ladder mapped to governance</li>
           </ul>
           <a href="#program" class="cp__link">Review the policy & care framework</a>
         </div>
@@ -1194,76 +317,18 @@ section{padding:80px 0}
   </div>
 </section>
 
-
-
- 
-  
-
-<!-- ===== 4-STEP JOURNEY SECTION ===== -->
-<section class="journey">
-  <div class="container">
-    <h2 class="journey__title">Your Journey with Legacy Builders</h2>
-    <p class="journey__lead">From first purchase to lasting impact, here’s what your transformation looks like.</p>
-
-    <div class="journey__progress">
-      <div class="journey__line-bg"></div>
-      <div class="journey__line-fill"></div>
-    </div>
-
-    <div class="journey__grid">
-      <!-- Step 1 -->
-      <div class="journey__step" data-aos="fade-up" data-aos-delay="0">
-        <div class="journey__num">1</div>
-        <h3>Purchase Your Program</h3>
-        <p>You secure your Legacy Builders system—complete with training, resources, and guidance to get your school ready for success.</p>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="journey__step" data-aos="fade-up" data-aos-delay="150">
-        <div class="journey__num">2</div>
-        <h3>We Build & Train</h3>
-        <p>Our team crafts your custom onboarding packet and trains your staff step-by-step so everyone feels confident.</p>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="journey__step" data-aos="fade-up" data-aos-delay="300">
-        <div class="journey__num">3</div>
-        <h3>Implement & Grow</h3>
-        <p>Your school begins applying the strategies—recruiting students, managing programs, and building sustainable revenue.</p>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="journey__step" data-aos="fade-up" data-aos-delay="450">
-        <div class="journey__num">4</div>
-        <h3>Expand Your Impact</h3>
-        <p>With new revenue and a thriving program, you expand your reach and do more than you ever thought possible.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- =========================
-     PROGRAM SHOWCASE (Immersive Blue)
-========================= -->
-<section class="program-showcase ps--blue" id="program">
-  <!-- angled edges (no icons needed) -->
-  <svg class="ps__edge ps__edge--top" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,80 L1200,0 L1200,80 Z"></path>
-  </svg>
+<!-- PROGRAM SHOWCASE (blue) -->
+<section class="ps" id="program">
+  <svg class="ps__edge ps__edge--top" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,80 L1200,0 L1200,80 Z"></path></svg>
 
   <div class="ps__wrap">
-    <!-- Headline & Lead -->
     <header class="ps__head" data-aos="fade-up">
       <p class="ps__eyebrow">International Program Extension</p>
       <h2 class="ps__title">Add $150,000 in Year-One Revenue — Without Derailing Your Mission</h2>
-      <p class="ps__lead">
-        Launch a board-approved international extension that strengthens your school, raises teacher pay,
-        and expands what’s possible — with a partner that’s done it before.
-      </p>
+      <p class="ps__lead">Launch a board-approved international extension that strengthens your school, raises teacher pay, and expands what’s possible — with a partner that’s done it before.</p>
     </header>
 
-    <!-- Metrics / Proof (count up) -->
+    <!-- Metrics -->
     <div class="ps__metrics" role="list" aria-label="Program proof metrics">
       <div class="ps__stat" role="listitem" data-aos="fade-up">
         <span class="ps__num" data-prefix="$" data-suffix="+" data-count="150000">0</span>
@@ -1280,183 +345,80 @@ section{padding:80px 0}
     </div>
     <p class="ps__fine" data-aos="fade-up" data-aos-delay="220">*Projection based on typical tuition and cohort sizes. Use the Estimator to tailor assumptions.</p>
 
-    <!-- 3-card band (Pain → How we solve it) -->
-    <section class="ps__pain" aria-labelledby="pain-h">
-      <h3 id="pain-h" class="ps__sub" data-aos="fade-up">We Know the Pressure You’re Under</h3>
-      <div class="ps__grid ps__grid--3">
-        <article class="ps__card" data-aos="fade-up">
-          <h4 class="ps__cardTitle">Flat Budgets, Rising Costs</h4>
-          <p>Raises and campus upgrades stall without predictable new revenue.</p>
-          <ul class="ps__points">
-            <li>Transparent per-student cost model</li>
-            <li>Conservative net projections</li>
-            <li>Allocation policy for raises/facilities</li>
-          </ul>
-        </article>
+    <!-- Pain → solution cards -->
+    <h3 class="ps__sub" data-aos="fade-up">We Know the Pressure You’re Under</h3>
+    <div class="ps__grid ps__grid--3">
+      <article class="ps__card" data-aos="fade-up">
+        <h4 class="ps__cardTitle">Flat Budgets, Rising Costs</h4>
+        <p>Raises and campus upgrades stall without predictable new revenue.</p>
+        <ul class="ps__points"><li>Transparent per-student cost model</li><li>Conservative net projections</li><li>Allocation policy for raises/facilities</li></ul>
+      </article>
+      <article class="ps__card" data-aos="fade-up" data-aos-delay="100">
+        <h4 class="ps__cardTitle">Unclear Path to Start</h4>
+        <p>Compliance, recruitment, housing, ESL, guardianship — hard to solve alone.</p>
+        <ul class="ps__points"><li>Board-ready policy & risk packet</li><li>Agent network & intake calendar</li><li>ESL supports & onboarding</li></ul>
+      </article>
+      <article class="ps__card" data-aos="fade-up" data-aos-delay="200">
+        <h4 class="ps__cardTitle">Board & Parent Confidence</h4>
+        <p>A responsible model that protects culture, standards, and care.</p>
+        <ul class="ps__points"><li>Guardrails & escalation ladder</li><li>Host family vetting & oversight</li><li>Audit trails and reporting</li></ul>
+      </article>
+    </div>
 
-        <article class="ps__card" data-aos="fade-up" data-aos-delay="100">
-          <h4 class="ps__cardTitle">Unclear Path to Start</h4>
-          <p>Compliance, recruitment, housing, ESL, guardianship — hard to solve alone.</p>
-          <ul class="ps__points">
-            <li>Board-ready policy & risk packet</li>
-            <li>Agent network & intake calendar</li>
-            <li>ESL supports and onboarding</li>
-          </ul>
-        </article>
-
-        <article class="ps__card" data-aos="fade-up" data-aos-delay="200">
-          <h4 class="ps__cardTitle">Board & Parent Confidence</h4>
-          <p>A responsible model that protects culture, standards, and care.</p>
-          <ul class="ps__points">
-            <li>Guardrails & escalation ladder</li>
-            <li>Host family vetting & oversight</li>
-            <li>Audit trails and reporting</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- CTA row -->
     <div class="ps__cta" data-aos="fade-up" data-aos-delay="120">
       <a class="ps__btn" href="#calc">See the Assumptions</a>
       <a class="ps__btn ps__btn--ghost" href="#challenges">How We Solve It</a>
     </div>
   </div>
 
-  <svg class="ps__edge ps__edge--bottom" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,0 L1200,80 L0,80 Z"></path>
-  </svg>
+  <svg class="ps__edge ps__edge--bottom" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L1200,80 L0,80 Z"></path></svg>
 </section>
 
-
-    <!-- Value Proposition / What You Get -->
-    <section class="ps__value" aria-labelledby="value-h">
-      <h3 id="value-h" class="ps__sub" data-aos="fade-up">What You’ll Have in Place</h3>
-      <div class="ps__grid4">
-        <article class="ps__tile" data-aos="fade-up">
-          <strong class="ps__num">$150k+</strong>
-          <span class="ps__lbl">Target year-one net potential*</span>
-        </article>
-        <article class="ps__tile" data-aos="fade-up" data-aos-delay="80">
-          <strong class="ps__num">Board-Ready</strong>
-          <span class="ps__lbl">Policy, risk, & compliance packet</span>
-        </article>
-        <article class="ps__tile" data-aos="fade-up" data-aos-delay="160">
-          <strong class="ps__num">Recruitment</strong>
-          <span class="ps__lbl">Agent network & launch toolkit</span>
-        </article>
-        <article class="ps__tile" data-aos="fade-up" data-aos-delay="240">
-          <strong class="ps__num">Training</strong>
-          <span class="ps__lbl">Staff, host family, ESL supports</span>
-        </article>
-      </div>
-      <p class="ps__fine">*Projection based on typical tuition and cohort sizes. Use the Estimator below to tailor to your model.</p>
-    </section>
-
-    <!-- How It Works -->
-    <section class="ps__how" aria-labelledby="how-h">
-      <h3 id="how-h" class="ps__sub" data-aos="fade-up">How It Works</h3>
-      <div class="ps__steps">
-        <div class="ps__step" data-aos="fade-up">
-          <div class="ps__badge">1</div>
-          <h4>Blueprint & Board Packet</h4>
-          <p>We customize your policy set, risk controls, staffing plan, and timeline for board approval.</p>
-        </div>
-        <div class="ps__step" data-aos="fade-up" data-aos-delay="80">
-          <div class="ps__badge">2</div>
-          <h4>Recruitment Engine</h4>
-          <p>We activate agent partners, outreach assets, and a calendarized intake plan aligned to visa windows.</p>
-        </div>
-        <div class="ps__step" data-aos="fade-up" data-aos-delay="160">
-          <div class="ps__badge">3</div>
-          <h4>Operational Readiness</h4>
-          <p>ESL supports, host family onboarding, guardianship protocols, and care standards — dialed in.</p>
-        </div>
-        <div class="ps__step" data-aos="fade-up" data-aos-delay="240">
-          <div class="ps__badge">4</div>
-          <h4>Launch & Grow</h4>
-          <p>First cohort enrollment, cash-flow targets, and a sustainable plan to scale impact year after year.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Optional Gallery (drop in your images) -->
-    <section class="ps__gallery" aria-label="Program Gallery">
-      <div class="ps__gridGal">
-   
-      </div>
-    </section>
-
-    <!-- CTA / Stripe Deposit -->
-    <section class="ps__cta" aria-labelledby="cta-h">
-      <h3 id="cta-h" class="ps__sub" data-aos="fade-up">Ready to Move Forward?</h3>
-      <p class="ps__ctaLead" data-aos="fade-up" data-aos-delay="80">
-        Reserve your build-out and onboarding. We’ll finalize your timeline, board packet, and recruitment plan.
-      </p>
-      <div class="ps__ctaRow" data-aos="fade-up" data-aos-delay="120">
-        <button class="ps__btn" id="stripeDepositBtn" type="button">
-          Reserve Your Program
-        </button>
-        <p class="ps__note">Secure deposit via Stripe. Fully credited toward your implementation.</p>
-      </div>
-      <p class="ps__muted">Want to see exact numbers for your school? The <a href="#calc">Estimator Calculator</a> below
-        lets you tailor tuition, cohort size, costs, and teacher raise allocation.</p>
-    </section>
-
-  </div>
-</section>
-
-
-
-  <!-- ===== FACTS & FIGURES ===== -->
-<section class="lb-facts">
+<!-- FACTS & FIGURES -->
+<section class="facts">
   <div class="container">
     <p class="eyebrow">Where Potential Meets Achievement</p>
-    <h2 class="facts-title">Facts & Figures</h2>
-    <p class="facts-lead">
-      Every number tells a story of growth, opportunity, and belonging.
-      Here’s a glimpse at what schools accomplish with Legacy Builders.
-    </p>
+    <h2 class="facts__title">Facts & Figures</h2>
+    <p class="facts__lead">Every number tells a story of growth, opportunity, and belonging. Here’s a glimpse at what schools accomplish with Legacy Builders.</p>
 
-    <div class="facts-grid">
-      <div class="fact">
+    <div class="facts__grid">
+      <div class="fact" data-aos="fade-up">
         <div class="fact-num" data-prefix="$" data-suffix="M+" data-count="11.7">0</div>
         <div class="fact-rule"></div>
         <div class="fact-label">New Program Revenue</div>
         <div class="fact-note">Across partner schools</div>
       </div>
-      <div class="fact">
+      <div class="fact" data-aos="fade-up" data-aos-delay="80">
         <div class="fact-num" data-suffix="+" data-count="19">0</div>
         <div class="fact-rule"></div>
         <div class="fact-label">Countries Represented</div>
         <div class="fact-note">Students served globally</div>
       </div>
-      <div class="fact">
+      <div class="fact" data-aos="fade-up" data-aos-delay="160">
         <div class="fact-num" data-suffix="%" data-count="100">0</div>
         <div class="fact-rule"></div>
         <div class="fact-label">Board Approval Rate</div>
-        <div class="fact-note">Schools approved on first submission</div>
+        <div class="fact-note">Approved on first submission</div>
       </div>
-      <div class="fact">
+      <div class="fact" data-aos="fade-up" data-aos-delay="240">
         <div class="fact-num" data-suffix="+" data-count="300">0</div>
         <div class="fact-rule"></div>
         <div class="fact-label">Teachers Impacted</div>
-        <div class="fact-note">Increased salaries & retention</div>
+        <div class="fact-note">Raises & retention</div>
       </div>
     </div>
   </div>
 </section>
 
-  <!-- ===== IMPACT & MISSION CALCULATOR (Compact, Blue/White) ===== -->
-<section class="lb-calc" id="calc">
-  <div class="lb-calc__wrap">
-    <header class="lb-calc__head">
+<!-- CALCULATOR -->
+<section class="calc" id="calc">
+  <div class="calc__wrap">
+    <header class="calc__head">
       <h2>International Program Impact & Mission Calculator</h2>
-      <p class="muted">Quickly model annual revenue and mission impact from your international cohort.</p>
+      <p class="muted">Model annual revenue and mission impact for your cohort.</p>
     </header>
 
-    <div class="lb-calc__grid">
-      <!-- INPUTS CARD -->
+    <div class="calc__grid">
       <section class="card" aria-labelledby="inputs-h">
         <div class="hd"><h3 id="inputs-h">Your School Inputs</h3></div>
         <div class="bd">
@@ -1465,7 +427,7 @@ section{padding:80px 0}
               <div>
                 <label for="domesticTuition">Domestic tuition (annual)</label>
                 <input type="number" id="domesticTuition" value="8000" min="0" step="100" />
-                <div class="help">For context; not used in math.</div>
+                <div class="help">Context; not used in math.</div>
               </div>
               <div>
                 <label for="intlTuition">International tuition (annual)</label>
@@ -1477,8 +439,7 @@ section{padding:80px 0}
             <div class="row">
               <div>
                 <label for="students">International students</label>
-                <input type="range" id="students" min="0" max="60" value="10"
-                       oninput="this.nextElementSibling.querySelector('strong').textContent=this.value" />
+                <input type="range" id="students" min="0" max="60" value="10" oninput="this.nextElementSibling.querySelector('strong').textContent=this.value" />
                 <div class="help">Target cohort size: <strong>10</strong></div>
               </div>
               <div>
@@ -1500,69 +461,29 @@ section{padding:80px 0}
             </div>
 
             <div>
-              <label>Recruitment regions (estimate nations reached)</label>
-              <div class="taglist" id="regions"></div>
-              <div class="help">Estimates “nations reached” from selected regions (capped by student total).</div>
-            </div>
-
-            <div>
               <label>Allocate net revenue (must total 100%)</label>
               <div class="alloc">
-                <div class="row">
-                  <div>Teacher raises</div>
-                  <div><input type="number" id="allocRaises" value="50" min="0" max="100" />%</div>
-                </div>
-                <div class="row">
-                  <div>Facilities & technology</div>
-                  <div><input type="number" id="allocFacilities" value="20" min="0" max="100" />%</div>
-                </div>
-                <div class="row">
-                  <div>Local scholarships</div>
-                  <div><input type="number" id="allocScholar" value="15" min="0" max="100" />%</div>
-                </div>
-                <div class="row">
-                  <div>Global missions</div>
-                  <div><input type="number" id="allocMissions" value="15" min="0" max="100" />%</div>
-                </div>
-                <div class="totline"><span>Total Allocation</span><strong id="allocTotal">100%</strong></div>
+                <div class="row"><div>Teacher raises</div><div><input type="number" id="allocRaises" value="50" min="0" max="100" />%</div></div>
+                <div class="row"><div>Facilities & technology</div><div><input type="number" id="allocFacilities" value="20" min="0" max="100" />%</div></div>
+                <div class="row"><div>Local scholarships</div><div><input type="number" id="allocScholar" value="15" min="0" max="100" />%</div></div>
+                <div class="row"><div>Global missions</div><div><input type="number" id="allocMissions" value="15" min="0" max="100" />%</div></div>
+                <div class="totline"><span>Total Allocation</span> <strong id="allocTotal">100%</strong></div>
                 <div class="bar"><span id="allocBar"></span></div>
                 <div id="allocMsg" class="help"></div>
               </div>
-            </div>
-
-            <div class="actions">
-              <button class="btn" id="resetBtn" type="button">Reset</button>
-              <button class="btn" type="button" id="copyBtn">Copy Summary</button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- OUTPUTS CARD -->
       <section class="card" aria-labelledby="out-h">
         <div class="hd"><h3 id="out-h">Projected Financials</h3></div>
         <div class="bd">
           <div class="kpi-grid">
-            <div class="kpi">
-              <h4>Gross intl. tuition</h4>
-              <div class="big" id="kpiGross">$220,000</div>
-              <div class="help">Intl. tuition × students</div>
-            </div>
-            <div class="kpi">
-              <h4>Program expenses</h4>
-              <div class="big" id="kpiCost">$110,000</div>
-              <div class="help">Per-student cost × students</div>
-            </div>
-            <div class="kpi">
-              <h4>Net revenue (annual)</h4>
-              <div class="big" id="kpiNet">$110,000</div>
-              <div class="help">Gross − expenses</div>
-            </div>
-            <div class="kpi">
-              <h4>Teacher raise potential</h4>
-              <div class="big" id="kpiRaise">+15% (est.)</div>
-              <div class="help">If allocation to raises is applied evenly</div>
-            </div>
+            <div class="kpi"><h4>Gross intl. tuition</h4> <div class="big" id="kpiGross">$220,000</div> <div class="help">Intl. tuition × students</div></div>
+            <div class="kpi"><h4>Program expenses</h4>    <div class="big" id="kpiCost">$110,000</div> <div class="help">Per-student cost × students</div></div>
+            <div class="kpi"><h4>Net revenue (annual)</h4><div class="big" id="kpiNet">$110,000</div> <div class="help">Gross − expenses</div></div>
+            <div class="kpi"><h4>Teacher raise potential</h4><div class="big" id="kpiRaise">+15% (est.)</div><div class="help">If allocation to raises is applied evenly</div></div>
           </div>
 
           <hr class="hr" />
@@ -1573,304 +494,221 @@ section{padding:80px 0}
             <div class="tile"><div class="num" id="impNations">3</div><div class="lbl">Nations reached (est.)</div></div>
           </div>
 
-          <div class="footer-note">Conservative estimates based on your inputs. Adjust to match your model.</div>
+          <div class="footer-note help" style="margin-top:8px">Conservative estimates based on your inputs. Adjust to match your model.</div>
 
           <hr class="hr" />
           <h4 style="margin-top:0">Board-Ready Summary</h4>
-          <div class="summary mono" id="summaryBox"></div>
+          <div class="summary mono" id="summaryBox" style="white-space:pre-wrap; border:1px solid #e1e8f5; border-radius:10px; padding:10px; background:#fff"></div>
         </div>
       </section>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="simple-footer">
   <div class="sf__row">
-    <div class="sf__brand">
-      <span class="sf__name">Legacy Builders</span>
-    </div>
-
+    <div class="sf__brand"><span class="sf__name">Legacy Builders</span></div>
     <address class="sf__contact">
       <a href="mailto:melissa@grantlegacybuilders.com">melissa@grantlegacybuilders.com</a>
-      <span class="dot">•</span>
+      <span>•</span>
       <a href="tel:3148042307">314-804-2307</a>
-      <span class="dot">•</span>
+      <span>•</span>
       <span>1360 Grandview Dr, Florissant, MO 63033</span>
     </address>
-
-    <div class="sf__copy">
-      © <span id="sfYear"></span> Legacy Builders
-    </div>
+    <div class="sf__copy">© <span id="sfYear"></span> Legacy Builders</div>
   </div>
 </footer>
 
-
-
-  
-
-<script>
-AOS.init({ duration:1400, easing:'ease', once:true, offset:80 });
-
-// Count-up animation on scroll
-const format=(n,o={})=>{
-  const {prefix='',suffix=''}=o;
-  return `${prefix}${n.toLocaleString('en-US',{maximumFractionDigits:1})}${suffix}`;
-};
-const counters=[...document.querySelectorAll('.fact-num')].map(el=>({
-  el,target:parseFloat(el.dataset.count||'0'),
-  prefix:el.dataset.prefix||'',suffix:el.dataset.suffix||''
-}));
-function animateCounter({el,target,prefix,suffix}){
-  const start=performance.now(),dur=1800,from=0;
-  const step=t=>{
-    const p=Math.min(1,(t-start)/dur);
-    const eased=1-Math.pow(1-p,3);
-    const val=from+(target-from)*eased;
-    el.textContent=format(val,{prefix,suffix});
-    if(p<1)requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-const io=new IntersectionObserver((entries,obs)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const n=e.target.querySelector('.fact-num');
-      const cfg=counters.find(c=>c.el===n);
-      if(cfg)animateCounter(cfg);
-      obs.unobserve(e.target);
-    }
-  });
-},{threshold:0.45});
-document.querySelectorAll('.fact').forEach(f=>io.observe(f));
-</script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 
 <script>
-(() => {
-  const root = document.getElementById('calc');
-  if (!root) return;
-
-  // Helpers scoped to calculator
-  const $ = sel => root.querySelector(sel);
-  const $$ = sel => Array.from(root.querySelectorAll(sel));
-  const fmt = x => x.toLocaleString(undefined,{maximumFractionDigits:0});
-  const fmt$ = x => "$" + fmt(Math.round(x));
-
-  // Inputs
-  const domesticTuition = $('#domesticTuition');
-  const intlTuition     = $('#intlTuition');
-  const students        = $('#students');
-  const costPer         = $('#costPer');
-  const teacherCount    = $('#teacherCount');
-  const avgSalary       = $('#avgSalary');
-
-  const allocRaises     = $('#allocRaises');
-  const allocFacilities = $('#allocFacilities');
-  const allocScholar    = $('#allocScholar');
-  const allocMissions   = $('#allocMissions');
-
-  const allocTotal = $('#allocTotal');
-  const allocMsg   = $('#allocMsg');
-  const allocBar   = $('#allocBar');
-
-  // Outputs
-  const kpiGross   = $('#kpiGross');
-  const kpiCost    = $('#kpiCost');
-  const kpiNet     = $('#kpiNet');
-  const kpiRaise   = $('#kpiRaise');
-
-  const impStudents= $('#impStudents');
-  const impFamilies= $('#impFamilies');
-  const impNations = $('#impNations');
-
-  const summaryBox = $('#summaryBox');
-
-  // Regions
-  const REGIONS = ['China','South Korea','Vietnam','Japan','India','Brazil','Colombia','Mexico','Nigeria','Kenya','United Kingdom','Germany','Italy','Spain','France'];
-  const regionsWrap = $('#regions');
-  REGIONS.forEach((r,i)=>{
-    const id = 'r_'+i;
-    const el = document.createElement('label');
-    el.className = 'tag';
-    el.innerHTML = `<input type="checkbox" id="${id}" data-name="${r}" ${i<3? 'checked': ''}/> ${r}`;
-    regionsWrap.appendChild(el);
+  // Init AOS on load (respects reduced motion)
+  window.addEventListener('load', function () {
+    if (!window.AOS) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    AOS.init({ duration: reduced ? 0 : 900, easing: 'ease', offset: 80, once: true, disable: reduced });
   });
 
-  const getAllocTotal = () =>
-    [allocRaises,allocFacilities,allocScholar,allocMissions]
-      .map(i=>Number(i.value||0)).reduce((a,b)=>a+b,0);
-
-  function recalc(){
-    const dom = Number(domesticTuition.value||0);
-    const intl = Number(intlTuition.value||0);
-    const n    = Number(students.value||0);
-    const cst  = Number(costPer.value||0);
-    const tCnt = Math.max(1, Number(teacherCount.value||1));
-    const sal  = Math.max(1, Number(avgSalary.value||1));
-
-    const gross = intl * n;
-    const cost  = cst  * n;
-    const net   = Math.max(0, gross - cost);
-
-    // Allocation logic
-    const at = getAllocTotal();
-    allocTotal.textContent = at + '%';
-    allocBar.style.width = Math.min(100, at) + '%';
-    allocBar.style.background = at===100
-      ? 'linear-gradient(90deg, #16a34a, #22c55e)'
-      : 'linear-gradient(90deg, #b45309, #f59e0b)';
-    allocMsg.textContent = at===100 ? 'Allocation balanced.' : 'Adjust allocations to total 100%.';
-    allocMsg.className = 'help ' + (at===100 ? 'ok' : 'warn');
-
-    const raisePool = at===100 ? net * (Number(allocRaises.value||0)/100) : 0;
-    const raisePerTeacher = tCnt ? raisePool / tCnt : 0;
-    const estRaisePct = sal ? (raisePerTeacher / sal) * 100 : 0;
-
-    // Impact approximations
-    const regionsSelected = $$('#regions input[type=checkbox]:checked').length;
-    const nations = Math.min(n, Math.max(1, regionsSelected));
-    const families = n;
-
-    // KPIs
-    kpiGross.textContent = fmt$(gross);
-    kpiCost.textContent  = fmt$(cost);
-    kpiNet.textContent   = fmt$(net);
-    kpiRaise.textContent = (at===100 && net>0)
-      ? `+${estRaisePct.toFixed(1)}% (est.)`
-      : '—';
-
-    impStudents.textContent = fmt(n);
-    impFamilies.textContent = fmt(families);
-    impNations.textContent  = fmt(nations);
-
-    // Summary
-    const lines = [];
-    lines.push(`Projected International Program Summary`);
-    lines.push(`———————————————————————————————`);
-    lines.push(`Cohort size:           ${n} students`);
-    lines.push(`Intl tuition:          ${fmt$(intl)} (domestic: ${fmt$(dom)})`);
-    lines.push(`Gross tuition:         ${fmt$(gross)}`);
-    lines.push(`Program expenses:      ${fmt$(cost)}  (avg ${fmt$(cst)} per student)`);
-    lines.push(`Net revenue (annual):  ${fmt$(net)}`);
-    lines.push(``);
-    lines.push(`Allocation plan (must total 100%):`);
-    lines.push(`  • Teacher raises:     ${allocRaises.value}%`);
-    lines.push(`  • Facilities/Tech:    ${allocFacilities.value}%`);
-    lines.push(`  • Scholarships:       ${allocScholar.value}%`);
-    lines.push(`  • Missions:           ${allocMissions.value}%`);
-    lines.push(`  → Allocation total:   ${at}%`);
-    if(at===100){
-      lines.push(``);
-      lines.push(`Teacher raise potential:`);
-      lines.push(`  • Raise pool:         ${fmt$(raisePool)}`);
-      lines.push(`  • Teachers:           ${tCnt}`);
-      lines.push(`  • Avg salary:         ${fmt$(sal)}`);
-      lines.push(`  • Est. raise/teacher: ${fmt$(raisePerTeacher)} (${estRaisePct.toFixed(1)}%)`);
-    } else {
-      lines.push(``);
-      lines.push(`[Adjust allocations to 100% for raise projection.]`);
-    }
-    lines.push(``);
-    lines.push(`Mission impact (est.):`);
-    lines.push(`  • Students discipled: ${fmt(n)}`);
-    lines.push(`  • Families impacted:  ${fmt(families)}`);
-    lines.push(`  • Nations reached:    ${fmt(nations)}`);
-    summaryBox.textContent = lines.join('\n');
-  }
-
-  // Bind + init
-  [domesticTuition,intlTuition,students,costPer,teacherCount,avgSalary,allocRaises,allocFacilities,allocScholar,allocMissions]
-    .forEach(el => { el.addEventListener('input', recalc); el.addEventListener('change', recalc); });
-  regionsWrap.addEventListener('change', recalc);
-  $('#resetBtn').addEventListener('click', ()=>{
-    domesticTuition.value = 8000;
-    intlTuition.value = 22000;
-    students.value = 10;
-    costPer.value = 11000;
-    teacherCount.value = 25;
-    avgSalary.value   = 38000;
-    allocRaises.value = 50; allocFacilities.value = 20; allocScholar.value = 15; allocMissions.value = 15;
-    $$('#regions input[type=checkbox]').forEach((c,i)=> c.checked = i < 3);
-    recalc();
-  });
-  $('#copyBtn').addEventListener('click', async ()=>{
-    try{
-      await navigator.clipboard.writeText(summaryBox.textContent);
-      const btn = $('#copyBtn');
-      const old = btn.textContent;
-      btn.textContent = 'Copied';
-      setTimeout(()=> btn.textContent = old, 1000);
-    }catch(e){ alert('Copy failed. You can select and copy manually.'); }
+  // Footer year
+  document.addEventListener('DOMContentLoaded', ()=> {
+    const y = document.getElementById('sfYear'); if (y) y.textContent = new Date().getFullYear();
   });
 
-  recalc();
-})();
-</script>
-<script>
-document.addEventListener("DOMContentLoaded",()=>{
-  const section=document.querySelector('.journey');
-  const fill=document.querySelector('.journey__line-fill');
-  if(!section||!fill) return;
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        fill.style.width='100%';
-        io.disconnect();
+  // Facts & Figures count-up
+  (function(){
+    const format = (n, o={}) => `${(o.prefix||"")}${n.toLocaleString('en-US',{maximumFractionDigits:1})}${o.suffix||""}`;
+    const counters = Array.from(document.querySelectorAll('.fact-num')).map(el=>({
+      el, target: parseFloat(el.dataset.count||'0'),
+      prefix: el.dataset.prefix||'', suffix: el.dataset.suffix||''
+    }));
+    function animate({el,target,prefix,suffix}){
+      const start=performance.now(), dur=1800, from=0;
+      function step(t){
+        const p=Math.min(1,(t-start)/dur);
+        const eased=1-Math.pow(1-p,3);
+        const val=from+(target-from)*(eased);
+        el.textContent = format(val,{prefix,suffix});
+        if(p<1) requestAnimationFrame(step);
       }
-    });
-  },{threshold:0.3});
-  io.observe(section);
-});
-</script>
-<script>
-  // Set dynamic year in footer
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-<script>
-  document.getElementById('depositBtn')?.addEventListener('click', () => {
-    // Change this to your real landing page or Stripe Checkout session
-    const depositUrl = '/next-steps.html';
-    // Example: const depositUrl = 'https://checkout.stripe.com/c/session_xxx';
-    window.location.href = depositUrl;
-  });
-</script>
-<script>
-  // Count-up for .ps__num elements when metrics enter view
+      requestAnimationFrame(step);
+    }
+    const io=new IntersectionObserver((entries,obs)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const n=e.target.querySelector('.fact-num');
+          const cfg=counters.find(c=>c.el===n);
+          if(cfg) animate(cfg);
+          obs.unobserve(e.target);
+        }
+      });
+    },{threshold:0.45});
+    document.querySelectorAll('.fact').forEach(f=>io.observe(f));
+  })();
+
+  // Program metrics count-up
   (function(){
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const els = Array.from(document.querySelectorAll('.ps__num'));
     if (!els.length) return;
-
     function animate(el){
       const target = parseFloat(el.dataset.count || '0');
       const prefix = el.dataset.prefix || '';
       const suffix = el.dataset.suffix || '';
-      const dur = 1800;
-      const start = performance.now();
-      const from = 0;
-
+      const dur = 1800, start = performance.now(), from = 0;
       function step(t){
         const p = Math.min(1, (t - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const val = from + (target - from) * (prefersReduced ? 1 : eased);
-        el.textContent = prefix + Math.round(val).toLocaleString('en-US') + suffix;
+        const eased = prefersReduced ? 1 : (1 - Math.pow(1 - p, 3));
+        el.textContent = prefix + Math.round(from + (target - from) * eased).toLocaleString('en-US') + suffix;
         if (p < 1 && !prefersReduced) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     }
-
     const io = new IntersectionObserver((entries, obs) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          const nums = e.target.querySelectorAll('.ps__num');
-          nums.forEach(animate);
+          e.target.querySelectorAll('.ps__num').forEach(animate);
           obs.unobserve(e.target);
         }
       });
     }, { threshold: 0.35 });
-
-    // watch the metrics container for a single trigger
     const metrics = document.querySelector('.ps__metrics');
     if (metrics) io.observe(metrics);
+  })();
+
+  // Calculator logic (scoped)
+  (function(){
+    const root = document.getElementById('calc'); if(!root) return;
+    const $ = s => root.querySelector(s), $$ = s => Array.from(root.querySelectorAll(s));
+    const fmt = x => x.toLocaleString(undefined,{maximumFractionDigits:0});
+    const fmt$ = x => "$" + fmt(Math.round(x));
+
+    const domesticTuition = $('#domesticTuition');
+    const intlTuition     = $('#intlTuition');
+    const students        = $('#students');
+    const costPer         = $('#costPer');
+    const teacherCount    = $('#teacherCount');
+    const avgSalary       = $('#avgSalary');
+
+    const allocRaises     = $('#allocRaises');
+    const allocFacilities = $('#allocFacilities');
+    const allocScholar    = $('#allocScholar');
+    const allocMissions   = $('#allocMissions');
+
+    const allocTotal = $('#allocTotal');
+    const allocMsg   = $('#allocMsg');
+    const allocBar   = $('#allocBar');
+
+    const kpiGross   = $('#kpiGross');
+    const kpiCost    = $('#kpiCost');
+    const kpiNet     = $('#kpiNet');
+    const kpiRaise   = $('#kpiRaise');
+
+    const impStudents= $('#impStudents');
+    const impFamilies= $('#impFamilies');
+    const impNations = $('#impNations');
+
+    const summaryBox = $('#summaryBox');
+
+    function getAllocTotal(){ return [allocRaises,allocFacilities,allocScholar,allocMissions].map(i=>+i.value||0).reduce((a,b)=>a+b,0); }
+
+    function recalc(){
+      const dom = +domesticTuition.value||0;
+      const intl = +intlTuition.value||0;
+      const n    = +students.value||0;
+      const cst  = +costPer.value||0;
+      const tCnt = Math.max(1, +teacherCount.value||1);
+      const sal  = Math.max(1, +avgSalary.value||1);
+
+      const gross = intl * n;
+      const cost  = cst  * n;
+      const net   = Math.max(0, gross - cost);
+
+      // Allocations
+      const at = getAllocTotal();
+      allocTotal.textContent = at + '%';
+      allocBar.style.width = Math.min(100, at) + '%';
+      allocBar.style.background = at===100 ? 'linear-gradient(90deg, #16a34a, #22c55e)' : 'linear-gradient(90deg, #b45309, #f59e0b)';
+      allocMsg.textContent = at===100 ? 'Allocation balanced.' : 'Adjust allocations to total 100%.';
+      allocMsg.className = 'help ' + (at===100 ? 'ok' : 'warn');
+
+      const raisePool = at===100 ? net * ((+allocRaises.value||0)/100) : 0;
+      const raisePerTeacher = tCnt ? raisePool / tCnt : 0;
+      const estRaisePct = sal ? (raisePerTeacher / sal) * 100 : 0;
+
+      // Impacts
+      const regionsSelected = 3; // simplified; plug a selector if you add region chips
+      const nations = Math.min(n, Math.max(1, regionsSelected));
+      const families = n;
+
+      // KPIs
+      kpiGross.textContent = fmt$(gross);
+      kpiCost.textContent  = fmt$(cost);
+      kpiNet.textContent   = fmt$(net);
+      kpiRaise.textContent = (at===100 && net>0) ? `+${estRaisePct.toFixed(1)}% (est.)` : '—';
+
+      impStudents.textContent = fmt(n);
+      impFamilies.textContent = fmt(families);
+      impNations.textContent  = fmt(nations);
+
+      // Summary
+      const lines = [
+        `Projected International Program Summary`,
+        `———————————————————————————————`,
+        `Cohort size:           ${n} students`,
+        `Intl tuition:          ${fmt$(intl)} (domestic: ${fmt$(dom)})`,
+        `Gross tuition:         ${fmt$(gross)}`,
+        `Program expenses:      ${fmt$(cost)}  (avg ${fmt$(cst)} per student)`,
+        `Net revenue (annual):  ${fmt$(net)}`,
+        ``,
+        `Allocation plan (must total 100%):`,
+        `  • Teacher raises:     ${allocRaises.value}%`,
+        `  • Facilities/Tech:    ${allocFacilities.value}%`,
+        `  • Scholarships:       ${allocScholar.value}%`,
+        `  • Missions:           ${allocMissions.value}%`,
+        `  → Allocation total:   ${at}%`,
+        at===100 ? [
+          ``,
+          `Teacher raise potential:`,
+          `  • Raise pool:         ${fmt$(raisePool)}`,
+          `  • Teachers:           ${tCnt}`,
+          `  • Avg salary:         ${fmt$(sal)}`,
+          `  • Est. raise/teacher: ${fmt$(raisePerTeacher)} (${estRaisePct.toFixed(1)}%)`
+        ].join('\n') : `\n[Adjust allocations to 100% for raise projection.]`,
+        ``,
+        `Mission impact (est.):`,
+        `  • Students discipled: ${fmt(n)}`,
+        `  • Families impacted:  ${fmt(families)}`,
+        `  • Nations reached:    ${fmt(nations)}`
+      ].join('\n');
+      summaryBox.textContent = lines;
+    }
+
+    [domesticTuition,intlTuition,students,costPer,teacherCount,avgSalary,allocRaises,allocFacilities,allocScholar,allocMissions]
+      .forEach(el => { el.addEventListener('input', recalc); el.addEventListener('change', recalc); });
+
+    recalc();
   })();
 </script>
 
