@@ -814,104 +814,97 @@ section{padding:80px 0}
   color: #fff;
 }
 
-  /* =========================
-   CHALLENGES (Blue Band)
+/* =========================
+   CHALLENGES → SOLUTIONS (White, Clean)
 ========================= */
 :root{
-  /* already defined in your file; here for clarity */
   --blue:#0e2a47;
   --light:#f9fbff;
+  --ink:#1b2434;
+  --muted:#4a648d;
   --accent:#c6aa6a;
+  --line:#e6ecf7;
+  --card:#ffffff;
+  --shadow:0 10px 24px rgba(0,0,0,.06);
 }
 
-.painpoints--blue{
-  position:relative;
-  color:#fff;
-  padding:84px 0;
-  background:
-    radial-gradient(900px 360px at 15% -10%, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 60%),
-    radial-gradient(900px 360px at 85% 120%, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 60%),
-    linear-gradient(180deg, #0e2a47 0%, #0c213c 100%);
-  overflow:hidden;
-}
-.painpoints--blue .container{ text-align:left; }
+.cp{ background:#fff; padding:80px 0; color:var(--ink); }
+.cp__wrap{ width:min(1100px,92vw); margin:0 auto; }
 
-.pp__edge{
-  position:absolute; left:0; width:100%; height:80px; fill:#0e2a47; opacity:.98;
+.cp__head{ text-align:center; margin-bottom:26px; }
+.cp__eyebrow{
+  letter-spacing:.16em; text-transform:uppercase; font-weight:800; font-size:.8rem; color:#6c82a8; margin-bottom:6px;
 }
-.pp__edge--top{ top:0; transform:translateY(-100%); }
-.pp__edge--bottom{ bottom:0; transform:translateY(100%); }
+.cp__title{
+  font-family:"Cormorant Garamond",serif; font-weight:800;
+  font-size:clamp(1.9rem,3.2vw,2.6rem); margin:0 0 8px; color:var(--blue);
+}
+.cp__lead{ max-width:72ch; margin:0 auto; color:#5874a0; }
 
-.pp__head{ text-align:center; margin-bottom:26px; }
-.pp__eyebrow{
-  letter-spacing:.16em; text-transform:uppercase; font-weight:800; font-size:.8rem; color:#dfe8f6; margin-bottom:6px;
+/* list rows */
+.cp__list{ display:grid; gap:16px; margin-top:22px; }
+.cp__row{
+  display:grid; grid-template-columns:1.05fr .95fr; gap:18px;
+  background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
+  padding:18px;
 }
-.pp__title{
-  font-family:"Cormorant Garamond",serif; font-weight:800; font-size:clamp(2rem,3.4vw,2.6rem); margin:0 0 8px;
-}
-.pp__lead{
-  max-width:72ch; margin:0 auto; color:#e8effc; opacity:.95;
+@media (max-width:980px){ .cp__row{ grid-template-columns:1fr } }
+
+.cp__col{ position:relative; padding:10px; }
+.cp__col + .cp__col{ border-left:1px solid var(--line); }
+@media (max-width:980px){ .cp__col + .cp__col{ border-left:0; border-top:1px solid var(--line); padding-top:18px; } }
+
+/* left cap bar for the whole row (blue accent) */
+.cp__row::before{
+  content:""; position:absolute; left:-1px; top:12px; bottom:12px; width:4px; border-radius:8px;
+  background:linear-gradient(180deg, var(--blue), #4b6da7);
 }
 
-/* grid */
-.pp__grid{
-  display:grid; gap:18px; margin-top:24px;
-  grid-template-columns:repeat(3,1fr);
+/* labels */
+.cp__label{
+  display:inline-block; font-weight:900; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#6c82a8; background:#f3f6ff; border:1px solid var(--line); border-radius:999px; padding:6px 10px; margin-bottom:8px;
 }
-@media (max-width:980px){ .pp__grid{ grid-template-columns:1fr 1fr } }
-@media (max-width:640px){ .pp__grid{ grid-template-columns:1fr } }
+.cp__label--solve{ color:#0e2a47; background:#eaf1ff; border-color:#dbe6ff; }
 
-/* cards */
-.pp__card{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:16px;
-  padding:20px 18px;
-  box-shadow:0 24px 48px rgba(0,0,0,.18);
-  backdrop-filter:blur(6px);
-  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+.cp__q{ display:flex; align-items:flex-start; gap:10px; font:700 1.1rem/1.25 "Cormorant Garamond",serif; color:var(--blue); margin:0 0 6px; }
+.cp__ico{ width:28px; height:28px; display:grid; place-items:center; color:#4b6da7; }
+.cp__desc{ margin:0; color:#4a648d; }
+
+/* bullets */
+.cp__bullets{ margin:0 0 8px; padding-left:0; list-style:none; display:grid; gap:6px; }
+.cp__bullets li{
+  display:grid; grid-template-columns:10px 1fr; align-items:start; gap:10px; color:#2a3b59; font-size:.97rem;
 }
-.pp__card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(255,255,255,.28);
-  box-shadow:0 28px 56px rgba(0,0,0,.22);
-}
-.pp__icon{
-  width:44px; height:44px; border-radius:12px; display:grid; place-items:center; margin-bottom:10px;
-  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); color:#fff;
-}
-.pp__card h3{
-  font:700 1.2rem/1.2 "Cormorant Garamond", serif; margin:4px 0 6px; color:#fff;
-}
-.pp__card p{ color:#e6eeff; opacity:.95; margin:0 0 10px; }
-.pp__points{ list-style:none; padding:0; margin:0; display:grid; gap:6px; }
-.pp__points li{
-  display:grid; grid-template-columns:10px 1fr; align-items:start; gap:8px; font-size:.95rem; color:#dbe6ff;
-}
-.pp__points li::before{
+.cp__bullets li::before{
   content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-top:.45rem;
 }
 
-/* CTA row */
-.pp__cta{
-  display:flex; gap:12px; justify-content:center; align-items:center; margin-top:22px; flex-wrap:wrap;
+/* links + cta */
+.cp__link{
+  color:#365e9e; text-decoration:none; border-bottom:1px solid #cfdaf2;
 }
-.pp__btn{
+.cp__link:hover{ border-bottom-color:#365e9e; }
+
+.cp__cta{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:20px;
+}
+.cp__btn{
   appearance:none; border:0; cursor:pointer; font-weight:800; letter-spacing:.2px;
   border-radius:12px; padding:12px 18px; text-decoration:none;
-  background:#fff; color:var(--blue);
-  box-shadow:0 20px 40px rgba(2,15,30,.18);
-  transition:transform .2s ease, background .2s ease, color .2s ease;
+  background:var(--blue); color:#fff; box-shadow:0 16px 32px rgba(2,15,30,.15);
+  transition:transform .2s ease, background .2s ease;
 }
-.pp__btn:hover{ transform:translateY(-1px); background:var(--accent); color:#fff; }
-.pp__link{
-  color:#e6eeff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.3);
+.cp__btn:hover{ transform:translateY(-1px); background:#173b61; }
+.cp__btn--outline{
+  background:#fff; color:var(--blue); border:1px solid var(--line);
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
 }
-.pp__link:hover{ color:#fff; border-bottom-color:#fff; }
+.cp__btn--outline:hover{ background:#f8fbff; }
 
-/* reduced motion respect */
+/* reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .painpoints--blue *{ transition:none !important; animation:none !important; }
+  .cp *{ transition:none !important; animation:none !important; }
 }
 
 
@@ -964,78 +957,98 @@ section{padding:80px 0}
 
 
 <!-- =========================
-     CHALLENGES (Blue Band)
+<!-- =========================
+     CHALLENGES → SOLUTIONS (White, Clean)
 ========================= -->
-<section class="painpoints painpoints--blue" id="challenges">
-  <!-- angled edges -->
-  <svg class="pp__edge pp__edge--top" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,80 L1200,0 L1200,80 Z"></path>
-  </svg>
-
-  <div class="container pp__wrap">
-    <header class="pp__head" data-aos="fade-up">
-      <p class="pp__eyebrow">Real-World Obstacles</p>
-      <h2 class="pp__title">We Understand the Challenges</h2>
-      <p class="pp__lead">Every head of school we meet faces versions of the same pressure. If these sound familiar, you’re not alone.</p>
+<section class="cp" id="challenges">
+  <div class="cp__wrap">
+    <header class="cp__head" data-aos="fade-up">
+      <p class="cp__eyebrow">Your Pain Points</p>
+      <h2 class="cp__title">We Understand the Challenges — And We Solve Them</h2>
+      <p class="cp__lead">Here are the top questions we hear from heads of school, and exactly how our program addresses them.</p>
     </header>
 
-    <div class="pp__grid">
-      <!-- Card 1 -->
-      <article class="pp__card" data-aos="fade-up" data-aos-delay="0">
-        <div class="pp__icon" aria-hidden="true">
-          <!-- alert icon -->
-          <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2 1 21h22L12 2zm1 14h-2v2h2v-2zm0-8h-2v6h2V8z"/></svg>
+    <div class="cp__list">
+      <!-- Row 1 -->
+      <article class="cp__row" data-aos="fade-up">
+        <div class="cp__col cp__col--pain">
+          <div class="cp__label">Challenge</div>
+          <h3 class="cp__q">
+            <span class="cp__ico" aria-hidden="true">
+              <!-- Question mark circle (clear, recognizable) -->
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 18h.01"/><path d="M9.09 9a3 3 0 1 1 5.83 1c-.44 1.17-1.76 1.64-2.42 2.5-.2.26-.33.58-.33 1v.25"/><circle cx="12" cy="12" r="9"/></svg>
+            </span>
+            Enrollment is volatile. How do we budget responsibly?
+          </h3>
+          <p class="cp__desc">Year-to-year swings make long-range planning (and raises) feel risky.</p>
         </div>
-        <h3>Uncertain Enrollment</h3>
-        <p>Budget planning gets shaky when student numbers swing year to year.</p>
-        <ul class="pp__points">
-          <li>Volatile projections</li>
-          <li>Late-cycle attrition</li>
-          <li>Limited recruiting reach</li>
-        </ul>
+        <div class="cp__col cp__col--solve">
+          <div class="cp__label cp__label--solve">How we solve it</div>
+          <ul class="cp__bullets">
+            <li>Board-approved recruiting calendar aligned to visa windows</li>
+            <li>Agency partner network to diversify applicant sources</li>
+            <li>Intake targets + sensitivity model to plan conservative, not hopeful</li>
+          </ul>
+          <a href="#program" class="cp__link">See the recruiting blueprint</a>
+        </div>
       </article>
 
-      <!-- Card 2 -->
-      <article class="pp__card" data-aos="fade-up" data-aos-delay="100">
-        <div class="pp__icon" aria-hidden="true">
-          <!-- heart/shield -->
-          <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3z"/></svg>
+      <!-- Row 2 -->
+      <article class="cp__row" data-aos="fade-up" data-aos-delay="100">
+        <div class="cp__col cp__col--pain">
+          <div class="cp__label">Challenge</div>
+          <h3 class="cp__q">
+            <span class="cp__ico" aria-hidden="true">
+              <!-- Bank/coins icon -->
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M5 6h14l-7-3-7 3ZM4 10v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/></svg>
+            </span>
+            We need raises and facility upgrades—but new revenue feels uncertain.
+          </h3>
+          <p class="cp__desc">Without predictable net revenue, strategic projects keep getting delayed.</p>
         </div>
-        <h3>Limited Funding</h3>
-        <p>Raises, facility upgrades, and outreach stall without reliable new revenue.</p>
-        <ul class="pp__points">
-          <li>Competing priorities</li>
-          <li>Tuition sensitivity</li>
-          <li>Donor fatigue</li>
-        </ul>
+        <div class="cp__col cp__col--solve">
+          <div class="cp__label cp__label--solve">How we solve it</div>
+          <ul class="cp__bullets">
+            <li>Transparent per-student cost model and conservative net projections</li>
+            <li>Dedicated allocation policy (raises / facilities / scholarships / missions)</li>
+            <li>Board-ready financial summary + Estimator you can adjust live</li>
+          </ul>
+          <a href="#calc" class="cp__link">Open the financial assumptions</a>
+        </div>
       </article>
 
-      <!-- Card 3 -->
-      <article class="pp__card" data-aos="fade-up" data-aos-delay="200">
-        <div class="pp__icon" aria-hidden="true">
-          <!-- calendar/complexity -->
-          <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zm13 6H4v12h16V8z"/></svg>
+      <!-- Row 3 -->
+      <article class="cp__row" data-aos="fade-up" data-aos-delay="200">
+        <div class="cp__col cp__col--pain">
+          <div class="cp__label">Challenge</div>
+          <h3 class="cp__q">
+            <span class="cp__ico" aria-hidden="true">
+              <!-- Shield/check icon -->
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V7l8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            Compliance, housing, and ESL feel complex—how do we protect culture?
+          </h3>
+          <p class="cp__desc">Launching alone risks gaps in care standards and governance.</p>
         </div>
-        <h3>Too Many Unknowns</h3>
-        <p>International recruiting feels complex—compliance, housing, ESL, guardianship.</p>
-        <ul class="pp__points">
-          <li>Board confidence</li>
-          <li>Risk management</li>
-          <li>Staff bandwidth</li>
-        </ul>
+        <div class="cp__col cp__col--solve">
+          <div class="cp__label cp__label--solve">How we solve it</div>
+          <ul class="cp__bullets">
+            <li>Policy & risk packet (guardianship, host vetting, incident response)</li>
+            <li>ESL supports and onboarding for staff, families, and students</li>
+            <li>Clear roles & escalation ladder mapped to school governance</li>
+          </ul>
+          <a href="#program" class="cp__link">Review the policy & care framework</a>
+        </div>
       </article>
     </div>
 
-    <div class="pp__cta" data-aos="fade-up" data-aos-delay="250">
-      <a class="pp__btn" href="#program">See How We Solve These</a>
-      <a class="pp__link" href="#calc">View the Financial Assumptions</a>
+    <div class="cp__cta" data-aos="fade-up" data-aos-delay="250">
+      <a class="cp__btn" href="#program">See the Full Blueprint</a>
+      <a class="cp__btn cp__btn--outline" href="#calc">Run Your Numbers</a>
     </div>
   </div>
-
-  <svg class="pp__edge pp__edge--bottom" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,0 L1200,80 L0,80 Z"></path>
-  </svg>
 </section>
+
 
 
  
