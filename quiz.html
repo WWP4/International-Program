@@ -222,19 +222,30 @@ textarea{min-height:110px;resize:vertical}
   </section>
 </main>
 
-<!-- AOS JS (no defer so it’s ready before our code below) -->
+<!-- AOS JS -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<!-- Supabase JS MUST load before we call createClient (no defer) -->
-<script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+
+<!-- Supabase UMD (must load BEFORE we call createClient) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   // ---------- AOS
-  (function(){
-    if (window.AOS){
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      AOS.init({ duration: reduced ? 0 : 900, easing: 'ease', offset: 80, once: true, disable: reduced });
-    }
-  })();
+  if (window.AOS){
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    AOS.init({ duration: reduced ? 0 : 900, easing: 'ease', offset: 80, once: true, disable: reduced });
+  }
+
+  // Guard: ensure Supabase UMD loaded
+  if (!window.supabase) {
+    console.error("Supabase UMD failed to load (check the Network tab).");
+    // We don't early return, but inserts will fail; this helps you debug quickly.
+  }
+
+  // ---------- Supabase client
+  const SUPABASE_URL = "https://gdwodqwhjrksjhxazuio.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdkd29kcXdoanJrc2poeGF6dWlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMTU3NzcsImV4cCI6MjA2Njg5MTc3N30.Zq0lZRK6X6vVVwdhqkNVwMLsGPOhDFrYoEyUwtkbG0o";
+  const sb = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // ---------- Simple stepper
   const steps = Array.from(document.querySelectorAll('.step'));
@@ -244,8 +255,11 @@ textarea{min-height:110px;resize:vertical}
     idx = Math.max(0, Math.min(n, steps.length-1));
     steps.forEach((s,i)=>s.classList.toggle('active', i===idx));
     prog.style.width = ((idx+1)/steps.length*100) + '%';
-    const top = document.querySelector('.card').offsetTop - 24;
-    window.scrollTo({top, behavior:'smooth'});
+    const card = document.querySelector('.card');
+    if (card) {
+      const top = card.offsetTop - 24;
+      window.scrollTo({top, behavior:'smooth'});
+    }
   }
   document.getElementById('next1').addEventListener('click', ()=>{
     const ok = ['name','email','school','role'].every(id=>document.getElementById(id).checkValidity());
@@ -262,11 +276,6 @@ textarea{min-height:110px;resize:vertical}
     setStep(2);
   });
   document.getElementById('back3').addEventListener('click', ()=>setStep(1));
-
-  // ---------- Supabase client (replace anon key)
-  const SUPABASE_URL = "https://gdwodqwhjrksjhxazuio.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdkd29kcXdoanJrc2poeGF6dWlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMTU3NzcsImV4cCI6MjA2Njg5MTc3N30.Zq0lZRK6X6vVVwdhqkNVwMLsGPOhDFrYoEyUwtkbG0o";
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // ---------- Submit
   const form = document.getElementById('quizForm');
@@ -301,20 +310,23 @@ textarea{min-height:110px;resize:vertical}
     };
 
     try{
-      const { error } = await sb.from('quiz_submissions').insert(payload);
+      if (!sb) throw new Error("Supabase client not initialized.");
+      const { error } = await sb.from('quiz_submissions').insert([payload]); // array insert
+
       if (error) throw error;
 
       document.querySelector('.card').style.display = 'none';
       success.classList.add('show');
     }catch(err){
+      console.error('Supabase insert error:', err);
       alert('Submission failed. Please try again or email melissa@grantlegacybuilders.com');
-      console.error(err);
       submitBtn.disabled = false; submitBtn.textContent = 'Submit Quiz';
     }
   });
 
   // init step bar
   setStep(0);
+});
 </script>
 </body>
 </html>
