@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Legacy Builders — Next Steps</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<!-- AOS -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<style>
+:root{
+  --blue:#0e2a47; --blue-2:#0c213c;
+  --ink:#1b2434; --muted:#4a648d; --light:#f7faff;
+  --line:#e3eaf6; --accent:#c6aa6a;
+  --shadow-sm:0 10px 24px rgba(0,0,0,.06);
+  --shadow-lg:0 30px 60px rgba(0,0,0,.20);
+}
+
+/* Base */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+a{text-decoration:none}
+section{padding:80px 0}
+.wrap{width:min(1100px,92vw);margin:0 auto}
+
+/* Hero */
+.hero{
+  position:relative; overflow:hidden; color:#fff; background:var(--blue);
+  min-height:70vh; display:flex; align-items:center;
+}
+.hero__bg{position:absolute; inset:0; background:
+  radial-gradient(1200px 520px at 18% -10%, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 60%),
+  radial-gradient(1000px 420px at 85% 120%, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 60%),
+  linear-gradient(180deg, var(--blue) 0%, var(--blue-2) 100%);}
+.hero__grid{position:relative; z-index:1; display:grid; gap:24px; grid-template-columns:1.1fr .9fr; align-items:center}
+@media(max-width:980px){.hero__grid{grid-template-columns:1fr}}
+
+.hero__eyebrow{letter-spacing:.16em;text-transform:uppercase;font-weight:800;font-size:.86rem;color:#dfe6f8;margin-bottom:6px}
+.hero__title{font-family:"Cormorant Garamond",serif;font-weight:800;font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.05;margin:0 0 10px}
+.hero__lead{max-width:60ch;color:#eef4ff;opacity:.96;margin-bottom:16px}
+.hero__cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  appearance:none;border:0;cursor:pointer;font-weight:800;letter-spacing:.2px;border-radius:12px;
+  padding:14px 22px;box-shadow:var(--shadow-lg);transition:transform .2s ease,background .2s ease,color .2s ease
+}
+.btn--light{background:#fff;color:var(--blue)}
+.btn--light:hover{transform:translateY(-1px);background:var(--accent);color:#fff}
+.btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn--ghost:hover{color:#fff;border-color:#fff;transform:translateY(-1px)}
+
+.hero__card{
+  background:#fff;color:var(--blue);border-radius:16px;border:1px solid #e1e8f5;box-shadow:var(--shadow-lg);
+  padding:22px
+}
+.hero__card h3{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.5rem;margin-bottom:6px;color:var(--blue)}
+.hero__card p{color:#455b7f;margin-bottom:10px}
+.hero__list{list-style:none;display:grid;gap:8px;margin:0;padding:0}
+.hero__list li{display:grid;grid-template-columns:10px 1fr;gap:10px}
+.hero__list li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:.45rem}
+
+/* What You Get */
+.get{
+  background:#fff;
+}
+.get__head{text-align:center;margin-bottom:24px}
+.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-weight:800;font-size:.82rem;color:#6c82a8;margin-bottom:6px}
+.title{font-family:"Cormorant Garamond",serif;font-weight:800;font-size:clamp(2rem,3vw,2.6rem);color:var(--blue)}
+.lead{max-width:76ch;margin:8px auto 0;color:#455b7f}
+
+.get__grid{display:grid;gap:18px;grid-template-columns:repeat(3,1fr);margin-top:22px}
+@media(max-width:980px){.get__grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.get__grid{grid-template-columns:1fr}}
+.card{
+  background:#f9fbff;border:1px solid var(--line);border-radius:16px;padding:20px 18px;box-shadow:var(--shadow-sm);
+  transition:transform .25s ease,box-shadow .25s ease
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(0,0,0,.12)}
+.card h3{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.15rem;color:var(--blue);margin-bottom:6px}
+.card ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.card li{display:grid;grid-template-columns:10px 1fr;gap:10px;color:#1b2434}
+.card li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:.45rem}
+
+/* 10-Week Roadmap */
+.road{background:var(--light)}
+.road__grid{display:grid;gap:14px;grid-template-columns:repeat(5,1fr);margin-top:22px}
+@media(max-width:980px){.road__grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.road__grid{grid-template-columns:1fr}}
+.step{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 14px;box-shadow:var(--shadow-sm)
+}
+.step__num{
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--blue),#4b6da7);color:#fff;font-weight:800;margin-bottom:8px
+}
+.step h4{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.05rem;color:var(--blue);margin-bottom:4px}
+.step p{color:#4a648d;font-size:.95rem}
+
+/* Next Actions */
+.actions{background:#fff}
+.actions__box{
+  background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:20px
+}
+.actions__grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media(max-width:900px){.actions__grid{grid-template-columns:1fr}}
+.chk{display:flex;gap:10px;align-items:flex-start}
+.chk input{margin-top:.3rem}
+.actions__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+
+/* Partnership Promise */
+.promise{
+  background:
+  radial-gradient(1200px 520px at 18% -10%, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 60%),
+  radial-gradient(1000px 420px at 85% 120%, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 60%),
+  linear-gradient(180deg, var(--blue) 0%, var(--blue-2) 100%);
+  color:#fff;
+}
+.promise .title{color:#fff}
+.promise__row{display:grid;gap:16px;grid-template-columns:1fr 1fr;margin-top:18px}
+@media(max-width:980px){.promise__row{grid-template-columns:1fr}}
+.promise__tile{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);
+  border-radius:16px;padding:18px 16px;box-shadow:var(--shadow-lg)
+}
+.promise__tile h3{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.15rem;margin-bottom:6px}
+.promise__tile p{color:#e6eeff}
+
+/* FAQ */
+.faq{background:#fff}
+.faq details{border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}
+.faq summary{font-weight:800;color:var(--blue);cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq details[open]{box-shadow:var(--shadow-sm)}
+
+/* Footer stub */
+.footer{background:#0e2a47;color:#dfe6f8;padding:18px 0;text-align:center;font-size:.9rem}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  [data-aos]{opacity:1 !important; transform:none !important; transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="wrap hero__grid">
+    <div data-aos="fade-right">
+      <p class="hero__eyebrow">Next Steps</p>
+      <h1 class="hero__title">Welcome to the Partnership</h1>
+      <p class="hero__lead">
+        You’re not buying a binder—you’re gaining a partner who will walk with you from first board packet to first cohort
+        and beyond. Together, we’ll build a program that funds raises, strengthens culture, and reaches students you
+        couldn’t reach before.
+      </p>
+      <div class="hero__cta" data-aos="fade-up" data-aos-delay="100">
+        <a class="btn btn--light" href="#actions">Start Onboarding</a>
+        <a class="btn btn--ghost" href="#what-you-get">See Everything You Get</a>
+      </div>
+    </div>
+
+    <aside class="hero__card" data-aos="fade-left">
+      <h3>What Your Deposit Unlocks</h3>
+      <p>Immediate access to the resources and support that move your plan forward.</p>
+      <ul class="hero__list">
+        <li>10 weeks of one-on-one training and implementation coaching</li>
+        <li>All playbooks, how-tos, templates, and board-ready policies</li>
+        <li>Recruiting network connections and intake calendar</li>
+        <li>ESL & onboarding guides for staff, families, and students</li>
+        <li>Priority support—day or night when timelines demand it</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="get" id="what-you-get">
+  <div class="wrap">
+    <header class="get__head" data-aos="fade-up">
+      <p class="eyebrow">Everything Included</p>
+      <h2 class="title">What You Get with Legacy Builders</h2>
+      <p class="lead">A complete, board-ready system—plus experienced partners to help you deliver it.</p>
+    </header>
+
+    <div class="get__grid">
+      <article class="card" data-aos="fade-up">
+        <h3>Board Packet & Policy Set</h3>
+        <ul>
+          <li>Risk, governance, guardianship, incident response</li>
+          <li>Host family vetting and care standards</li>
+          <li>Clear roles and accountability ladders</li>
+        </ul>
+      </article>
+
+      <article class="card" data-aos="fade-up" data-aos-delay="80">
+        <h3>Recruitment Engine</h3>
+        <ul>
+          <li>Agent network introductions</li>
+          <li>Visa-aligned intake calendar</li>
+          <li>Outreach assets and intake scripts</li>
+        </ul>
+      </article>
+
+      <article class="card" data-aos="fade-up" data-aos-delay="160">
+        <h3>Training & Guides</h3>
+        <ul>
+          <li>10 weeks of 1:1 implementation coaching</li>
+          <li>ESL playbooks and onboarding checklists</li>
+          <li>Templates, tools, and step-by-step how-tos</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 10-WEEK ROADMAP -->
+<section class="road" id="roadmap">
+  <div class="wrap">
+    <header data-aos="fade-up">
+      <p class="eyebrow">Guided Implementation</p>
+      <h2 class="title">Your 10-Week One-on-One Roadmap</h2>
+      <p class="lead">Milestones that keep your board informed, your team confident, and your launch on schedule.</p>
+    </header>
+
+    <div class="road__grid">
+      <div class="step" data-aos="fade-up">
+        <div class="step__num">1</div>
+        <h4>Kickoff & Alignment</h4>
+        <p>Set goals, confirm scope, gather key documents, and lock the cadence.</p>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="60">
+        <div class="step__num">2</div>
+        <h4>Policy & Risk Draft</h4>
+        <p>Customize board packet and risk controls to your context.</p>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="120">
+        <div class="step__num">3</div>
+        <h4>Governance & Care</h4>
+        <p>Finalize guardianship, host vetting, and escalation ladders.</p>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="180">
+        <div class="step__num">4</div>
+        <h4>ESL & Onboarding</h4>
+        <p>Staff training, family onboarding, and student supports.</p>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="240">
+        <div class="step__num">5</div>
+        <h4>Recruitment Prep</h4>
+        <p>Agent intros, messaging, and intake calendar setup.</p>
+      </div>
+
+      <div class="step" data-aos="fade-up">
+        <div class="step__num">6</div>
+        <h4>Board Review</h4>
+        <p>Finalize packet and present for first-submission approval.</p>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="60">
+        <div class="step__num">7</div>
+        <h4>Launch Outreach</h4>
+        <p>Activate agents and begin the application flow.</p>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="120">
+        <div class="step__num">8</div>
+        <h4>Admissions Systems</h4>
+        <p>Intake tracking, communications, and selection process.</p>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="180">
+        <div class="step__num">9</div>
+        <h4>Host & Housing</h4>
+        <p>Finalize placements, checks, and documentation.</p>
+      </div>
+      <div class="step" data-aos="fade-up" data-aos-delay="240">
+        <div class="step__num">10</div>
+        <h4>Ready to Enroll</h4>
+        <p>Deposit handling, orientation plan, and semester start checklist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT ACTIONS -->
+<section class="actions" id="actions">
+  <div class="wrap">
+    <header data-aos="fade-up">
+      <p class="eyebrow">Start Now</p>
+      <h2 class="title">Your First Three Steps</h2>
+      <p class="lead">These unlock your portal and keep momentum high while we prepare your board packet.</p>
+    </header>
+
+    <div class="actions__box" data-aos="fade-up" data-aos-delay="60">
+      <div class="actions__grid">
+        <label class="chk">
+          <input type="checkbox" />
+          <div>
+            <strong>Book your onboarding call</strong><br>
+            Choose a time for your 60-minute kickoff.  
+            <a href="https://calendly.com/melissa-cnu/60min" target="_blank" rel="noopener">Open calendar</a>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" />
+          <div>
+            <strong>Download the Welcome Packet</strong><br>
+            Overview, timeline, and the full checklist.  
+            <a href="/assets/LegacyBuilders-Welcome-Packet.pdf" target="_blank" rel="noopener">Download PDF</a>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" />
+          <div>
+            <strong>Complete the Intake Form</strong><br>
+            School details, staffing, and priorities so we can tailor your packet.  
+            <a href="/intake.html">Go to intake form</a>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" />
+          <div>
+            <strong>Invite Your Team</strong><br>
+            Add key leaders to the portal for updates and tasks.  
+            <a href="/portal/invite">Send invites</a>
+          </div>
+        </label>
+      </div>
+
+      <div class="actions__cta">
+        <a class="btn btn--light" href="https://calendly.com/melissa-cnu/60min" target="_blank" rel="noopener">Book Onboarding Call</a>
+        <a class="btn btn--ghost" href="/assets/LegacyBuilders-Welcome-Packet.pdf" target="_blank" rel="noopener">Download Welcome Packet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIP PROMISE -->
+<section class="promise">
+  <div class="wrap">
+    <header data-aos="fade-up">
+      <p class="eyebrow" style="color:#dfe6f8">Our Commitment</p>
+      <h2 class="title">Not a Purchase. A Partnership.</h2>
+      <p class="lead" style="color:#e9f1ff;opacity:.96">
+        We don’t disappear after the deposit. We carry weight with you—strategy, calls, documents, recruiting, and the tough
+        deadlines—so your team isn’t doing this alone.
+      </p>
+    </header>
+
+    <div class="promise__row">
+      <div class="promise__tile" data-aos="fade-up">
+        <h3>Availability When It Matters</h3>
+        <p>When timelines compress, we show up—after hours if needed—so board reviews and intake windows aren’t missed.</p>
+      </div>
+      <div class="promise__tile" data-aos="fade-up" data-aos-delay="80">
+        <h3>Ownership Stays with You</h3>
+        <p>Your standards, your culture, your program. We’re the scaffolding, not the structure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <header data-aos="fade-up">
+      <p class="eyebrow">Clarity First</p>
+      <h2 class="title">Frequently Asked Questions</h2>
+    </header>
+
+    <details data-aos="fade-up">
+      <summary>What if our board needs more documentation?</summary>
+      <div>We supply the full policy/risk set, staffing plan, intake roadmap, and financial summary—tailored to your context.</div>
+    </details>
+    <details data-aos="fade-up">
+      <summary>How soon do we see results?</summary>
+      <div>Most partners move from deposit to board review within 2–4 weeks, then to active recruiting on the next visa-aligned window.</div>
+    </details>
+    <details data-aos="fade-up">
+      <summary>Do we lose control of culture?</summary>
+      <div>No. You own standards and oversight. We install guardrails and training that reinforce your values.</div>
+    </details>
+  </div>
+</section>
+
+<!-- Footer stub -->
+<footer class="footer">
+  © <span id="y"></span> Legacy Builders • <a href="mailto:melissa@grantlegacybuilders.com" style="color:#fff;border-bottom:1px solid rgba(255,255,255,.3)">melissa@grantlegacybuilders.com</a>
+</footer>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+<script>
+  window.addEventListener('load', function () {
+    if (!window.AOS) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    AOS.init({ duration: reduced ? 0 : 900, easing: 'ease', offset: 80, once: true, disable: reduced });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear();
+  });
+</script>
+
+</body>
+</html>
