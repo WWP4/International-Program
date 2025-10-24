@@ -7,7 +7,7 @@
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
-<!-- AOS -->
+<!-- AOS CSS -->
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
 <style>
@@ -41,7 +41,7 @@ a{text-decoration:none;color:#365e9e}
 .grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
 @media(max-width:720px){.grid{grid-template-columns:1fr}}
 label{font-weight:800;font-size:.92rem;color:#21406a}
-input[type="text"],input[type="email"],input[type="tel"],select,textarea{
+input[type="text"],input[type="email"],select,textarea{
   width:100%;padding:12px 12px;border:1px solid #d7e3f7;border-radius:12px;background:#fff;font:inherit;color:var(--blue)
 }
 textarea{min-height:110px;resize:vertical}
@@ -126,8 +126,9 @@ textarea{min-height:110px;resize:vertical}
       <section class="step" data-step="2" data-aos="fade-up">
         <div class="grid">
           <div>
-            <label>Primary goal</label>
+            <label>Primary goals</label>
             <div class="chips">
+              <label class="chip"><input type="checkbox" name="goal" value="Board approval"> Board approval</label>
               <label class="chip"><input type="checkbox" name="goal" value="Recruiting"> Recruiting</label>
               <label class="chip"><input type="checkbox" name="goal" value="Raises"> Fund teacher raises</label>
               <label class="chip"><input type="checkbox" name="goal" value="Culture"> Protect culture</label>
@@ -216,103 +217,93 @@ textarea{min-height:110px;resize:vertical}
           <a class="btn btn--ghost" href="https://buy.stripe.com/fZu8wPdJX6QO0fQ6Cw8so00" target="_blank" rel="noopener">Place Deposit</a>
         </div>
       </div>
-      <div class="mini"><span class="pill">White-Glove Partnership</span><span class="pill">Board-Ready</span><span class="pill">Visa-Aligned</span></div>
+      <p class="help" style="margin-top:10px">White-Glove Partnership • Board-Ready • Visa-Aligned</p>
     </div>
   </section>
 </main>
 
-<!-- AOS JS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
-<!-- Supabase JS -->
+<!-- AOS JS (no defer so it’s ready before our code below) -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<!-- Supabase JS MUST load before we call createClient (no defer) -->
 <script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 
 <script>
-  // ---------- AOS init
-  window.addEventListener('load', function () {
-    if (!window.AOS) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    AOS.init({ duration: reduced ? 0 : 900, easing: 'ease', offset: 80, once: true, disable: reduced });
-  });
+  // ---------- AOS
+  (function(){
+    if (window.AOS){
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      AOS.init({ duration: reduced ? 0 : 900, easing: 'ease', offset: 80, once: true, disable: reduced });
+    }
+  })();
 
   // ---------- Simple stepper
   const steps = Array.from(document.querySelectorAll('.step'));
   const prog  = document.getElementById('progress');
-  let i = 0;
-  const setStep = (n) => {
-    i = Math.max(0, Math.min(n, steps.length-1));
-    steps.forEach((s, idx) => s.classList.toggle('active', idx === i));
-    prog.style.width = ((i+1)/steps.length*100) + '%';
-    window.scrollTo({top: document.querySelector('.card').offsetTop - 24, behavior:'smooth'});
-  };
-  document.getElementById('next1').addEventListener('click', () => {
-    // quick validation for step 1
-    const ok = ['name','email','school','role'].every(id => document.getElementById(id).checkValidity());
+  let idx = 0;
+  function setStep(n){
+    idx = Math.max(0, Math.min(n, steps.length-1));
+    steps.forEach((s,i)=>s.classList.toggle('active', i===idx));
+    prog.style.width = ((idx+1)/steps.length*100) + '%';
+    const top = document.querySelector('.card').offsetTop - 24;
+    window.scrollTo({top, behavior:'smooth'});
+  }
+  document.getElementById('next1').addEventListener('click', ()=>{
+    const ok = ['name','email','school','role'].every(id=>document.getElementById(id).checkValidity());
     if(!ok){ document.getElementById('quizForm').reportValidity(); return; }
     setStep(1);
   });
-  document.getElementById('back2').addEventListener('click', () => setStep(0));
-  document.getElementById('next2').addEventListener('click', () => {
+  document.getElementById('back2').addEventListener('click', ()=>setStep(0));
+  document.getElementById('next2').addEventListener('click', ()=>{
     const f = document.getElementById('quizForm');
     const ok = f.querySelector('select[name="launch_window"]').checkValidity()
-              && f.querySelector('select[name="cohort"]').checkValidity()
-              && f.querySelector('select[name="hosts"]').checkValidity();
+             && f.querySelector('select[name="cohort"]').checkValidity()
+             && f.querySelector('select[name="hosts"]').checkValidity();
     if(!ok){ f.reportValidity(); return; }
     setStep(2);
   });
-  document.getElementById('back3').addEventListener('click', () => setStep(1));
+  document.getElementById('back3').addEventListener('click', ()=>setStep(1));
 
-  // ---------- Supabase client
+  // ---------- Supabase client (replace anon key)
   const SUPABASE_URL = "https://gdwodqwhjrksjhxazuio.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdkd29kcXdoanJrc2poeGF6dWlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMTU3NzcsImV4cCI6MjA2Njg5MTc3N30.Zq0lZRK6X6vVVwdhqkNVwMLsGPOhDFrYoEyUwtkbG0o"; // <- paste your real anon key here
-  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  // ---------- UTM capture (stored with submission)
-  const qp = new URLSearchParams(location.search);
-  const utms = {
-    utm_source:  qp.get('utm_source')  || null,
-    utm_medium:  qp.get('utm_medium')  || null,
-    utm_campaign:qp.get('utm_campaign')|| null,
-    utm_content: qp.get('utm_content') || null,
-    utm_term:    qp.get('utm_term')    || null,
-    origin_url:  location.href
-  };
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdkd29kcXdoanJrc2poeGF6dWlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMTU3NzcsImV4cCI6MjA2Njg5MTc3N30.Zq0lZRK6X6vVVwdhqkNVwMLsGPOhDFrYoEyUwtkbG0o";
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // ---------- Submit
   const form = document.getElementById('quizForm');
   const submitBtn = document.getElementById('submitBtn');
   const success = document.getElementById('success');
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     submitBtn.disabled = true; submitBtn.textContent = 'Submitting…';
 
-    // Gather values
-    const data = new FormData(form);
-    const goals = Array.from(form.querySelectorAll('input[name="goal"]:checked')).map(i => i.value);
+    // collect goals
+    const goals = Array.from(form.querySelectorAll('input[name="goal"]:checked')).map(i=>i.value);
 
     const payload = {
-      name:        data.get('name') || null,
-      email:       data.get('email') || null,
-      school:      data.get('school') || null,
-      role:        data.get('role') || null,
-      goals, // array<string>
-      launch_window: data.get('launch_window') || null,
-      cohort:        data.get('cohort') || null,
-      hosts:         data.get('hosts') || null,
-      concern:       data.get('concern') || null,
-      timeframe:     data.get('timeframe') || null,
-      notes:         data.get('notes') || null,
-      ...utms
+      name:        document.getElementById('name').value || null,
+      email:       document.getElementById('email').value || null,
+      school:      document.getElementById('school').value || null,
+      role:        document.getElementById('role').value || null,
+      goals, // text[]
+      launch_window: form.querySelector('[name="launch_window"]').value || null,
+      cohort:        form.querySelector('[name="cohort"]').value || null,
+      hosts:         form.querySelector('[name="hosts"]').value || null,
+      concern:       document.getElementById('concern').value || null,
+      timeframe:     document.getElementById('timeframe').value || null,
+      notes:         document.getElementById('notes').value || null,
+      origin_url:    location.href,
+      utm_source:    new URLSearchParams(location.search).get('utm_source'),
+      utm_medium:    new URLSearchParams(location.search).get('utm_medium'),
+      utm_campaign:  new URLSearchParams(location.search).get('utm_campaign'),
+      utm_content:   new URLSearchParams(location.search).get('utm_content'),
+      utm_term:      new URLSearchParams(location.search).get('utm_term')
     };
 
     try{
-      const { error } = await supabaseClient
-        .from('quiz_submissions')
-        .insert(payload);
+      const { error } = await sb.from('quiz_submissions').insert(payload);
+      if (error) throw error;
 
-      if(error) throw error;
-
-      // Success UI
       document.querySelector('.card').style.display = 'none';
       success.classList.add('show');
     }catch(err){
@@ -322,7 +313,7 @@ textarea{min-height:110px;resize:vertical}
     }
   });
 
-  // init progress
+  // init step bar
   setStep(0);
 </script>
 </body>
