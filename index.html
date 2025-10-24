@@ -217,6 +217,132 @@ input[type="range"]{padding:0}
 @media (prefers-reduced-motion: reduce){
   [data-aos]{opacity:1 !important; transform:none !important; transition:none !important}
 }
+
+/* =========================
+   DECISION / PLACE DEPOSIT (White Background)
+========================= */
+.decision-white{
+  background:#fff;
+  color:#0e2a47;
+  padding:84px 0;
+  position:relative;
+}
+.dw__wrap{width:min(1100px,92vw);margin:0 auto;}
+.dw__head{text-align:center;margin-bottom:30px;}
+.dw__eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-weight:800;
+  font-size:.82rem;
+  color:#6c82a8;
+  margin-bottom:6px;
+}
+.dw__title{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:800;
+  font-size:clamp(2rem,3.2vw,2.6rem);
+  margin:0 0 10px;
+  color:#0e2a47;
+}
+.dw__lead{
+  max-width:72ch;
+  margin:0 auto;
+  color:#455b7f;
+  font-size:1.05rem;
+  opacity:.95;
+}
+
+/* GRID */
+.dw__grid{
+  display:grid;
+  gap:22px;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:20px;
+}
+@media(max-width:980px){.dw__grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.dw__grid{grid-template-columns:1fr}}
+
+/* CARDS */
+.dw__card{
+  background:#f9fbff;
+  border:1px solid #e1e8f5;
+  border-radius:16px;
+  padding:24px 20px;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.dw__card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(0,0,0,.12);}
+.dw__card h3{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:700;
+  font-size:1.2rem;
+  color:#0e2a47;
+  margin-bottom:10px;
+}
+.dw__list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:6px;
+}
+.dw__list li{
+  display:grid;
+  grid-template-columns:10px 1fr;
+  gap:10px;
+  color:#1b2434;
+  font-size:.96rem;
+}
+.dw__list li::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#c6aa6a;
+  margin-top:.45rem;
+}
+
+/* CTA */
+.dw__cta{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-top:40px;
+  text-align:center;
+}
+.dw__btn{
+  appearance:none;
+  border:0;
+  cursor:pointer;
+  font-weight:800;
+  letter-spacing:.2px;
+  border-radius:12px;
+  padding:14px 24px;
+  text-decoration:none;
+  background:#0e2a47;
+  color:#fff;
+  box-shadow:0 20px 40px rgba(2,15,30,.18);
+  transition:transform .2s ease,background .2s ease;
+}
+.dw__btn:hover{transform:translateY(-1px);background:#c6aa6a;color:#fff;}
+.dw__btn--outline{
+  margin-top:10px;
+  background:#fff;
+  color:#0e2a47;
+  border:1px solid #dbe3f5;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+}
+.dw__btn--outline:hover{background:#f9fbff;}
+.dw__note{
+  max-width:70ch;
+  margin-top:18px;
+  font-size:.92rem;
+  color:#455b7f;
+  opacity:.9;
+}
+
+  
 </style>
 </head>
 <body>
@@ -374,26 +500,66 @@ input[type="range"]{padding:0}
   <svg class="ps__edge ps__edge--bottom" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L1200,80 L0,80 Z"></path></svg>
 </section>
 
-     </section>
 
-    <!-- CTA / Stripe Deposit -->
-    <section class="ps__cta" aria-labelledby="cta-h">
-      <h3 id="cta-h" class="ps__sub" data-aos="fade-up">Ready to Move Forward?</h3>
-      <p class="ps__ctaLead" data-aos="fade-up" data-aos-delay="80">
-        Reserve your build-out and onboarding. We’ll finalize your timeline, board packet, and recruitment plan.
+  <!-- =========================
+     DECISION / PLACE DEPOSIT (White Background)
+========================= -->
+<section class="decision-white" id="decision">
+  <div class="dw__wrap">
+    <header class="dw__head" data-aos="fade-up">
+      <p class="dw__eyebrow">Why Schools Partner with Legacy Builders</p>
+      <h2 class="dw__title">This Isn’t Just Another Idea — It’s a Proven Path to Growth</h2>
+      <p class="dw__lead">
+        Schools that work with us replace uncertainty with confidence. You’ll secure a predictable new revenue stream,
+        raise teacher pay, and strengthen your mission without risking your culture.
       </p>
-      <div class="ps__ctaRow" data-aos="fade-up" data-aos-delay="120">
-        <button class="ps__btn" id="stripeDepositBtn" type="button">
-          Reserve Your Program
-        </button>
-        <p class="ps__note">Secure deposit via Stripe. Fully credited toward your implementation.</p>
-      </div>
-      <p class="ps__muted">Want to see exact numbers for your school? The <a href="#calc">Estimator Calculator</a> below
-        lets you tailor tuition, cohort size, costs, and teacher raise allocation.</p>
-    </section>
+    </header>
 
+    <!-- 3 Feature Columns -->
+    <div class="dw__grid">
+      <article class="dw__card" data-aos="fade-up">
+        <h3>Why You Need This</h3>
+        <ul class="dw__list">
+          <li>Enrollment and tuition alone can’t sustain growth.</li>
+          <li>Budgets are too tight to fund teacher raises.</li>
+          <li>Donor and grant cycles are unpredictable.</li>
+          <li>This program creates permanent new margin.</li>
+        </ul>
+      </article>
+
+      <article class="dw__card" data-aos="fade-up" data-aos-delay="100">
+        <h3>How We Help</h3>
+        <ul class="dw__list">
+          <li>Custom board-approved policy & risk packet</li>
+          <li>Agent recruiting network & visa calendar</li>
+          <li>ESL supports & onboarding systems for students</li>
+          <li>Dedicated launch coaching until your first intake</li>
+        </ul>
+      </article>
+
+      <article class="dw__card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Why It’s Safe</h3>
+        <ul class="dw__list">
+          <li><strong>100%</strong> first-submission board approvals</li>
+          <li>Clear milestones & refund protections</li>
+          <li>Your school keeps full ownership of the program</li>
+          <li>Conservative projections; proven 12-month ROI</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- CTA Row -->
+    <div class="dw__cta" data-aos="fade-up" data-aos-delay="300">
+      <a class="dw__btn" id="depositBtn" href="/next-steps.html">Place Deposit</a>
+      <a class="dw__btn dw__btn--outline" href="#calc">See Your Numbers</a>
+      <p class="dw__note">
+        Your deposit unlocks the <strong>Next Steps Portal</strong> — including your
+        board packet, onboarding timeline, and recruitment plan. Fully credited toward implementation.
+      </p>
+    </div>
   </div>
 </section>
+
 
 
 <!-- FACTS & FIGURES -->
@@ -732,6 +898,17 @@ input[type="range"]{padding:0}
 
     recalc();
   })();
+</script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const btn=document.getElementById("depositBtn");
+  if(btn){
+    btn.addEventListener("click",(e)=>{
+      e.preventDefault();
+      window.location.href="/next-steps.html"; // or your Stripe Checkout link
+    });
+  }
+});
 </script>
 
 </body>
