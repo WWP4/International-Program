@@ -1,3 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Legacy Builders — 2-Minute Launch Quiz</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- AOS CSS (optional; your JS can init it) -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<style>
+/* ====== Core Theme ====== */
+:root{
+  --blue:#0e2a47;        /* brand base */
+  --blue-2:#173b61;      /* hover/dark */
+  --ink:#1b2434;         /* body text */
+  --muted:#62779c;       /* secondary text */
+  --line:#e6ecf7;        /* borders */
+  --accent:#c6aa6a;      /* subtle gold accent */
+  --light:#f7faff;       /* light bg */
+  --chip:#f2f7ff;        /* chip bg */
+  --shadow-sm:0 10px 24px rgba(2,15,30,.08);
+  --shadow-md:0 18px 48px rgba(2,15,30,.12);
+  --radius:16px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:#365e9e;text-decoration:none}
+
+/* ====== Layout ====== */
+.wrap{width:min(920px,92vw);margin:40px auto}
+
+/* ====== Header ====== */
+.head{text-align:center;margin-bottom:18px}
+.eyebrow{
+  letter-spacing:.16em;text-transform:uppercase;font-weight:800;
+  font-size:.82rem;color:#6e86ad;margin-bottom:8px
+}
+.title{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:800;line-height:1.15;
+  font-size:clamp(2rem,3.2vw,2.7rem);color:var(--blue);margin:0
+}
+.lead{max-width:70ch;margin:10px auto 0;color:#465f86}
+.help{font-size:.88rem;color:var(--muted)}
+
+/* header accent line */
+.head::after{
+  content:"";display:block;width:84px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  margin:16px auto 0;opacity:.6
+}
+
+/* ====== Card ====== */
+.card{
+  margin-top:22px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden
+}
+
+/* Progress bar */
+.bar{height:6px;background:#eef3ff;position:relative}
+.bar>span{
+  position:absolute;left:0;top:0;height:100%;width:0;
+  background:linear-gradient(90deg,var(--blue),#4c6aa3);
+  transition:width .45s ease
+}
+
+/* ====== Quiz ====== */
+.quiz{padding:20px 18px 22px}
+.step{display:none;animation:fadeSlide .32s ease both}
+.step.active{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
+
+/* Labels & Inputs */
+label{display:block;font-weight:800;font-size:.94rem;color:#21406a;margin-bottom:6px}
+input[type="text"],input[type="email"],select,textarea{
+  width:100%;padding:12px 12px;border:1px solid #d7e3f7;border-radius:12px;
+  background:#fff;font:inherit;color:var(--blue);outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease
+}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{
+  border-color:#8fb1ff;
+  box-shadow:0 0 0 4px rgba(79,120,201,.12)
+}
+
+/* Chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  display:inline-flex;gap:8px;align-items:center;
+  border:1px solid #dbe6ff;background:var(--chip);color:#21406a;
+  padding:8px 12px;border-radius:999px;font-weight:700;cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease
+}
+.chip:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(11,18,32,.08)}
+.chip input{accent-color:#21406a}
+
+/* Nav buttons */
+.nav{display:flex;gap:10px;justify-content:space-between;margin-top:18px}
+.btn{
+  appearance:none;border:0;cursor:pointer;font-weight:800;letter-spacing:.2px;
+  border-radius:12px;padding:12px 18px;line-height:1;transition:transform .12s ease, box-shadow .2s ease, background .2s ease
+}
+.btn--ghost{background:#fff;color:var(--blue);border:1px solid var(--line)}
+.btn--ghost:hover{background:#f7fbff}
+.btn--primary{background:var(--blue);color:#fff;box-shadow:0 14px 30px rgba(2,15,30,.14)}
+.btn--primary:hover{background:var(--blue-2);transform:translateY(-1px);box-shadow:0 18px 40px rgba(2,15,30,.18)}
+.btn[disabled]{opacity:.6;pointer-events:none}
+
+/* Focus-visible ring for a11y */
+.btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+  outline:3px solid rgba(79,120,201,.28);outline-offset:2px
+}
+
+/* ====== Success State ====== */
+.success{display:none;text-align:center;padding:28px 20px}
+.success.show{display:block}
+.succ__title{
+  font-family:"Cormorant Garamond",serif;font-weight:800;
+  font-size:1.7rem;color:var(--blue);margin:0 0 8px
+}
+.succ__card{
+  background:var(--light);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow-md);
+  padding:22px 18px;margin-top:12px
+}
+
+/* AOS safety */
+[data-aos]{will-change:transform,opacity}
+@media (prefers-reduced-motion: reduce){
+  .step{animation:none}
+  .bar>span{transition:none}
+  .btn{transition:none}
+  [data-aos]{opacity:1 !important;transform:none !important;transition:none !important}
+}
+
+/* Mobile spacing polish */
+@media (max-width:480px){
+  .wrap{margin:28px auto}
+  .quiz{padding:16px}
+  .nav{gap:8px}
+}
+</style>
+</head>
+<body>
+
 <main class="wrap">
   <!-- Header -->
   <header class="head" data-aos="fade-up">
@@ -153,6 +314,9 @@
     </div>
   </section>
 </main>
+
+</body>
+</html>
 
 
 <!-- AOS JS -->
