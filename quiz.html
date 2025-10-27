@@ -1,96 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Legacy Builders — 2-Minute Quiz</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
-<!-- AOS CSS -->
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-
-<style>
-:root{
-  --blue:#0e2a47; --blue2:#0c213c; --ink:#1b2434; --muted:#4a648d;
-  --line:#e6ecf7; --accent:#c6aa6a; --light:#f7faff;
-  --shadow-sm:0 10px 24px rgba(0,0,0,.06); --shadow-lg:0 30px 60px rgba(0,0,0,.20);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
-a{text-decoration:none;color:#365e9e}
-.wrap{width:min(900px,92vw);margin:36px auto}
-
-/* Header */
-.head{text-align:center;margin-bottom:16px}
-.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-weight:800;font-size:.82rem;color:#6c82a8;margin-bottom:6px}
-.title{font-family:"Cormorant Garamond",serif;font-weight:800;font-size:clamp(2rem,3vw,2.6rem);color:var(--blue)}
-.lead{max-width:70ch;margin:8px auto 0;color:#455b7f}
-
-/* Card shell */
-.card{margin-top:18px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden}
-.bar{height:6px;background:#edf2fe;position:relative}
-.bar>span{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,var(--blue),#4c6aa3);transition:width .5s ease}
-
-/* Steps */
-.quiz{padding:18px}
-.step{display:none;animation:slideIn .32s ease both}
-.step.active{display:block}
-@keyframes slideIn{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
-
-.grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
-@media(max-width:720px){.grid{grid-template-columns:1fr}}
-label{font-weight:800;font-size:.92rem;color:#21406a}
-input[type="text"],input[type="email"],select,textarea{
-  width:100%;padding:12px 12px;border:1px solid #d7e3f7;border-radius:12px;background:#fff;font:inherit;color:var(--blue)
-}
-textarea{min-height:110px;resize:vertical}
-.help{font-size:.86rem;color:#6a7da1}
-
-/* Chips */
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chip{display:inline-flex;gap:8px;align-items:center;border:1px solid #dbe6ff;background:#f7fbff;color:#21406a;padding:8px 12px;border-radius:999px;font-weight:700}
-.chip input{accent-color:#21406a}
-
-/* Nav */
-.nav{display:flex;gap:10px;justify-content:space-between;margin-top:16px}
-.btn{appearance:none;border:0;cursor:pointer;font-weight:800;letter-spacing:.2px;border-radius:12px;padding:12px 18px}
-.btn--ghost{background:#fff;color:var(--blue);border:1px solid var(--line)}
-.btn--ghost:hover{background:#f9fbff}
-.btn--primary{background:var(--blue);color:#fff;box-shadow:0 16px 32px rgba(2,15,30,.15)}
-.btn--primary:hover{background:#173b61}
-.btn[disabled]{opacity:.6;pointer-events:none}
-
-/* Success */
-.success{display:none;text-align:center;padding:28px 20px}
-.success.show{display:block}
-.succ__card{background:var(--light);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);padding:22px 18px;margin-top:12px}
-.succ__title{font-family:"Cormorant Garamond",serif;font-weight:800;font-size:1.6rem;color:var(--blue);margin-bottom:6px}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .bar>span{transition:none}
-  .step{animation:none}
-  [data-aos]{opacity:1 !important;transform:none !important;transition:none !important}
-}
-</style>
-</head>
-<body>
-
 <main class="wrap">
+  <!-- Header -->
   <header class="head" data-aos="fade-up">
-    <p class="eyebrow">2-Minute Quiz</p>
-    <h1 class="title">Find Your Fastest Path to Launch</h1>
-    <p class="lead">Answer a few quick questions. We’ll map the exact next steps to get your program board-approved and recruiting on time.</p>
+    <p class="eyebrow">Revenue • Enrollment • Global Impact</p>
+    <h1 class="title">See How Much New Tuition Your School Could Earn This Year</h1>
+    <p class="lead">
+      Take this 2-minute quiz to get a <strong>custom revenue forecast</strong>, a <strong>board-ready launch plan</strong>, and clear next steps.
+      Instant results delivered to your inbox.
+    </p>
+    <p class="help" style="margin-top:6px">Trusted by schools for 20+ years • Visa-aligned • Board-approved frameworks</p>
   </header>
 
+  <!-- Quiz Card -->
   <section class="card" aria-label="Quick quiz">
     <div class="bar" aria-hidden="true"><span id="progress"></span></div>
 
     <form id="quizForm" class="quiz" novalidate>
       <!-- STEP 1 -->
-      <section class="step active" data-step="1" data-aos="fade-up">
-        <div class="grid">
+      <section class="step active" data-step="1" data-aos="fade-up" aria-labelledby="step1-title">
+        <p class="help">Step 1 of 3 — Contact & Role</p>
+        <div class="grid" style="margin-top:6px">
           <div>
             <label for="name">Your name</label>
             <input id="name" name="name" type="text" placeholder="Full name" required>
@@ -115,16 +43,17 @@ textarea{min-height:110px;resize:vertical}
             </select>
           </div>
         </div>
-        <p class="help">We’ll send your tailored plan to this email.</p>
+        <p class="help">We’ll email your personalized plan immediately after you finish.</p>
         <div class="nav">
           <button type="button" class="btn btn--ghost" disabled>Back</button>
-          <button type="button" class="btn btn--primary" id="next1">Next</button>
+          <button type="button" class="btn btn--primary" id="next1">Continue</button>
         </div>
       </section>
 
       <!-- STEP 2 -->
-      <section class="step" data-step="2" data-aos="fade-up">
-        <div class="grid">
+      <section class="step" data-step="2" data-aos="fade-up" aria-labelledby="step2-title">
+        <p class="help">Step 2 of 3 — Goals & Timing</p>
+        <div class="grid" style="margin-top:6px">
           <div>
             <label>Primary goals</label>
             <div class="chips">
@@ -168,13 +97,14 @@ textarea{min-height:110px;resize:vertical}
         </div>
         <div class="nav">
           <button type="button" class="btn btn--ghost" id="back2">Back</button>
-          <button type="button" class="btn btn--primary" id="next2">Next</button>
+          <button type="button" class="btn btn--primary" id="next2">Continue</button>
         </div>
       </section>
 
       <!-- STEP 3 -->
-      <section class="step" data-step="3" data-aos="fade-up">
-        <div class="grid">
+      <section class="step" data-step="3" data-aos="fade-up" aria-labelledby="step3-title">
+        <p class="help">Step 3 of 3 — Risks & Readiness</p>
+        <div class="grid" style="margin-top:6px">
           <div>
             <label for="concern">Biggest concern</label>
             <select id="concern" name="concern" required>
@@ -202,25 +132,28 @@ textarea{min-height:110px;resize:vertical}
         </div>
         <div class="nav">
           <button type="button" class="btn btn--ghost" id="back3">Back</button>
-          <button type="submit" class="btn btn--primary" id="submitBtn">Submit Quiz</button>
+          <button type="submit" class="btn btn--primary" id="submitBtn">Get My Plan</button>
         </div>
+        <p class="help" style="margin-top:10px">Private and secure. We never share your information.</p>
       </section>
     </form>
 
     <!-- Success -->
     <div id="success" class="success" aria-live="polite">
-      <h2 class="succ__title">Thank you — we’re on it.</h2>
+      <h2 class="succ__title">Your Preliminary Plan Is Ready</h2>
       <div class="succ__card">
-        We’ll send your tailored next steps to your email. Want to move now?
-        <div style="margin-top:10px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <a class="btn btn--primary" href="https://calendly.com/melissa-cnu/30min" target="_blank" rel="noopener">Book a Call</a>
+        You’re pre-qualified for our Fall Launch cohort. To secure your onboarding window, choose a next step below.
+        <div style="margin-top:12px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn--primary" href="https://calendly.com/melissa-cnu/30min" target="_blank" rel="noopener">Book My Launch Call</a>
           <a class="btn btn--ghost" href="https://buy.stripe.com/fZu8wPdJX6QO0fQ6Cw8so00" target="_blank" rel="noopener">Place Deposit</a>
         </div>
+        <p class="help" style="margin-top:10px">You’ll also receive a board-ready one-pager with your revenue forecast and next steps.</p>
       </div>
-      <p class="help" style="margin-top:10px">White-Glove Partnership • Board-Ready • Visa-Aligned</p>
+      <p class="help" style="margin-top:12px">White-Glove Partnership • Board-Ready • Visa-Aligned</p>
     </div>
   </section>
 </main>
+
 
 <!-- AOS JS -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
